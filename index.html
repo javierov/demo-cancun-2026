@@ -562,6 +562,9 @@ details.ckb>summary{list-style:none;cursor:pointer;display:flex;align-items:cent
 details.ckb:not([open]) .ckbar{margin-bottom:0}
 details.ckb:not([open]){padding-bottom:10px}
 .mapw{background:#8fd3df}.mbg{position:absolute;left:0;top:0;width:100%;height:auto;transform-origin:0 0;pointer-events:none;user-select:none}.msvg{position:relative}
+.mapw:not(.zoomed) .mpt.minor:not(.on) .lbl{display:none}
+#s-mapa .pad{padding-left:10px;padding-right:10px}.mapw{border-radius:14px}
+.mapw:not(.zoomed) .msec.minor:not(.on){display:none}
 
 </style>
 </head>
@@ -926,30 +929,42 @@ function renderMap(){
   <g fill="#fff" font-weight="800" letter-spacing="4" text-anchor="middle" paint-order="stroke" stroke="#1d4a1f" stroke-opacity=".7" stroke-width="3.5"><text x="120" y="345" font-size="15">YUCATÁN</text><text x="300" y="175" font-size="13">QUINTANA ROO</text></g>
   <g transform="translate(40 400)"><circle r="20" fill="#fff" fill-opacity=".85" stroke="#0b5a6c" stroke-width="1.2"/><path d="M0-16l4 14h-8z" fill="#c8322f"/><path d="M0 16l4-14h-8z" fill="#0b5a6c"/><text y="-22" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" paint-order="stroke" stroke="#0b5a6c" stroke-width="3">N</text></g>
   <g transform="translate(78 425)"><rect x="-4" y="-14" width="132" height="22" rx="6" fill="#fff" fill-opacity=".85"/><path d="M4 0h120" stroke="#17323b" stroke-width="3"/><path d="M4 -5v10M64 -4v8M124 -5v10" stroke="#17323b" stroke-width="2"/><text x="64" y="-3" font-size="9.5" font-weight="700" fill="#17323b" text-anchor="middle">50 km</text></g>
-  ${PL.map(([n,x,y,c],i)=>{const LP={"Chichén Itzá":"b","Valladolid":"t","Xcaret":"b","Río Secreto":"l","Isla Mujeres":"t","Aeropuerto":"l","Puerto Morelos":"l","Cancún · RIU":"l","Tulum":"r"}[n]||"r";const on=i===psel,col=C[c].s2,w=n.length*6.6+14;
-    const lx=LP==="r"?x+15:LP==="l"?x-15-w:x-w/2,ly=LP==="b"?y+14:LP==="t"?y-36:y-11;
-    return `<g class="mpt${on?" on":""}" data-pl="${i}" tabindex="0" role="button" aria-label="${n}"><g class="ps" data-x="${x}" data-y="${y}"><circle cx="${x}" cy="${y}" r="18" fill="transparent"/>
-    <g transform="translate(${x} ${y}) scale(${on?1.25:1})" filter="url(#pin)"><circle r="11" fill="${col}" stroke="#fff" stroke-width="2.5"/><g fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${PIC[PIK[i]]}</g></g>
-    <g transform="translate(${lx} ${ly})"><rect width="${w}" height="22" rx="11" fill="${on?col:"#fff"}" fill-opacity="${on?1:.92}" filter="url(#pin)"/><text x="${w/2}" y="15" font-size="11.5" font-weight="700" fill="${on?"#fff":"#17323b"}" text-anchor="middle">${n}</text></g></g></g>`}).join("")}
-  ${SEC.map(([id,n,,,,,x,y],i)=>{const on=ssel===i,w=n.length*6.4+14;return `<g class="mpt msec${on?" on":""}" data-sc="${i}" tabindex="0" role="button" aria-label="Secreto: ${n}"><g class="ps" data-x="${x}" data-y="${y}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/><g transform="translate(${x} ${y}) scale(${on?1.3:1})" filter="url(#pin)"><circle r="7.5" fill="#f2b632" stroke="#fff" stroke-width="2"/><path d="M0-4.2l1.2 2.6 2.8.3-2.1 1.9.6 2.8L0 2l-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" fill="#fff"/></g>${on?`<g transform="translate(${x-w/2} ${y-32})"><rect width="${w}" height="21" rx="10.5" fill="#f2b632" filter="url(#pin)"/><text x="${w/2}" y="14.5" font-size="11" font-weight="800" fill="#4a3000" text-anchor="middle">${n}</text></g>`:""}</g></g>`}).join("")}
+  ${PL.map(([n,x,y,c],i)=>{const LP={"Chichén Itzá":"b","Valladolid":"t","Xcaret":"b","Río Secreto":"l","Isla Mujeres":"tl","Aeropuerto":"l","Puerto Morelos":"l","Cancún · RIU":"l","Tulum":"r"}[n]||"r";const on=i===psel,col=C[c].s2,w=n.length*7.2+16,mn=["Aeropuerto","Xcaret"].includes(n);
+    const lx=LP==="r"?x+15:LP==="l"?x-15-w:LP==="tl"?x+12-w:x-w/2,ly=LP==="b"?y+14:LP==="t"||LP==="tl"?y-38:y-12;
+    return `<g class="mpt${on?" on":""}${mn?" minor":""}" data-pl="${i}" tabindex="0" role="button" aria-label="${n}"><g class="ps" data-x="${x}" data-y="${y}"><circle cx="${x}" cy="${y}" r="18" fill="transparent"/>
+    <g transform="translate(${x} ${y}) scale(${on?1.25:1})" filter="url(#pin)"><circle r="11" fill="${col}" stroke="#fff" stroke-width="2.6"/><g fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${PIC[PIK[i]]}</g></g>
+    <g class="lbl" transform="translate(${lx} ${ly})"><rect width="${w}" height="24" rx="12" fill="${on?col:"#fff"}" fill-opacity="${on?1:.96}" filter="url(#pin)"/><text x="${w/2}" y="16.5" font-size="12.5" font-weight="700" fill="${on?"#fff":"#17323b"}" text-anchor="middle">${n}</text></g></g></g>`}).join("")}
+  ${SEC.map(([id,n,,,,,x,y],i)=>{const on=ssel===i,w=n.length*6.4+14;return `<g class="mpt msec${on?" on":""}${["meco","mercado23"].includes(id)?" minor":""}" data-sc="${i}" tabindex="0" role="button" aria-label="Secreto: ${n}"><g class="ps" data-x="${x}" data-y="${y}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/><g transform="translate(${x} ${y}) scale(${on?1.3:1})" filter="url(#pin)"><circle r="7.5" fill="#f2b632" stroke="#fff" stroke-width="2"/><path d="M0-4.2l1.2 2.6 2.8.3-2.1 1.9.6 2.8L0 2l-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" fill="#fff"/></g>${on?`<g transform="translate(${x-w/2} ${y-32})"><rect width="${w}" height="21" rx="10.5" fill="#f2b632" filter="url(#pin)"/><text x="${w/2}" y="14.5" font-size="11" font-weight="800" fill="#4a3000" text-anchor="middle">${n}</text></g>`:""}</g></g>`}).join("")}
   </svg><div class="mzb"><button type="button" data-mz="in" aria-label="Acercar">+</button><button type="button" data-mz="out" aria-label="Alejar">−</button><button type="button" data-mz="reset" aria-label="Ver todo">⤢</button></div>`;mapTouch();
   {const p=psel>=0?PL[psel]:null,s=ssel>=0?SEC[ssel]:null;$("pinfo").innerHTML=p?`<div class="pin1" style="--c:${C[p[3]].s2}"><span><b>${esc(p[0])}</b><small>${wd(p[6])} ${p[6]} ${MC} · ${esc(p[4])}</small></span><a class="go" href="${route(p[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}</a></div>`:s?`<div class="pin1 sec" style="--c:#f2b632"><span><b>${ico("star",2)}${esc(s[1])}</b><small>${wd(s[2])} ${s[2]} ${MC} · ${esc(s[4])}</small></span><a class="go" href="${route(s[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}</a></div>`:""}
   $("plist").innerHTML=`<div class="box blk"><ul class="res">${PL.map(([n,,,c,tx,q,d],i)=>`<li class="pli${i===psel?" on":""}" id="pl${i}" style="--c:${C[c].s2}"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="plh">${ico("star",2)}Lugares secretos</p><ul class="res">${SEC.map(([id,n,d,c,tx,q],i)=>`<li class="pli psec${i===ssel?" on":""}" id="sc${i}" style="--c:#f2b632"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="note" style="margin-top:10px;font-size:12.5px">Las estrellas doradas son los lugares secretos. El mapa es un dibujo y funciona sin internet. Para las calles, el botón de cada lugar abre Google Maps.</p></div>`}
 /* zoom del mapa: con dos dedos o con los botones; solo el mapa, no la app */
 const VB={x:0,y:0,w:600};
-function setVB(){VB.w=Math.max(200,Math.min(600,VB.w));const hh=VB.w*.75;VB.x=Math.max(0,Math.min(600-VB.w,VB.x));VB.y=Math.max(0,Math.min(450-hh,VB.y));const s=$("mapw").querySelector("svg");const bg=$("mapw").querySelector(".mbg");if(bg)bg.style.transform=`scale(${600/VB.w}) translate(${-VB.x/6}%,${-VB.y/4.5}%)`;if(s){s.setAttribute("viewBox",`${VB.x} ${VB.y} ${VB.w} ${hh}`);const k=Math.max(.55,VB.w/600);s.querySelectorAll(".ps").forEach(g=>{const x=g.dataset.x,y=g.dataset.y;g.setAttribute("transform",k>.99?"":`translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})`)})}$("mapw").style.touchAction=VB.w<599?"none":"pan-y";$("mapw").classList.toggle("zoomed",VB.w<599)}
+function setVB(){VB.w=Math.max(200,Math.min(600,VB.w));const hh=VB.w*.75;VB.x=Math.max(0,Math.min(600-VB.w,VB.x));VB.y=Math.max(0,Math.min(450-hh,VB.y));const s=$("mapw").querySelector("svg");const bg=$("mapw").querySelector(".mbg");if(bg)bg.style.transform=`scale(${600/VB.w}) translate(${-VB.x/6}%,${-VB.y/4.5}%)`;if(s){s.setAttribute("viewBox",`${VB.x} ${VB.y} ${VB.w} ${hh}`);const rw=s.getBoundingClientRect().width||350,k=Math.max(.3,.72*VB.w/rw);s.querySelectorAll(".ps").forEach(g=>{const x=g.dataset.x,y=g.dataset.y;g.setAttribute("transform",`translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})`)})}$("mapw").style.touchAction=VB.w<599?"none":"pan-y";$("mapw").classList.toggle("zoomed",VB.w<599)}
 function zoomAt(f,cx,cy){/* cx,cy en coordenadas del mapa */const nw=Math.max(200,Math.min(600,VB.w*f)),k=nw/VB.w;VB.x=cx-(cx-VB.x)*k;VB.y=cy-(cy-VB.y)*k;VB.w=nw;setVB()}
 const toMap=(px,py)=>{const r=$("mapw").querySelector("svg").getBoundingClientRect();return [VB.x+(px-r.left)/r.width*VB.w,VB.y+(py-r.top)/r.height*VB.w*.75]};
 let PT=new Map(),pinch=null,drag=null,moved=false;
 function mapTouch(){setVB()}
-$("mapw").addEventListener("pointerdown",e=>{if(e.target.closest(".mzb"))return;PT.set(e.pointerId,[e.clientX,e.clientY]);moved=false;
+$("mapw").addEventListener("pointerdown",e=>{if(e.pointerType==="touch"||e.target.closest(".mzb"))return;PT.set(e.pointerId,[e.clientX,e.clientY]);moved=false;
   if(PT.size===2){const [a,b]=[...PT.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),w:VB.w,c:toMap((a[0]+b[0])/2,(a[1]+b[1])/2)};drag=null}
   else if(PT.size===1&&VB.w<599){drag={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y}}});
-$("mapw").addEventListener("pointermove",e=>{if(!PT.has(e.pointerId))return;PT.set(e.pointerId,[e.clientX,e.clientY]);const r=$("mapw").querySelector("svg").getBoundingClientRect();
+$("mapw").addEventListener("pointermove",e=>{if(e.pointerType==="touch"||!PT.has(e.pointerId))return;PT.set(e.pointerId,[e.clientX,e.clientY]);const r=$("mapw").querySelector("svg").getBoundingClientRect();
   if(pinch&&PT.size===2){const [a,b]=[...PT.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(d>0){const nw=pinch.w*pinch.d/d;VB.w=Math.max(200,Math.min(600,nw));const m=[(a[0]+b[0])/2,(a[1]+b[1])/2];VB.x=pinch.c[0]-(m[0]-r.left)/r.width*VB.w;VB.y=pinch.c[1]-(m[1]-r.top)/r.height*VB.w*.75;setVB();moved=true}}
   else if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;VB.x=drag.vx-dx/r.width*VB.w;VB.y=drag.vy-dy/r.height*VB.w*.75;setVB()}});
 const ptEnd=e=>{PT.delete(e.pointerId);if(PT.size<2)pinch=null;if(!PT.size)drag=null};
 ["pointerup","pointercancel","pointerleave"].forEach(t=>$("mapw").addEventListener(t,ptEnd));
+/* táctil: dos dedos agrandan SOLO el mapa (nunca la app); un dedo mueve el mapa si está agrandado */
+let TP=null;
+const tl=t=>[...t].map(x=>[x.clientX,x.clientY]);
+$("mapw").addEventListener("touchstart",e=>{if(e.target.closest(".mzb"))return;const p=tl(e.touches);
+  if(p.length>=2){e.preventDefault();const [a,b]=p;TP={k:"pinch",d:Math.hypot(a[0]-b[0],a[1]-b[1]),w:VB.w,c:toMap((a[0]+b[0])/2,(a[1]+b[1])/2)};moved=true}
+  else if(p.length===1&&VB.w<599){TP={k:"drag",x:p[0][0],y:p[0][1],vx:VB.x,vy:VB.y};moved=false}else TP=null},{passive:false});
+$("mapw").addEventListener("touchmove",e=>{if(!TP)return;const p=tl(e.touches),r=$("mapw").querySelector("svg").getBoundingClientRect();
+  if(TP.k==="pinch"&&p.length>=2){e.preventDefault();const [a,b]=p,d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(d>0){VB.w=Math.max(200,Math.min(600,TP.w*TP.d/d));const m=[(a[0]+b[0])/2,(a[1]+b[1])/2];VB.x=TP.c[0]-(m[0]-r.left)/r.width*VB.w;VB.y=TP.c[1]-(m[1]-r.top)/r.height*VB.w*.75;setVB()}}
+  else if(TP.k==="drag"&&p.length===1){e.preventDefault();const dx=p[0][0]-TP.x,dy=p[0][1]-TP.y;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;VB.x=TP.vx-dx/r.width*VB.w;VB.y=TP.vy-dy/r.height*VB.w*.75;setVB()}},{passive:false});
+$("mapw").addEventListener("touchend",e=>{const p=tl(e.touches);if(p.length===1&&VB.w<599){TP={k:"drag",x:p[0][0],y:p[0][1],vx:VB.x,vy:VB.y}}else if(!p.length){TP=null;setTimeout(()=>{if(!TP)moved=false},350)}},{passive:true});
+["gesturestart","gesturechange"].forEach(t=>$("mapw").addEventListener(t,e=>e.preventDefault(),{passive:false}));
+
 $("mapw").addEventListener("click",e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false;return}const b=e.target.closest("[data-mz]");if(!b)return;e.stopPropagation();
   if(b.dataset.mz==="reset"){VB.x=0;VB.y=0;VB.w=600;setVB()}else zoomAt(b.dataset.mz==="in"?.6:1/.6,VB.x+VB.w/2,VB.y+VB.w*.375)},true);
 $("mapw").addEventListener("wheel",e=>{if(!e.ctrlKey)return;e.preventDefault();const [cx,cy]=toMap(e.clientX,e.clientY);zoomAt(e.deltaY>0?1.15:1/1.15,cx,cy)},{passive:false});
@@ -958,6 +973,7 @@ function pick(i){psel=i;renderMap()}
 $("mapw").addEventListener("click",e=>{const s=e.target.closest("[data-sc]");if(s){ssel=+s.dataset.sc;psel=-1;renderMap();return}const g=e.target.closest("[data-pl]");if(g){ssel=-1;pick(+g.dataset.pl,true)}});
 $("mapw").addEventListener("keydown",e=>{const g=e.target.closest("[data-pl]");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pick(+g.dataset.pl,true)}});
 $("plist").addEventListener("click",e=>{if(e.target.closest("a"))return;const li=e.target.closest(".pli");if(li){if(li.id.startsWith("sc")){ssel=+li.id.slice(2);psel=-1}else{psel=+li.id.slice(2);ssel=-1}renderMap();$("mapw").scrollIntoView({behavior:"smooth",block:"start"})}});
+addEventListener("resize",()=>{if(!$("s-mapa").hidden)setVB()});
 
 /* ---------- lugares secretos ---------- */
 /* id, nombre, día, lugar (color), texto, búsqueda en Maps, x, y en el mapa */

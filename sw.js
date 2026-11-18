@@ -1,5 +1,5 @@
 /* Cancun 2026: guarda la app en el móvil para usarla sin internet */
-const V = "c26-cancun-2026-v10"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
+const V = "c26-cancun-2026-v12"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
 const FILES = ["./", "index.html", "manifest.json", "icono.png", "icono-192.png", "favicon-32.png", "apple-touch-icon.png",
   "fotos/cancun.jpg", "fotos/chichen.jpg", "fotos/rio-secreto.jpg", "fotos/tulum.jpg", "fotos/mapa-fondo.jpg", "fotos/comer-tipico.png", "fotos/comer-mar.png", "fotos/comer-noche.png", "fotos/secretos/suytun.jpg", "fotos/secretos/ekbalam.jpg", "fotos/secretos/cenotes.jpg", "fotos/secretos/esmeralda.jpg", "fotos/secretos/meco.jpg", "fotos/secretos/tortugas.jpg", "fotos/secretos/calavera.jpg", "fotos/secretos/mercado23.jpg", "fotos/tiempo/sol.png", "fotos/tiempo/solnube.png", "fotos/tiempo/nubes.png", "fotos/tiempo/lluvia.png", "fotos/tiempo/tormenta.png", "fotos/tiempo/ropa-ligera.png", "fotos/tiempo/bloqueador.png", "fotos/tiempo/bano.png", "fotos/tiempo/zapatillas.png", "fotos/tiempo/repelente.png", "fotos/tiempo/impermeable.png", "fotos/dias/hotel.jpg", "fotos/dias/delfines.jpg", "fotos/dias/isla.jpg", "fotos/dias/noche.jpg"];
 /* cada archivo por separado: si falta uno, el resto se guarda igual */
