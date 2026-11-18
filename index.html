@@ -1156,7 +1156,7 @@ function route_(){
   if(city){openCity(city,pend);pend=0;show("city");window.scrollTo({top:0});$("ft").hidden=false;renderFt();return}
   const id=["mapa","comer","tiempo","gastos"].includes(h)?h:"viaje";
   show(id);window.scrollTo({top:0});
-  if(id==="viaje"){renderHome();requestAnimationFrame(()=>window.c26FitTitle&&window.c26FitTitle())}if(id==="gastos")renderG();if(id==="comer")renderR();if(id==="tiempo")renderWx();if(id==="mapa")renderMap();
+  if(id==="viaje"){renderHome();requestAnimationFrame(()=>window.c26FitTitle&&window.c26FitTitle())}if(id==="gastos")renderG();if(id==="comer")renderR();if(id==="tiempo")renderWx();if(id==="mapa")renderMap();{const vp=document.querySelector('meta[name=viewport]');if(vp)vp.content=id==="mapa"?"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover":"width=device-width, initial-scale=1, viewport-fit=cover"}
   requestAnimationFrame(carState);
   $("ft").hidden=id!=="viaje";renderFt();
 }
