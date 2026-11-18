@@ -1,7 +1,7 @@
 /* Cancun 2026: guarda la app en el móvil para usarla sin internet */
-const V = "c26-cancun-2026-v1"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
+const V = "c26-cancun-2026-v3"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
 const FILES = ["./", "index.html", "manifest.json", "icono.png", "icono-192.png", "favicon-32.png", "apple-touch-icon.png",
-  "fotos/cancun.jpg", "fotos/chichen.jpg", "fotos/rio-secreto.jpg", "fotos/tulum.jpg"];
+  "fotos/cancun.jpg", "fotos/chichen.jpg", "fotos/rio-secreto.jpg", "fotos/tulum.jpg", "fotos/mapa-selva.jpg", "fotos/mapa-mar.jpg"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith("c26-") && k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", e => {

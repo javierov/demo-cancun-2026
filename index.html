@@ -747,19 +747,40 @@ const PL=[
  ["Valladolid",175,265,"Chichén Itzá","Pueblo colonial, cenote Zací y comida yucateca.","Valladolid Yucatán",20],
  ["Chichén Itzá",82,267,"Chichén Itzá","La pirámide de Kukulcán y el cenote Ik Kil.","Chichén Itzá",20]];
 let psel=0;
+const PIC={bed:'<path d="M-5 3V-3M-5 1h10v2M5 1v-1a2 2 0 0 0-2-2h-4v3"/>',plane:'<path d="M5 2V1L1-1.5v-3a1 1 0 0 0-2 0v3L-5 1v1l4-1.2V3l-1 .8V5l2-.6 2 .6V3.8L1 3V.8z"/>',boat:'<path d="M-5 2l1 3h8l1-3zM-3 2v-4h6v4M0-2v-3l3 2"/>',wave:'<path d="M-5 0c1.5-2 3-2 5 0s3.5 2 5 0M-5 3.5c1.5-2 3-2 5 0s3.5 2 5 0"/>',pyr:'<path d="M-6 4h12L3-2h-6zM-3-2l1.2-3h3.6L3-2"/>',cave:'<path d="M-5 4V0a5 5 0 0 1 10 0v4M-2-1v2M1-2v2.5"/>',park:'<path d="M0 5V-1M-4-3c2-2 6-2 8 0M0-1c-2-3-5-3-6-1M0-1c2-3 5-3 6-1"/>',church:'<path d="M0-6v3M-1.5-4.5h3M-4 5V-1l4-3 4 3v6z"/>'};
+const PIK=["bed","plane","boat","wave","cave","park","pyr","church","pyr"];
 function renderMap(){
   const coast="M0 75 L150 50 L275 42.5 L375 50 L450 37.5 L480 57.5 L505 87.5 L525 125 L535 157.5 L520 187.5 L507.5 225 L487.5 257.5 L462.5 282.5 L432.5 307.5 L405 337.5 L375 375 L357.5 407.5 L345 450 L0 450Z";
-  const roads=[[[515,147],[505,177],[502,225],[455,280],[440,295],[405,337],[367,385]],[[505,177],[420,215],[300,245],[175,265],[82,267]],[[367,385],[260,330],[175,265]]];
+  const isl=`<ellipse cx="495" cy="333" rx="16" ry="34" transform="rotate(28 495 333)"/><ellipse cx="541" cy="124" rx="3.2" ry="11" transform="rotate(20 541 124)"/><ellipse cx="511" cy="72" rx="2.5" ry="9" transform="rotate(10 511 72)"/>`;
+  const roads=[["M515 147 L505 177 L502 225 L455 280 L440 295 L405 337 L367 385","307",470,250],["M505 177 L420 215 L300 245 L175 265 L82 267","180D",300,232]];
   $("mapw").innerHTML=`<svg viewBox="0 0 600 450" class="msvg" role="img" aria-label="Mapa del Caribe mexicano con los lugares del viaje">
-  <defs><pattern id="wv" width="40" height="16" patternUnits="userSpaceOnUse"><path d="M0 8q10-6 20 0t20 0" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.4"/></pattern></defs>
-  <rect width="600" height="450" fill="#8fd3df"/><rect width="600" height="450" fill="url(#wv)"/>
-  <path d="${coast}" fill="#cfe6b0" stroke="#f3e2b8" stroke-width="5" stroke-linejoin="round"/>
-  <ellipse cx="495" cy="333" rx="16" ry="34" transform="rotate(28 495 333)" fill="#cfe6b0" stroke="#f3e2b8" stroke-width="3"/>
-  <ellipse cx="541" cy="124" rx="3" ry="11" transform="rotate(20 541 124)" fill="#cfe6b0" stroke="#f3e2b8" stroke-width="2"/>
-  <g fill="#7fa864" fill-opacity=".35"><ellipse cx="250" cy="150" rx="90" ry="30"/><ellipse cx="200" cy="360" rx="120" ry="40"/><ellipse cx="380" cy="200" rx="60" ry="26"/></g>
-  ${roads.map(r=>`<polyline points="${r.map(p=>p.join(",")).join(" ")}" fill="none" stroke="#9aa3a8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 0"/>`).join("")}
-  <g class="mlab"><text x="560" y="250" font-size="17" fill="#2c6e86" font-style="italic" text-anchor="middle">Mar</text><text x="560" y="270" font-size="17" fill="#2c6e86" font-style="italic" text-anchor="middle">Caribe</text><text x="230" y="24" font-size="15" fill="#2c6e86" font-style="italic" text-anchor="middle">Golfo de México</text><text x="120" y="330" font-size="14" fill="#5e7a48" letter-spacing="3">YUCATÁN</text><text x="330" y="190" font-size="13" fill="#5e7a48" letter-spacing="3" text-anchor="middle">QUINTANA ROO</text><text x="470" y="370" font-size="11" fill="#5e7a48">Cozumel</text></g>
-  ${PL.map(([n,x,y,c],i)=>{const LP={"Chichén Itzá":"b","Valladolid":"t","Xcaret":"b","Río Secreto":"l"}[n];const right=x<470;const tx=LP==="b"||LP==="t"?x:LP==="l"?x-12:right?x+12:x-12,ty=LP==="b"?y+24:LP==="t"?y-14:y+4,an=LP==="b"||LP==="t"?"middle":LP==="l"?"end":right?"start":"end";return `<g class="mpt${i===psel?" on":""}" data-pl="${i}" tabindex="0" role="button" aria-label="${n}"><circle cx="${x}" cy="${y}" r="16" fill="transparent"/><circle cx="${x}" cy="${y}" r="${i===psel?9:7}" fill="${C[c].s2}" stroke="#fff" stroke-width="2.5"/><text x="${tx}" y="${ty}" font-size="13" font-weight="700" fill="#17323b" text-anchor="${an}" paint-order="stroke" stroke="#fff" stroke-width="3.5">${n}</text></g>`}).join("")}
+  <defs>
+   <pattern id="pmar" patternUnits="userSpaceOnUse" width="600" height="450"><rect width="600" height="450" fill="#3fb5c8"/><image href="fotos/mapa-mar.jpg" width="600" height="450" preserveAspectRatio="xMidYMid slice"/></pattern>
+   <pattern id="psel" patternUnits="userSpaceOnUse" width="600" height="450"><rect width="600" height="450" fill="#5f9e43"/><image href="fotos/mapa-selva.jpg" width="600" height="450" preserveAspectRatio="xMidYMid slice"/></pattern>
+   <filter id="sh" x="-5%" y="-5%" width="110%" height="110%"><feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#06323d" flood-opacity=".45"/></filter>
+   <filter id="pin" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000" flood-opacity=".35"/></filter>
+   <radialGradient id="vig" cx="50%" cy="45%" r="75%"><stop offset="60%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#03222b" stop-opacity=".18"/></radialGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#pmar)"/><rect width="600" height="450" fill="#f2fbfb" fill-opacity=".3"/>
+  <path d="${coast}" fill="none" stroke="#aef0ee" stroke-opacity=".55" stroke-width="22" stroke-linejoin="round"/>
+  <path d="${coast}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.4" stroke-dasharray="3 6" transform="translate(12 4)"/>
+  <g filter="url(#sh)"><path d="${coast}" fill="#efe0b4" stroke="#efe0b4" stroke-width="7" stroke-linejoin="round"/><g fill="#efe0b4">${isl}</g></g>
+  <path d="${coast}" fill="url(#psel)"/>
+  <path d="${coast}" fill="#fbfaf0" fill-opacity=".5"/>
+  <g fill="url(#psel)" stroke="#efe0b4" stroke-width="2">${isl}</g><g fill="#fbfaf0" fill-opacity=".5">${isl}</g>
+  <path d="${coast}" fill="none" stroke="#f3e6c0" stroke-width="2.5" stroke-linejoin="round"/>
+  ${roads.map(([d])=>`<path d="${d}" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".9"/><path d="${d}" fill="none" stroke="#e0763c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>`).join("")}
+  ${roads.map(([,n,x,y])=>`<g transform="translate(${x} ${y})"><rect x="-15" y="-8" width="30" height="16" rx="4" fill="#fff" stroke="#e0763c" stroke-width="1.5"/><text y="4" font-size="10" font-weight="800" fill="#b8521f" text-anchor="middle">${n}</text></g>`).join("")}
+  <rect width="600" height="450" fill="url(#vig)" pointer-events="none"/>
+  <g font-style="italic" fill="#fff" text-anchor="middle" paint-order="stroke" stroke="#0b5a6c" stroke-opacity=".55" stroke-width="3"><text x="562" y="245" font-size="18" font-weight="700">Mar</text><text x="562" y="266" font-size="18" font-weight="700">Caribe</text><text x="240" y="26" font-size="16" font-weight="700">Golfo de México</text><text x="470" y="378" font-size="11">Cozumel</text></g>
+  <g fill="#fff" font-weight="800" letter-spacing="4" text-anchor="middle" paint-order="stroke" stroke="#1d4a1f" stroke-opacity=".7" stroke-width="3.5"><text x="120" y="345" font-size="15">YUCATÁN</text><text x="300" y="175" font-size="13">QUINTANA ROO</text></g>
+  <g transform="translate(40 400)"><circle r="20" fill="#fff" fill-opacity=".85" stroke="#0b5a6c" stroke-width="1.2"/><path d="M0-16l4 14h-8z" fill="#c8322f"/><path d="M0 16l4-14h-8z" fill="#0b5a6c"/><text y="-22" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" paint-order="stroke" stroke="#0b5a6c" stroke-width="3">N</text></g>
+  <g transform="translate(78 425)"><rect x="-4" y="-14" width="132" height="22" rx="6" fill="#fff" fill-opacity=".85"/><path d="M4 0h120" stroke="#17323b" stroke-width="3"/><path d="M4 -5v10M64 -4v8M124 -5v10" stroke="#17323b" stroke-width="2"/><text x="64" y="-3" font-size="9.5" font-weight="700" fill="#17323b" text-anchor="middle">50 km</text></g>
+  ${PL.map(([n,x,y,c],i)=>{const LP={"Chichén Itzá":"b","Valladolid":"t","Xcaret":"b","Río Secreto":"l","Isla Mujeres":"t","Aeropuerto":"l","Puerto Morelos":"l","Cancún · RIU":"l","Tulum":"r"}[n]||"r";const on=i===psel,col=C[c].s2,w=n.length*6.6+14;
+    const lx=LP==="r"?x+15:LP==="l"?x-15-w:x-w/2,ly=LP==="b"?y+14:LP==="t"?y-36:y-11;
+    return `<g class="mpt${on?" on":""}" data-pl="${i}" tabindex="0" role="button" aria-label="${n}"><circle cx="${x}" cy="${y}" r="18" fill="transparent"/>
+    <g transform="translate(${x} ${y}) scale(${on?1.25:1})" filter="url(#pin)"><circle r="11" fill="${col}" stroke="#fff" stroke-width="2.5"/><g fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${PIC[PIK[i]]}</g></g>
+    <g transform="translate(${lx} ${ly})"><rect width="${w}" height="22" rx="11" fill="${on?col:"#fff"}" fill-opacity="${on?1:.92}" filter="url(#pin)"/><text x="${w/2}" y="15" font-size="11.5" font-weight="700" fill="${on?"#fff":"#17323b"}" text-anchor="middle">${n}</text></g></g>`}).join("")}
   </svg>`;
   $("plist").innerHTML=`<div class="box blk"><ul class="res">${PL.map(([n,,,c,tx,q,d],i)=>`<li class="pli${i===psel?" on":""}" id="pl${i}" style="--c:${C[c].s2}"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="note" style="margin-top:10px;font-size:12.5px">El mapa es un dibujo y funciona sin internet. Para las calles, el botón de cada lugar abre Google Maps.</p></div>`}
 function pick(i,scroll){psel=i;renderMap();if(scroll){const el=$("pl"+i);el&&el.scrollIntoView({behavior:"smooth",block:"center"})}}
