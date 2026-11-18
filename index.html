@@ -412,6 +412,26 @@ button.ft{font:inherit}
 .fxq button{border:0;border-radius:999px;background:var(--fill2);box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);font:inherit;font-size:13.5px;font-weight:600;padding:6px 12px;cursor:pointer}
 .fxr p{display:flex;justify-content:space-between;gap:10px;margin:0;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
 .fxr p span{color:var(--soft)}.fxr p b{font-size:16px}
+.cd{margin-bottom:12px;text-align:center;padding:16px 14px}
+.cdt{margin:0 0 6px;font-weight:700;font-size:15px;color:var(--soft)}
+.cdn{display:flex;justify-content:center;align-items:flex-start;gap:10px}
+.cdn span{display:flex;flex-direction:column;align-items:center;min-width:84px;padding:8px 10px;border-radius:14px;background:var(--fill2);box-shadow:inset 0 0 0 1px var(--line2)}
+.cdn b{font-size:clamp(38px,12vw,52px);line-height:1;font-weight:800;font-variant-numeric:tabular-nums;color:var(--title)}
+.cdn small{font-size:12.5px;color:var(--soft);margin-top:4px}
+.cdn i{font-style:normal;font-size:40px;font-weight:800;line-height:1.2;color:var(--soft)}
+.cds{margin:10px 0 0;font-size:13px;color:var(--soft)}
+.ckb{margin-bottom:12px}
+.ckb .bh{display:flex;align-items:center}.ckn{margin-left:auto;font-size:13px;font-weight:700;color:var(--soft)}
+.ckbar{height:8px;border-radius:99px;background:var(--fill2);overflow:hidden;margin:2px 0 6px}.ckbar i{display:block;height:100%;background:var(--title);border-radius:99px;transition:width .3s}
+.ckg{border-top:1px solid var(--line);padding:4px 0}.ckg:first-of-type{border-top:0}
+.ckg summary{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;font-size:15px}
+.ckg summary::-webkit-details-marker{display:none}.ckg summary small{color:var(--soft);font-weight:700}
+.ckg summary::after{content:"›";font-size:20px;color:var(--soft);transform:rotate(90deg);margin-left:6px}.ckg:not([open]) summary::after{transform:none}
+.ckg summary small{margin-left:auto}
+.ckl{list-style:none;margin:0 0 6px;padding:0}
+.ckl label{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;padding:8px 2px;cursor:pointer;font-size:14.5px;line-height:1.35}
+.ckl input{width:22px;height:22px;margin:0;accent-color:var(--title)}
+.ckl input:checked+span{color:var(--soft);text-decoration:line-through}
 
 </style>
 </head>
@@ -520,26 +540,26 @@ const STOPS=[["Cancún",7,"19 – 26","19 – 26 de noviembre","7 noches en el h
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const route=q=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
 /* vuelos: número, día, origen, destino, salida, llegada (horas locales) */
-const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","",""],["LA2456",19,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",26,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (vie 27)","06:55"]];
+const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","07:50","09:45"],["LA2456",19,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",26,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (vie 27)","06:55"]];
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar] */
 const DAYS=[
  {d:19,c:"Cancún",cs:["Cancún"],t:"Llegada al Caribe",w:"Vuelo, hotel y primera noche en Cancún",it:[
   ["✈️","Vuelos LA650 (Santiago → Lima) y LA2456 (Lima → Cancún). Llegada a Cancún hacia las 16:50, hora de allí.","",4,"Cancún"],
-  ["🚕","Del aeropuerto al RIU Cancún, en la Zona Hotelera: unos 20–25 minutos en traslado o taxi oficial del aeropuerto.","RIU Cancún",0,"Cancún"],
+  ["🚕","Del aeropuerto al RIU Cancún, en la Zona Hotelera: unos 20–25 minutos en traslado o taxi oficial del aeropuerto. Cabify no funciona en México, y Uber no puede recoger dentro del aeropuerto.","RIU Cancún",0,"Cancún"],
   ["🌅","Atardecer: en Cancún el sol se pone por el lado de la laguna, hacia las 17:15. Desde la playa del hotel se ve el cielo de colores.","",0,"Cancún"],
   ["🌮","Cena tranquila: tacos o algo típico cerca del hotel, en la zona de Punta Cancún.","Punta Cancún",0,"Cancún"],
   ["🍸","Si quedan ganas: la zona de fiesta del kilómetro 9 (Coco Bongo, bares) está muy cerca del hotel.","Coco Bongo Cancún",0,"Cancún"]]},
  {d:20,c:"Chichén Itzá",cs:["Chichén Itzá"],t:"Chichén Itzá, cenote y Valladolid",w:"La pirámide, un baño en un cenote y un pueblo colonial",it:[
-  ["🚗","Salida temprano. Unas 2 h 30 por autopista en coche de alquiler; también hay tours desde el hotel y el Tren Maya (estación Chichén Itzá): mirar horarios.","Chichén Itzá",0,"Chichén Itzá"],
+  ["🚗","Salida temprano. Unas 2 h 30 por autopista en auto arrendado; también hay tours desde el hotel y el Tren Maya (estación Chichén Itzá): mirar horarios.","Chichén Itzá",0,"Chichén Itzá"],
   ["🏛️","Chichén Itzá al abrir (8:00): El Castillo, el Juego de Pelota y el Cenote Sagrado. Antes de las 11 hay menos gente y menos calor.","Chichén Itzá",1,"Chichén Itzá"],
-  ["💧","Baño en el cenote Ik Kil, a 5 minutos: un pozo enorme con lianas que cuelgan hasta el agua. Llevar bañador.","Cenote Ik Kil",1,"Chichén Itzá"],
+  ["💧","Baño en el cenote Ik Kil, a 5 minutos: un pozo enorme con lianas que cuelgan hasta el agua. Llevar traje de baño.","Cenote Ik Kil",1,"Chichén Itzá"],
   ["🍽️","Almuerzo yucateco en Valladolid: cochinita pibil, sopa de lima o lomitos de Valladolid.","El Mesón del Marqués Valladolid",0,"Chichén Itzá"],
   ["⛪","Paseo por Valladolid: la plaza, la catedral, la calzada de los Frailes y el convento de San Bernardino.","Calzada de los Frailes Valladolid",0,"Chichén Itzá"],
   ["💧","Si queda tiempo: el cenote Zací, en pleno centro de Valladolid.","Cenote Zací Valladolid",1,"Chichén Itzá"],
   ["🏨","Vuelta a Cancún al atardecer (unas 2 h). Cena ligera y a descansar.","RIU Cancún",0,"Chichén Itzá"]]},
  {d:21,c:"Río Secreto",cs:["Río Secreto"],t:"Río Secreto y Puerto Morelos",w:"Un río bajo tierra y un pueblo de pescadores",it:[
   ["🎫","Río Secreto se visita solo con guía y hora reservada: reservar en su web.","",2,"Río Secreto"],
-  ["🚗","Ruta hacia Playa del Carmen: unos 50 minutos en coche o con el transporte de la visita.","Río Secreto",0,"Río Secreto"],
+  ["🚗","Ruta hacia Playa del Carmen: unos 50 minutos en auto o con el transporte de la visita.","Río Secreto",0,"Río Secreto"],
   ["💧","Río Secreto: se camina y se nada por cuevas con estalactitas y agua cristalina. No se pueden llevar cámaras propias (ellos venden las fotos).","Río Secreto",1,"Río Secreto"],
   ["🏖️","De vuelta, Puerto Morelos: pueblo tranquilo, el faro inclinado y el muelle. Bueno para un baño sin multitudes.","Faro Inclinado Puerto Morelos",0,"Río Secreto"],
   ["🍽️","Pescado y mariscos frescos en Puerto Morelos, junto a la plaza.","restaurantes mariscos Puerto Morelos",0,"Río Secreto"],
@@ -547,14 +567,14 @@ const DAYS=[
  {d:22,c:"Cancún",cs:["Cancún"],t:"Isla Mujeres",w:"Ferry, Playa Norte y la punta sur en carrito",it:[
   ["⛴️","Ferry a Isla Mujeres: sale de Puerto Juárez o de la Zona Hotelera (Playa Tortugas). Unos 20–30 minutos.","Ultramar Playa Tortugas Cancún",1,"Cancún"],
   ["🏖️","Playa Norte: agua turquesa, poco profunda y tranquila. De las más bonitas de la zona.","Playa Norte Isla Mujeres",0,"Cancún"],
-  ["🚗","Alquilar un carrito de golf y recorrer la isla hasta Punta Sur: acantilado, esculturas y vistas al mar abierto.","Punta Sur Isla Mujeres",1,"Cancún"],
+  ["🚗","Arrendar un carrito de golf y recorrer la isla hasta Punta Sur: acantilado, esculturas y vistas al mar abierto.","Punta Sur Isla Mujeres",1,"Cancún"],
   ["🌮","Almuerzo en el pueblo de la isla: pescado tikin xic o ceviche.","Centro Isla Mujeres",0,"Cancún"],
   ["🌅","Último ferry de vuelta con el atardecer. Mirar la hora del último barco.","Puerto Juárez Cancún",0,"Cancún"]]},
  {d:23,c:"Tulum",cs:["Tulum"],t:"Tulum: ruinas sobre el mar",w:"Zona arqueológica, playa y Gran Cenote",it:[
-  ["🚗","Salida temprano: unas 2 h en coche hasta Tulum. También hay tours y autobuses ADO.","Zona Arqueológica de Tulum",0,"Tulum"],
+  ["🚗","Salida temprano: unas 2 h en auto hasta Tulum. También hay tours y buses ADO.","Zona Arqueológica de Tulum",0,"Tulum"],
   ["🏛️","Zona arqueológica de Tulum al abrir: el templo de El Castillo sobre el acantilado y el mar turquesa abajo. Hay que pagar la entrada a la zona y la del parque que la rodea.","Zona Arqueológica de Tulum",1,"Tulum"],
   ["🏖️","Baño en la playa que hay bajo las ruinas, si está abierta ese día.","Playa Ruinas Tulum",0,"Tulum"],
-  ["💧","Gran Cenote, a 10 minutos: cuevas, tortugas y agua clarísima para nadar con gafas.","Gran Cenote Tulum",1,"Tulum"],
+  ["💧","Gran Cenote, a 10 minutos: cuevas, tortugas y agua clarísima para nadar con antiparras.","Gran Cenote Tulum",1,"Tulum"],
   ["🌮","Almuerzo en el pueblo de Tulum: cochinita en la Taquería Honorio (se acaba pronto, mejor antes de las 14).","Taquería Honorio Tulum",0,"Tulum"],
   ["🏨","Vuelta a Cancún por la tarde.","RIU Cancún",0,"Tulum"]]},
  {d:24,c:"Cancún",cs:["Cancún"],t:"Día de parque: Xcaret",w:"Ríos, animales y el gran espectáculo de la noche",it:[
@@ -573,8 +593,10 @@ const DAYS=[
   ["🧳","Dejar la habitación y guardar las maletas en el hotel si el vuelo es por la tarde.","RIU Cancún",0,"Cancún"],
   ["🌮","Almuerzo tranquilo cerca del hotel antes de salir.","",0,"Cancún"],
   ["✈️","Salir del hotel hacia las 15:15: el vuelo LA2457 a Lima sale hacia las 18:45 y conviene estar 3 horas antes (vuelo internacional). Del hotel al aeropuerto, unos 20–25 minutos.","Aeropuerto Internacional de Cancún",0,"Cancún"],
-  ["✈️","En Lima, conexión con el LA607: sale a la 01:20 de la madrugada del viernes 27 y llega a Santiago a las 06:55.","",0,"Cancún"]]}];
-const TAG=["","Con entrada","Reservar ya","Comprar billete","Por confirmar"];
+  ["✈️","En Lima, conexión con el LA607: sale a la 01:20 de la madrugada del viernes 27 y llega a Santiago a las 06:55. En el aeropuerto de Santiago, Cabify tiene mesones en la terminal internacional para volver a casa.","",0,"Cancún"]]}];
+/* cuenta atrás en horas: despegue en Santiago (07:50, UTC−3) y llegada a Cancún (16:50, UTC−5) */
+const DEP=Date.UTC(2026,10,19,10,50),ARR=Date.UTC(2026,10,19,21,50);
+const TAG=["","Con entrada","Reservar ya","Comprar pasaje","Por confirmar"];
 
 /* dónde comer: nombre, lugar, tipo, precio, nota, búsqueda, zona */
 const R=[
@@ -635,9 +657,9 @@ function ropa(w){const p=[];
   if(w.hi>=27)p.push("Ropa ligera de verano, gorra y bloqueador solar");
   else if(w.hi>=23)p.push("Ropa de verano y algo de manga larga para la noche");
   else p.push("Ropa de verano y una chaqueta fina: hoy refresca");
-  if(w.pp!=null&&w.pp>=50)p.push("un chubasquero fino: puede caer un chaparrón");else if(w.pp!=null&&w.pp>=30)p.push("un chubasquero en la mochila por si acaso");
+  if(w.pp!=null&&w.pp>=50)p.push("un impermeable fino: puede caer un chaparrón");else if(w.pp!=null&&w.pp>=30)p.push("un impermeable en la mochila por si acaso");
   return p.join(" y ")+"."}
-function ropaC(w){const r=w.hi>=27?"Ropa ligera · bloqueador":w.hi>=23?"Ropa de verano":"Verano + chaqueta fina";return r+(w.pp!=null&&w.pp>=30?" · chubasquero":"")}
+function ropaC(w){const r=w.hi>=27?"Ropa ligera · bloqueador":w.hi>=23?"Ropa de verano":"Verano + chaqueta fina";return r+(w.pp!=null&&w.pp>=30?" · impermeable":"")}
 
 async function loadWx(){if(WXD&&Date.now()-WXD.at<2*3600e3)return;
   try{const out={at:Date.now()};for(const c of Object.keys(GEO)){const [la,lo]=GEO[c];
@@ -651,12 +673,55 @@ function renderWx(){const t=T(),today=t.ph==="trip"?dayOf(t.d):DAYS[0];
   $("wl").innerHTML=DAYS.map(x=>{const v=dayWx(x),[i2,t2]=WMO(v.code);return `<div class="wr${t.ph==="trip"&&t.d===x.d?" today":""}"><span class="db"><b>${x.d}</b><small>${wd(x.d)}</small></span><span class="wt"><b>${v.c}${v.real?` · ${t2}`:""}</b><small>${ropaC(v)}</small></span><span class="wv2">${ico(i2,1.7)}<b>${v.hi}°</b><small>${v.lo}°${v.pp!=null?` · ${ico("drop",2)}${v.pp}%`:""}</small></span></div>`}).join("");
   const real=DAYS.some(x=>dayWx(x).real);
   $("wxsrc").textContent=real?`Previsión actualizada a las ${new Date(WXD.at).toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})}. Los días lejanos pueden cambiar.`:"Sin conexión: se muestran los valores normales de noviembre. Con internet aparece la previsión real.";
-  $("ropa").innerHTML=[["shirt","Ropa ligera y fresca, de algodón o lino: hace calor y hay mucha humedad."],["sun","Gorra o sombrero, gafas de sol y bloqueador solar biodegradable (en cenotes y parques solo dejan ese)."],["wave","Bañador todos los días, y escarpines o sandalias de agua para cenotes y Río Secreto."],["shoe","Zapatillas cómodas para Chichén Itzá y Tulum: se camina mucho y al sol."],["umb","Repelente de mosquitos y un chubasquero fino: en noviembre puede caer algún chaparrón corto."],["case","Algo de manga larga para el avión, los autobuses y los sitios con aire acondicionado."]].map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("")}
+  $("ropa").innerHTML=[["shirt","Ropa ligera y fresca, de algodón o lino: hace calor y hay mucha humedad."],["sun","Gorra o sombrero, lentes de sol y bloqueador solar biodegradable (en cenotes y parques solo dejan ese)."],["wave","Traje de baño todos los días, y escarpines o sandalias de agua para cenotes y Río Secreto."],["shoe","Zapatillas cómodas para Chichén Itzá y Tulum: se camina mucho y al sol."],["umb","Repelente de mosquitos y un impermeable fino: en noviembre puede caer algún chaparrón corto."],["case","Algo de manga larga para el avión, los buses y los sitios con aire acondicionado."]].map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("")}
 
 /* ---------- banner ---------- */
 $("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+STOPS.map(([c])=>`<span class="cn">${c.toUpperCase()}</span>`).join("");
 
 /* ---------- inicio ---------- */
+/* cuenta atrás en horas hasta el despegue (y luego hasta llegar a Cancún) */
+function cdBox(){if(SIM)return "";const n=Date.now();if(n>=ARR)return "";const to=n<DEP?DEP:ARR,ms=to-n,hh=Math.floor(ms/36e5),mm=Math.floor(ms%36e5/6e4),p=v=>String(v).padStart(2,"0");
+  const fly=n>=DEP;return `<div class="box cd"><p class="cdt">${fly?"En camino · llegas a Cancún en":"Despegas en"}</p><div class="cdn"><span><b>${hh}</b><small>hora${hh===1?"":"s"}</small></span><i>:</i><span><b>${p(mm)}</b><small>minutos</small></span></div><p class="cds">${fly?"Llegada prevista a Cancún hacia las 16:50, hora de allí":"Vuelo LA650 · Santiago, jueves 19 a las 07:50"}</p></div>`}
+setInterval(()=>{const c=document.querySelector("#nowbox .cd");if(c&&!$("s-viaje").hidden){const t=document.createElement("div");t.innerHTML=cdBox();t.firstElementChild?c.replaceWith(t.firstElementChild):c.remove()}},30e3);
+
+/* lista «Antes de salir»: se marca tocando y se guarda en el celular; se ve hasta el despegue */
+const CK=[
+ ["Documentos y dinero",[
+  ["pas","Pasaporte (mirar que no esté vencido) y carnet de identidad"],
+  ["chk","Check-in de LATAM hecho y tarjetas de embarque en el celular"],
+  ["hot","Reserva del hotel RIU Cancún a mano (correo de Despegar)"],
+  ["seg","Seguro de viaje: número de teléfono y póliza guardados"],
+  ["ban","Avisar al banco del viaje para que las tarjetas funcionen en México"],
+  ["din","Algo de dólares o pesos mexicanos en efectivo"],
+  ["lic","Licencia de conducir, por si se arrienda auto"]]],
+ ["La casa (antes de cerrar)",[
+  ["gas","Cerrar la llave del gas y la del agua"],
+  ["enc","Desenchufar tele, router, microondas y cargadores"],
+   ["bas","Sacar la basura"],
+  ["ven","Cerrar ventanas y bajar las persianas"],
+  ["pla","Plantas regadas, o pedirle a alguien que pase"],
+  ["cue","Dejar una copia de las llaves a alguien de confianza"],
+  ["pag","Pagar las cuentas que venzan esta semana"]]],
+ ["La maleta",[
+  ["car","Cargador del celular y batería externa"],
+  ["ada","Adaptador de enchufe: en México los enchufes son de patas planas, como en Estados Unidos"],
+  ["ban2","Traje de baño, sandalias de agua y toalla de playa"],
+  ["sol","Bloqueador solar biodegradable, gorra y lentes de sol"],
+  ["rep","Repelente de mosquitos"],
+  ["zap","Zapatillas cómodas para Chichén Itzá y Tulum"],
+  ["med","Medicamentos de siempre y algo para el estómago"],
+  ["chu","Impermeable fino y algo de manga larga para el avión"]]],
+ ["El día del vuelo",[
+  ["des","Despertador puesto: estar en el aeropuerto de Santiago hacia las 04:50 (3 horas antes)"],
+  ["tra","Cabify al aeropuerto programado hoy en la app, para que pase a buscarte hacia las 04:00"],
+  ["apl","Abrir esta app con internet antes de salir, para que quede guardada"],
+  ["ult","Última vuelta: llaves de casa, cartera, celular y pasaporte"]]]];
+let CKD=LS("tareas")||[];
+function ckBox(){if(SIM||Date.now()>=DEP)return "";const all=CK.flatMap(g=>g[1]),n=all.filter(x=>CKD.includes(x[0])).length;
+  return `<div class="box ckb"><h3 class="bh"><span class="bi">${ico("list",2)}</span>Antes de salir<span class="ckn">${n} de ${all.length}</span></h3><div class="ckbar"><i style="width:${n/all.length*100}%"></i></div>${n===all.length?`<p class="note" style="margin:8px 0 0">¡Todo listo! Buen viaje.</p>`:""}${CK.map(([t,its])=>{const k=its.filter(x=>CKD.includes(x[0])).length;return `<details class="ckg"${k<its.length?" open":""}><summary><b>${t}</b><small>${k}/${its.length}</small></summary><ul class="ckl">${its.map(([id,tx])=>`<li><label><input type="checkbox" data-ck="${id}"${CKD.includes(id)?" checked":""}><span>${esc(tx)}</span></label></li>`).join("")}</ul></details>`}).join("")}<p class="note" style="margin-top:8px;font-size:12.5px">Se guarda en este celular. Toca otra vez para desmarcar.</p></div>`}
+$("nowbox").addEventListener("change",e=>{const c=e.target.closest("[data-ck]");if(!c)return;const id=c.dataset.ck;CKD=c.checked?[...new Set([...CKD,id])]:CKD.filter(x=>x!==id);SS("tareas",CKD);
+  const all=CK.flatMap(g=>g[1]),n=all.filter(x=>CKD.includes(x[0])).length,b=c.closest(".ckb");b.querySelector(".ckn").textContent=`${n} de ${all.length}`;b.querySelector(".ckbar i").style.width=n/all.length*100+"%";const g=c.closest("details"),its=g.querySelectorAll("[data-ck]");g.querySelector("summary small").textContent=`${[...its].filter(x=>x.checked).length}/${its.length}`});
+
 /* vuelos del día (antes del viaje y el día del vuelo) */
 function flBox(t){const d=t.ph==="before"?FL[0][1]:t.ph==="trip"?t.d:0,fs=FL.filter(f=>f[1]===d);if(!fs.length)return "";
   return `<div class="box flb"><h3 class="bh"><span class="bi">${ico("plane",2)}</span>Vuelos · ${wd(d)} ${d} ${MC}</h3>${fs.map(([n,,a,b,ca,cb,h1,h2])=>`<div class="flr"><span class="fln">${n}</span><span class="flt"><b>${a} → ${b}</b><small>${ca} ${h1||"··"} → ${cb} ${h2||"··"}${h1?" · hora local":""}</small></span><a class="flv" href="https://www.google.com/search?q=${encodeURIComponent(n+" vuelo")}" target="_blank" rel="noopener">En vivo ↗</a></div>`).join("")}<p class="note" style="margin-top:8px;font-size:12.5px">Horas aproximadas: confirmar en la tarjeta de embarque. Cancún y Lima tienen la misma hora; Santiago, dos horas más.</p></div>`}
@@ -717,9 +782,9 @@ function renderHome(){
     <p class="ht">${esc(x.t)}</p><ul class="list">${x.it.slice(0,3).map(([i,tx])=>`<li><span class="ic">${ico(EM[i])}</span><span>${esc(tx)}</span></li>`).join("")}</ul>
     <button type="button" class="hw" data-go="tiempo">${ico(ic,1.8)}<span><b>${w.hi}° / ${w.lo}°</b> · ${ropaC(w)}</span></button>
     <div class="acts"><button class="btn" type="button" data-open="${x.cs[x.cs.length-1]}" data-day="${x.d}">Ver el día</button><button class="btn ghost" type="button" data-go="gastos">Anotar gasto</button></div></div>`}}
-  else if(t.ph==="before"){h=`<div class="box hoy"><h3 class="bh"><span class="bi">${ico("plane",2)}</span>${t.left<=1?"¡Mañana empieza el viaje!":`Faltan ${t.left} días`}</h3><ul class="list">${[["case","Pasaporte, tarjetas y el seguro de viaje a mano."],["phone","Abre esta app una vez con internet: así queda guardada y funciona sin conexión."],["fx","Lleva algo de pesos mexicanos o saca en un cajero del aeropuerto."]].map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("")}</ul></div>`}
+  else if(t.ph==="before"){h=""}
   else if(t.ph==="after"){const tot=G.reduce((a,g)=>a+g.v,0);h=`<div class="box" style="margin-bottom:10px"><h3 class="bh"><span class="bi">${ico("heart",2)}</span>¡Buen regreso!</h3><p class="note">${tot?`Gastaste ${fmt(tot)} en todo el viaje. `:""}Aquí queda guardado el recuerdo.</p></div>`}
-  $("nowbox").innerHTML=flBox(t)+h;requestAnimationFrame(fitHoy);
+  $("nowbox").innerHTML=cdBox()+ckBox()+flBox(t)+h;requestAnimationFrame(fitHoy);
   $("nxt-h").textContent=t.ph==="trip"?"Lo que viene":"Día a día";
   const list=t.ph==="trip"?DAYS.filter(x=>x.d>t.d):DAYS;
   $("next").innerHTML=list.map(x=>`<button type="button" class="row" data-open="${x.cs[x.cs.length-1]}" data-day="${x.d}">${ph(x.c)}<span><span class="dt">${wd(x.d)} ${x.d} ${MC} · ${dayCities(x)}</span><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2)}</button>`).join("")||`<p class="note">Último día del viaje.</p>`;
