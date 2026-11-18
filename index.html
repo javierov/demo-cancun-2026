@@ -688,7 +688,7 @@ const STOPS=[["Cancún",7,"19 – 26","19 – 26 de noviembre","7 noches · todo
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const route=q=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
 /* vuelos: número, día, origen, destino, salida, llegada (horas locales) */
-const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","07:50","09:45"],["LA2456",19,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",26,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (vie 27)","06:55"]];
+const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","08:40","~10:30"],["LA2456",19,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",26,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (vie 27)","06:55"]];
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar]; img = foto de la fila; rb = plan B con lluvia; cost = gasto aproximado */
 const DAYS=[
  {d:19,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Llegada al Caribe",w:"Vuelos, hotel y cena tranquila en el RIU",cost:"Traslado del aeropuerto al hotel: desde unos 40 USD el auto, o taxi oficial del aeropuerto.",it:[
@@ -751,8 +751,8 @@ const DAYS=[
   ["✈️","15:15 · Salir hacia el aeropuerto (20–25 minutos). El vuelo LA2457 a Lima sale hacia las 18:45: estar 3 horas antes, por ser internacional.","Aeropuerto Internacional de Cancún",0,"Cancún"],
   ["✈️","En Lima, conexión con el LA607: sale a la 01:20 de la madrugada del viernes 27 y llega a Santiago a las 06:55. En el aeropuerto de Santiago, Cabify tiene mesones en la terminal internacional para volver a casa.","",0,"Cancún"]]}];
 
-/* cuenta atrás en horas: despegue en Santiago (07:50, UTC−3) y llegada a Cancún (16:50, UTC−5) */
-const DEP=Date.UTC(2026,10,19,10,50),ARR=Date.UTC(2026,10,19,21,50);
+/* cuenta atrás en horas: despegue en Santiago (08:40, UTC−3, confirmado por Cristián) y llegada a Cancún (16:50, UTC−5) */
+const DEP=Date.UTC(2026,10,19,11,40),ARR=Date.UTC(2026,10,19,21,50);
 const TAG=["","Con entrada","Reservar ya","Comprar pasaje","Por confirmar","Secreto"];
 
 /* dónde comer: nombre, lugar, tipo, precio, nota, búsqueda, zona */
@@ -844,7 +844,7 @@ $("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+S
 /* ---------- inicio ---------- */
 /* cuenta atrás en horas hasta el despegue (y luego hasta llegar a Cancún) */
 function cdBox(){if(SIM)return "";const n=Date.now();if(n>=ARR)return "";const to=n<DEP?DEP:ARR,ms=to-n,hh=Math.floor(ms/36e5),mm=Math.floor(ms%36e5/6e4),p=v=>String(v).padStart(2,"0");
-  const fly=n>=DEP;return `<div class="box cd"><p class="cdt">${fly?"En camino · llegas a Cancún en":"Despegas en"}</p><div class="cdn"><span><b>${hh}</b><small>hora${hh===1?"":"s"}</small></span><i>:</i><span><b>${p(mm)}</b><small>minutos</small></span></div><p class="cds">${fly?"Llegada prevista a Cancún hacia las 16:50, hora de allí":"Vuelo LA650 · Santiago, jueves 19 a las 07:50"}</p></div>`}
+  const fly=n>=DEP;return `<div class="box cd"><p class="cdt">${fly?"En camino · llegas a Cancún en":"Despegas en"}</p><div class="cdn"><span><b>${hh}</b><small>hora${hh===1?"":"s"}</small></span><i>:</i><span><b>${p(mm)}</b><small>minutos</small></span></div><p class="cds">${fly?"Llegada prevista a Cancún hacia las 16:50, hora de allí":"Vuelo LA650 · Santiago, jueves 19 a las 08:40"}</p></div>`}
 setInterval(()=>{const c=document.querySelector("#nowbox .cd");if(c&&!$("s-viaje").hidden){const t=document.createElement("div");t.innerHTML=cdBox();t.firstElementChild?c.replaceWith(t.firstElementChild):c.remove()}},30e3);
 
 /* lista «Antes de salir»: se marca tocando y se guarda en el celular; se ve hasta el despegue */
@@ -875,8 +875,8 @@ const CK=[
   ["med","Medicamentos de siempre y algo para el estómago"],
   ["chu","Impermeable fino y algo de manga larga para el avión"]]],
  ["El día del vuelo",[
-  ["des","Despertador puesto: estar en el aeropuerto de Santiago hacia las 04:50 (3 horas antes)"],
-  ["tra","Cabify al aeropuerto programado hoy en la app, para que pase a buscarte hacia las 04:00"],
+  ["des","Despertador puesto: estar en el aeropuerto de Santiago hacia las 05:40 (3 horas antes)"],
+  ["tra","Cabify al aeropuerto programado hoy en la app, para que pase a buscarte hacia las 04:50"],
   ["apl","Abrir esta app con internet antes de salir, para que quede guardada"],
   ["ult","Última vuelta: llaves de casa, cartera, celular y pasaporte"]]]];
 let CKD=LS("tareas")||[];
