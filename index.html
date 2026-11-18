@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("c26-theme")||"mar"}catch(e){document.documentElement.dataset.theme="mar"}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#f4f8fb">
@@ -432,6 +433,134 @@ button.ft{font:inherit}
 .ckl label{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;padding:8px 2px;cursor:pointer;font-size:14.5px;line-height:1.35}
 .ckl input{width:22px;height:22px;margin:0;accent-color:var(--title)}
 .ckl input:checked+span{color:var(--soft);text-decoration:line-through}
+.mapw{position:relative;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.mzb{position:absolute;right:8px;bottom:8px;display:flex;flex-direction:column;gap:5px}
+.mzb button{width:34px;height:34px;border-radius:10px;border:0;background:rgb(255 255 255/.92);color:#17323b;font:700 18px/1 inherit;box-shadow:0 2px 6px rgb(0 0 0/.25);cursor:pointer}
+.mzb button[data-mz=reset]{font-size:15px}
+.rtiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 16px 12px;max-width:560px;margin:0 auto}
+.rtile{display:flex;flex-direction:column;align-items:center;gap:2px;border:0;border-radius:18px;padding:10px 6px 10px;background:color-mix(in srgb,var(--rc) 13%,var(--fill));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rc) 30%,transparent);color:var(--ink);font:inherit;cursor:pointer;transition:transform .15s}
+.rtile img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 3px 4px rgb(0 0 0/.15))}
+.rtile b{font-size:12.5px;line-height:1.2;text-align:center}.rtile small{font-size:11.5px;color:var(--soft)}
+.rtile.on{background:var(--rc);color:#fff;box-shadow:none}.rtile.on small{color:rgb(255 255 255/.85)}
+.rtile:disabled{opacity:.4}.rtile:active{transform:scale(.97)}
+.rsec{margin:0 0 18px;border-radius:22px;background:color-mix(in srgb,var(--rc) 9%,var(--fill));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rc) 22%,transparent);padding:12px 12px 4px;overflow:hidden}
+.rsh{display:flex;align-items:center;gap:12px;margin:-2px 0 10px}
+.rsh img{width:72px;height:72px;object-fit:contain;flex:none;filter:drop-shadow(0 4px 6px rgb(0 0 0/.18));margin:-6px 0 -6px -4px}
+.rsh b{display:block;font-size:19px;line-height:1.15;color:var(--rc)}.rsh small{display:block;font-size:13px;color:var(--soft);margin-top:2px}
+.rcard{background:var(--bg);border-radius:16px;padding:12px 12px 12px 14px;margin-bottom:8px;box-shadow:0 1px 3px rgb(0 0 0/.06);border-left:4px solid var(--rc)}
+.rct{display:flex;justify-content:space-between;align-items:center;gap:8px}.rct b{font-size:16.5px;line-height:1.2}
+.rct .go{flex:none;width:40px;height:40px}
+.rcm{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
+.rz{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;color:var(--soft)}.rz svg{width:13px;height:13px}
+.rp{font-size:12px;font-weight:800;color:var(--rc);padding:1px 8px;border-radius:99px;background:color-mix(in srgb,var(--rc) 14%,transparent)}
+.rcard p{margin:0;font-size:14px;line-height:1.4;color:var(--soft)}
+.rdish{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.rdish small{font-size:11.5px;font-weight:700;color:var(--soft);margin-right:2px}
+.rdish span{font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--fill2);box-shadow:inset 0 0 0 1px var(--line)}
+.rct .go{display:grid;place-items:center;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line2);color:var(--title)}.rct .go svg{width:18px;height:18px}
+/* mini animaciones */
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-3deg)}}
+@keyframes pop{0%{transform:scale(.6) rotate(-8deg);opacity:0}70%{transform:scale(1.08) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:.25}}
+.rtile img{animation:bob 3.2s ease-in-out infinite}.rtile:nth-child(2) img{animation-delay:-1s}.rtile:nth-child(3) img{animation-delay:-2s}
+.rtile.on img{animation:pop .5s ease-out,bob 3.2s ease-in-out .5s infinite}
+.rsh img.in{animation:pop .6s ease-out both}
+.rcard,.rsec{opacity:1}.rv{opacity:0}.rv.in{animation:up .45s ease-out both}
+.cdn i{animation:blink 2s steps(1) infinite}
+.mpt.on>.ps>g:nth-of-type(1){animation:pop .45s ease-out}
+@media (prefers-reduced-motion:reduce){.rtile img,.rtile.on img,.rsh img.in,.rv.in,.cdn i,.mpt.on>.ps>g{animation:none}.rv{opacity:1}}
+/* banner: 4 lugares con ruta y avión */
+.bnr{height:58px}
+.bnr .bs{animation:bf 16s infinite}.bnr .bs:nth-child(2){animation-delay:4s}.bnr .bs:nth-child(3){animation-delay:8s}.bnr .bs:nth-child(4){animation-delay:12s}
+.cn{animation:bt 16s infinite;font-size:32px;top:4px}.cn:nth-of-type(2){animation-delay:4s}.cn:nth-of-type(3){animation-delay:8s}.cn:nth-of-type(4){animation-delay:12s}
+.pl{animation:pv 16s infinite;--plane:#fff;color:#0e7c8c;box-shadow:0 2px 6px rgb(0 0 0/.35)}
+.rt span{background:#0e7c8c;border-color:#fff}
+/* lugares secretos */
+.secs{margin-top:22px}.secs h2{display:flex;justify-content:space-between;align-items:baseline}
+.scar{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:2px 20px 10px;scrollbar-width:none}.scar::-webkit-scrollbar{display:none}
+.scd{flex:0 0 78%;max-width:300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;background:var(--fill);box-shadow:0 2px 10px rgb(0 0 0/.08),inset 0 0 0 1px var(--line);display:flex;flex-direction:column}
+.scp{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,var(--c),#2bb3c0)}.scp img{width:100%;height:100%;object-fit:cover;display:block}
+.sct{position:absolute;left:10px;top:10px;display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;background:rgb(255 255 255/.92);color:#17323b;font-size:12px;font-weight:800;box-shadow:0 2px 6px rgb(0 0 0/.2)}.sct svg{width:13px;height:13px;color:#e0a21b}
+.scb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}.scb b{font-size:16.5px}.scb p{margin:0;font-size:13.5px;line-height:1.4;color:var(--soft);flex:1}
+.scb a{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700;color:var(--title);text-decoration:none}.scb a svg{width:15px;height:15px}
+.tag.sec,.tag:is([data-s]){background:#fff3d1;color:#8a5a00}
+/* firma */
+.sig{margin:22px 0 8px}
+.sgi{text-align:center;padding:20px 18px;border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--title) 14%,var(--fill)),color-mix(in srgb,#e0763c 12%,var(--fill)));box-shadow:inset 0 0 0 1px var(--line)}
+.sgl{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--bg);color:#e0a21b;box-shadow:0 2px 8px rgb(0 0 0/.1);margin-bottom:6px;animation:bob 3.5s ease-in-out infinite}.sgl svg{width:22px;height:22px}
+.sgi b{display:block;font-size:18px;color:var(--title)}.sgi p{margin:6px auto 12px;max-width:30ch;font-size:14px;color:var(--soft)}
+.sgi .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:44px;padding:0 20px}
+.plh{display:flex;align-items:center;gap:6px;margin:16px 0 4px;font-weight:800;font-size:15px;color:#a87400}.plh svg{width:16px;height:16px}
+.tag.sec{background:#fff3d1;color:#8a5a00;border-color:#f2b632}
+/* ---------- tiempo ---------- */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes shake{0%,90%,100%{transform:none}93%{transform:translateX(-2px) rotate(-3deg)}96%{transform:translateX(2px) rotate(3deg)}}
+.wim{position:relative;display:grid;place-items:center;width:46px;height:46px;flex:none}
+.wim img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 4px rgb(0 0 0/.15))}
+.wim>svg{display:none;width:60%;height:60%}.wim.noimg>svg{display:block}
+.w-sol img{animation:spin 24s linear infinite}.w-solnube img{animation:floaty 4s ease-in-out infinite}.w-nubes img{animation:drift 5s ease-in-out infinite}.w-lluvia img{animation:floaty 2.6s ease-in-out infinite}.w-tormenta img{animation:shake 3s infinite}
+.wxh{position:relative;overflow:hidden;border-radius:24px;padding:16px 16px 12px;color:#fff;background:linear-gradient(160deg,var(--g1),var(--g2));box-shadow:0 8px 24px rgb(0 0 0/.15);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:start}
+.wxh::before{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgb(255 255 255/.18)}
+.wxt{position:relative}.wxh .cty{display:flex;align-items:center;gap:6px;font-weight:700;font-size:16px}.wxh .cty svg{width:16px;height:16px}
+.wxh .when{font-size:12.5px;opacity:.9}.wxh .tmp{font-size:64px;font-weight:300;letter-spacing:-.04em;line-height:1;margin-top:4px}
+.wxh .cond{font-size:15px;font-weight:700}.wxh .hl{font-size:13.5px;opacity:.92;margin-top:2px}
+.wim.big{width:118px;height:118px;margin:6px -4px 0 0}.wim.big>svg{stroke:#fff}
+.wxh .wtip{grid-column:1/-1;position:relative;margin:10px 0 0;display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;font-size:14px;line-height:1.35;background:rgb(255 255 255/.16);padding:9px 11px;border-radius:14px}.wxh .wtip svg{width:18px;height:18px}
+.wxh .grid3{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin-top:10px;padding-top:9px;border-top:1px solid rgb(255 255 255/.25);font-size:11.5px;text-align:center}.wxh .grid3 b{display:block;font-size:14px}
+.wr2{display:grid;grid-template-columns:44px 46px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 10px;border-radius:16px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line);margin-bottom:8px;animation:up .45s ease-out both}
+.wr2.today{box-shadow:inset 0 0 0 2px var(--c);background:color-mix(in srgb,var(--c) 8%,var(--bg))}
+.db2{display:flex;flex-direction:column;align-items:center;justify-content:center;height:46px;border-radius:12px;background:color-mix(in srgb,var(--c) 16%,var(--fill));color:var(--ink)}.db2 b{font-size:18px;line-height:1}.db2 small{font-size:11px;color:var(--soft)}
+.wt2 b{display:block;font-size:15px}.wt2 small{display:block;font-size:12.5px;color:var(--soft);line-height:1.3;margin-top:1px}
+.tb{position:relative;display:block;height:6px;border-radius:99px;background:var(--fill2);margin-top:6px}.tb i{position:absolute;top:0;bottom:0;border-radius:99px;background:linear-gradient(90deg,#5ec8e8,#ffb347,#ff7e5f)}
+.wv3{text-align:right;line-height:1.1}.wv3 b{display:block;font-size:19px}.wv3 small{display:block;font-size:12.5px;color:var(--soft)}.wv3 em{display:inline-flex;align-items:center;gap:2px;font-style:normal;font-size:11.5px;color:#2b7fc4;margin-top:3px}.wv3 em svg{width:11px;height:11px}
+.rgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.rc2{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;padding:12px 8px;border-radius:16px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line);animation:up .45s ease-out both}
+.rci{width:64px;height:64px;display:grid;place-items:center}.rci img{width:100%;height:100%;object-fit:contain;animation:floaty 3.6s ease-in-out infinite;filter:drop-shadow(0 3px 4px rgb(0 0 0/.15))}.rc2:nth-child(2n) .rci img{animation-delay:-1.8s}
+.rc2 b{font-size:14.5px}.rc2 small{font-size:12.5px;color:var(--soft);line-height:1.35}
+@media (prefers-reduced-motion:reduce){.wim img,.rci img,.wr2,.rc2{animation:none}}
+.wim.ftw{width:40px;height:40px}
+.mic{display:flex;align-items:center;gap:3px;margin-top:3px}.mic img{flex:none;width:28px!important;height:28px!important;max-width:none;object-fit:contain;filter:drop-shadow(0 1px 2px rgb(0 0 0/.15))}.mic em{display:none;font-style:normal;font-size:12px;color:var(--soft);margin-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:380px){.mic em{display:none}}
+/* más sobrio: menos rebote y tamaños contenidos */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
+.w-sol img{animation-duration:60s}
+.wim{width:40px;height:40px}.wim img{filter:none}
+.wim.big{width:100px;height:100px}
+.wt2 small.rop{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rci{width:48px;height:48px}.rci img{filter:none}
+.rtile img{width:54px;height:54px;filter:none}
+.rsh img{width:60px;height:60px;filter:none}
+.wr2{grid-template-columns:44px 40px minmax(0,1fr) auto}
+
+/* ---------- revisión ---------- */
+.dx{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;margin:12px 0 0;padding:10px 12px;border-radius:14px;background:var(--fill2);font-size:13.5px;line-height:1.4}.dx svg{width:18px;height:18px;margin-top:1px;color:var(--title)}.dx b{display:block;font-size:13.5px;margin-bottom:2px}
+.rbx{background:color-mix(in srgb,#2b7fc4 9%,var(--fill))}
+.tinc{margin:0 0 6px;padding:12px 14px;border-radius:16px;background:color-mix(in srgb,#e0a21b 12%,var(--fill));box-shadow:inset 0 0 0 1px color-mix(in srgb,#e0a21b 30%,transparent);font-size:14px;line-height:1.45}.tinc b{display:block;margin-bottom:2px}
+.sosl .sx em{display:block;font-style:normal;font-weight:700;font-size:13.5px;color:var(--title);margin-top:2px}
+.segb{padding:10px;border-radius:12px;background:var(--fill2);list-style:none}.segf{display:grid;gap:6px;margin-top:8px}
+.segf input,.rnl textarea{width:100%;min-height:42px;border:0;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line2);background:var(--bg);color:var(--ink);font:inherit;font-size:16px;padding:8px 10px}
+.segf .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;min-height:42px}.segf .btn svg{width:16px;height:16px}
+.wab{background:color-mix(in srgb,#25d366 14%,var(--fill2))!important}
+#resv{margin-top:18px}.rsl{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rsl li{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 10px;border-radius:12px;background:var(--fill2)}
+.rsl b{display:block;font-size:14.5px}.rsl small{display:block;font-size:12.5px;color:var(--soft);line-height:1.35}
+.rsl em{font-style:normal;font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:99px;white-space:nowrap}
+.rsl li.ok em{background:#d8f3df;color:#1d6b35}.rsl li.pen em{background:#ffe7cc;color:#9a4a00}.rsl li.tq em{background:#e4ecf7;color:#2b5a99}
+.rdt{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#d8f3df;color:#1d6b35;font-weight:800;font-size:13px}.rsl li.tq .rdt{background:#e4ecf7;color:#2b5a99}
+.rck input{width:22px;height:22px;margin:0;accent-color:#1d6b35}.rck span{display:none}
+.rnl{display:block;margin-top:10px;font-size:13px;font-weight:700;color:var(--soft)}.rnl textarea{margin-top:4px;resize:vertical}
+.pinfo{margin:-4px 0 12px}.pin1{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border-radius:16px;background:var(--fill);box-shadow:inset 0 0 0 1px var(--line),inset 4px 0 0 var(--c);animation:up .3s ease-out}
+.pin1 b{display:flex;align-items:center;gap:5px;font-size:15.5px}.pin1 b svg{width:15px;height:15px;color:#e0a21b}.pin1 small{display:block;font-size:13px;color:var(--soft);line-height:1.35;margin-top:2px}
+.pin1 .go{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line2);color:var(--title)}.pin1 .go svg{width:18px;height:18px}
+details.ckb>summary{list-style:none;cursor:pointer;display:flex;align-items:center}details.ckb>summary::-webkit-details-marker{display:none}
+.ckt{margin-left:10px;font-size:12.5px;font-weight:700;color:var(--title)}
+details.ckb:not([open]) .ckbar{margin-bottom:0}
+details.ckb:not([open]){padding-bottom:10px}
 
 </style>
 </head>
@@ -457,7 +586,10 @@ button.ft{font:inherit}
   <div class="pad">
     <h2><span id="nxt-h">Día a día</span><button type="button" data-go="comer">Dónde comer</button></h2>
     <div class="rows" id="next"></div>
+    <div class="box blk" id="resv"></div>
+    <div class="secs" id="secs"></div>
     <div class="box blk" id="sos"></div>
+    <div class="sig" id="sig"></div>
   </div>
 </section>
 
@@ -474,12 +606,15 @@ button.ft{font:inherit}
   <div class="ptl"><h1>Mapa del viaje</h1><p>Toca un punto para ver qué es y cómo llegar.</p></div>
   <div class="pad">
     <div class="mapw" id="mapw"></div>
+    <div id="pinfo" class="pinfo" aria-live="polite"></div>
     <div id="plist"></div>
   </div>
 </section>
 
 <section id="s-comer" hidden>
-  <div class="ptl"><h1>Dónde comer</h1><p>Platos típicos a precio medio, mariscos y noche.</p></div>
+  <div class="ptl"><h1>Dónde comer</h1><p>Para los días de excursión o para probar algo de aquí.</p></div>
+  <div class="pad"><p class="tinc"><b>Tu hotel es todo incluido las 24 horas.</b> Desayuno, almuerzo, cena, snacks y bebidas en el RIU ya están pagados, con restaurantes temáticos que se reservan en recepción. Estos sitios son para cuando estés fuera.</p></div>
+  <div class="rtiles" id="rtiles"></div>
   <div class="chips" id="rchips"></div>
   <div class="pad"><div id="rlist"></div>
     <p class="note" style="margin-top:14px;font-size:13px">$ menos de 250 pesos por persona · $$ entre 250 y 600 · $$$ más. Los horarios cambian: mejor mirarlos en Google Maps antes de ir. Propina habitual en México: 10–15 %.</p></div>
@@ -490,7 +625,7 @@ button.ft{font:inherit}
   <div class="pad">
     <div id="wxtoday"></div>
     <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="cal"></i></span>Día a día</h3><div class="wl" id="wl"></div><p class="note" id="wxsrc" style="margin-top:10px;font-size:13px"></p></div>
-    <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="case"></i></span>Para todo el viaje</h3><ul class="list" id="ropa"></ul></div>
+    <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="case"></i></span>Para todo el viaje</h3><ul class="rgrid" id="ropa"></ul></div>
   </div>
 </section>
 
@@ -536,67 +671,76 @@ const C={
  "Río Secreto":{c:"var(--rio)",s1:"#a9e6e0",s2:"#123c4a",slug:"rio-secreto",f:"rio-secreto"},
  "Tulum":{c:"var(--tul)",s1:"#ffd9c2",s2:"#1f6f8b",slug:"tulum",f:"tulum"}};
 /* lugares: nombre, noches (0 = excursión), etiqueta corta, fechas largas, texto de la tarjeta */
-const STOPS=[["Cancún",7,"19 – 26","19 – 26 de noviembre","7 noches en el hotel"],["Chichén Itzá",0,"vie 20","viernes 20 de noviembre","Excursión con Valladolid"],["Río Secreto",0,"sáb 21","sábado 21 de noviembre","Excursión · río bajo tierra"],["Tulum",0,"lun 23","lunes 23 de noviembre","Excursión · ruinas y cenote"]];
+const STOPS=[["Cancún",7,"19 – 26","19 – 26 de noviembre","7 noches · todo incluido"],["Chichén Itzá",0,"sáb 21","sábado 21 de noviembre","Excursión con Valladolid"],["Tulum",0,"lun 23","lunes 23 de noviembre","Excursión · ruinas y cenote"],["Río Secreto",0,"mar 24","martes 24 de noviembre","Excursión · río bajo tierra"]];
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const route=q=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
 /* vuelos: número, día, origen, destino, salida, llegada (horas locales) */
 const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","07:50","09:45"],["LA2456",19,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",26,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (vie 27)","06:55"]];
-/* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar] */
+/* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar]; img = foto de la fila; rb = plan B con lluvia; cost = gasto aproximado */
 const DAYS=[
- {d:19,c:"Cancún",cs:["Cancún"],t:"Llegada al Caribe",w:"Vuelo, hotel y primera noche en Cancún",it:[
+ {d:19,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Llegada al Caribe",w:"Vuelos, hotel y cena tranquila en el RIU",cost:"Traslado del aeropuerto al hotel: desde unos 40 USD el auto, o taxi oficial del aeropuerto.",it:[
   ["✈️","Vuelos LA650 (Santiago → Lima) y LA2456 (Lima → Cancún). Llegada a Cancún hacia las 16:50, hora de allí.","",4,"Cancún"],
-  ["🚕","Del aeropuerto al RIU Cancún, en la Zona Hotelera: unos 20–25 minutos en traslado o taxi oficial del aeropuerto. Cabify no funciona en México, y Uber no puede recoger dentro del aeropuerto.","RIU Cancún",0,"Cancún"],
-  ["🌅","Atardecer: en Cancún el sol se pone por el lado de la laguna, hacia las 17:15. Desde la playa del hotel se ve el cielo de colores.","",0,"Cancún"],
-  ["🌮","Cena tranquila: tacos o algo típico cerca del hotel, en la zona de Punta Cancún.","Punta Cancún",0,"Cancún"],
-  ["🍸","Si quedan ganas: la zona de fiesta del kilómetro 9 (Coco Bongo, bares) está muy cerca del hotel.","Coco Bongo Cancún",0,"Cancún"]]},
- {d:20,c:"Chichén Itzá",cs:["Chichén Itzá"],t:"Chichén Itzá, cenote y Valladolid",w:"La pirámide, un baño en un cenote y un pueblo colonial",it:[
-  ["🚗","Salida temprano. Unas 2 h 30 por autopista en auto arrendado; también hay tours desde el hotel y el Tren Maya (estación Chichén Itzá): mirar horarios.","Chichén Itzá",0,"Chichén Itzá"],
-  ["🏛️","Chichén Itzá al abrir (8:00): El Castillo, el Juego de Pelota y el Cenote Sagrado. Antes de las 11 hay menos gente y menos calor.","Chichén Itzá",1,"Chichén Itzá"],
-  ["💧","Baño en el cenote Ik Kil, a 5 minutos: un pozo enorme con lianas que cuelgan hasta el agua. Llevar traje de baño.","Cenote Ik Kil",1,"Chichén Itzá"],
-  ["🍽️","Almuerzo yucateco en Valladolid: cochinita pibil, sopa de lima o lomitos de Valladolid.","El Mesón del Marqués Valladolid",0,"Chichén Itzá"],
-  ["⛪","Paseo por Valladolid: la plaza, la catedral, la calzada de los Frailes y el convento de San Bernardino.","Calzada de los Frailes Valladolid",0,"Chichén Itzá"],
-  ["💧","Si queda tiempo: el cenote Zací, en pleno centro de Valladolid.","Cenote Zací Valladolid",1,"Chichén Itzá"],
-  ["🏨","Vuelta a Cancún al atardecer (unas 2 h). Cena ligera y a descansar.","RIU Cancún",0,"Chichén Itzá"]]},
- {d:21,c:"Río Secreto",cs:["Río Secreto"],t:"Río Secreto y Puerto Morelos",w:"Un río bajo tierra y un pueblo de pescadores",it:[
-  ["🎫","Río Secreto se visita solo con guía y hora reservada: reservar en su web.","",2,"Río Secreto"],
-  ["🚗","Ruta hacia Playa del Carmen: unos 50 minutos en auto o con el transporte de la visita.","Río Secreto",0,"Río Secreto"],
-  ["💧","Río Secreto: se camina y se nada por cuevas con estalactitas y agua cristalina. No se pueden llevar cámaras propias (ellos venden las fotos).","Río Secreto",1,"Río Secreto"],
-  ["🏖️","De vuelta, Puerto Morelos: pueblo tranquilo, el faro inclinado y el muelle. Bueno para un baño sin multitudes.","Faro Inclinado Puerto Morelos",0,"Río Secreto"],
-  ["🍽️","Pescado y mariscos frescos en Puerto Morelos, junto a la plaza.","restaurantes mariscos Puerto Morelos",0,"Río Secreto"],
-  ["🍸","Noche: una copa en Cancún o descanso, que mañana hay barco.","",0,"Río Secreto"]]},
- {d:22,c:"Cancún",cs:["Cancún"],t:"Isla Mujeres",w:"Ferry, Playa Norte y la punta sur en carrito",it:[
-  ["⛴️","Ferry a Isla Mujeres: sale de Puerto Juárez o de la Zona Hotelera (Playa Tortugas). Unos 20–30 minutos.","Ultramar Playa Tortugas Cancún",1,"Cancún"],
-  ["🏖️","Playa Norte: agua turquesa, poco profunda y tranquila. De las más bonitas de la zona.","Playa Norte Isla Mujeres",0,"Cancún"],
-  ["🚗","Arrendar un carrito de golf y recorrer la isla hasta Punta Sur: acantilado, esculturas y vistas al mar abierto.","Punta Sur Isla Mujeres",1,"Cancún"],
+  ["🚕","Del aeropuerto al RIU Cancún (Zona Hotelera, km 9; unos 17 km): 20–25 minutos en traslado o taxi oficial. Para salir del aeropuerto, mejor el taxi autorizado o el traslado: Cabify no funciona en México.","Hotel Riu Cancun",0,"Cancún"],
+  ["🏨","Entrada al hotel desde las 15:00. El RIU Cancún es todo incluido 24 horas y solo para adultos: comidas, snacks y bebidas están pagados.","Hotel Riu Cancun",0,"Cancún"],
+  ["🌅","Atardecer hacia las 17:15: en Cancún el sol se pone por el lado de la laguna.","",0,"Cancún"],
+  ["🍽️","Cena en el hotel. Los restaurantes temáticos (italiano, steakhouse, asiático…) suelen pedir reserva en recepción: pedirla al llegar para los próximos días.","",0,"Cancún"],
+  ["🛏️","A dormir temprano: han sido unas 14 horas de viaje.","",0,"Cancún"]]},
+ {d:20,c:"Cancún",cs:["Cancún"],img:"dias/delfines",t:"Día de hotel y playa",w:"Descanso, Museo Maya y atardecer en Playa Delfines",cost:"Casi todo incluido en el hotel. Museo Maya: entrada en taquilla. Auto arrendado: precio según la agencia.",rb:"Si llueve: mañana de spa o piscina del hotel y el Museo Maya, que es cubierto.",it:[
+  ["🏖️","Mañana libre en la playa y las piscinas del hotel (tiene piscina infinity y bar en la piscina). Sin alarma.","Hotel Riu Cancun",0,"Cancún"],
+  ["🍽️","Almuerzo en el hotel.","",0,"Cancún"],
+  ["🏛️","15:00 · Museo Maya de Cancún y la zona arqueológica de San Miguelito, a unos 10 minutos en taxi (km 16,5). Cierra los lunes.","Museo Maya de Cancún",1,"Cancún"],
+  ["🌅","17:00 · Playa Delfines y el mirador con las letras de Cancún, justo al lado. Atardecer hacia las 17:15.","Playa Delfines Cancún",0,"Cancún"],
+  ["🚗","Recoger el auto arrendado (para los días 21 a 24). Hay agencias en la Zona Hotelera y en el aeropuerto; pedir que lo dejen en el hotel si se puede.","",2,"Cancún"],
+  ["🎭","Noche: espectáculo del hotel. Con la pulsera del RIU también se puede ir a las fiestas «RIU Party» del Riu Caribe, a unos 3 km.","",0,"Cancún"]]},
+ {d:21,c:"Chichén Itzá",cs:["Chichén Itzá"],img:"chichen",t:"Chichén Itzá, cenote y Valladolid",w:"Salir 06:30 · la pirámide al abrir, un cenote y un pueblo colonial",cost:"Chichén Itzá: 697 pesos por persona (extranjeros, pago único en taquilla). Más cenote, almuerzo, gasolina y peaje de la autopista.",rb:"Si llueve: los chaparrones en noviembre son cortos; llevar impermeable. Si es fuerte, cambiar el orden: primero los cenotes (Ik Kil, Suytun, son de cueva) y la pirámide después.",it:[
+  ["⏰","OJO CON LA HORA: Yucatán (Chichén Itzá y Valladolid) va una hora por detrás de Cancún. El celular puede cambiar solo.","",0,"Chichén Itzá"],
+  ["🚗","06:30 (hora de Cancún) · Salir del hotel en el auto: unas 2 h 30 por la autopista 180D, que es de peaje. Se llega hacia las 08:00 de allí, justo cuando abre.","Chichén Itzá",0,"Chichén Itzá"],
+  ["🏛️","08:00–11:00 (hora de Yucatán) · Chichén Itzá: El Castillo, el Juego de Pelota y el Cenote Sagrado. Abre de 08:00 a 16:00. Temprano hay menos gente y menos calor.","Chichén Itzá",1,"Chichén Itzá"],
+  ["💧","11:30 · Baño en el cenote Ik Kil, a 5 minutos. Llevar traje de baño y toalla.","Cenote Ik Kil",1,"Chichén Itzá"],
+  ["🍽️","13:30 · Almuerzo yucateco en Valladolid (45 min): cochinita pibil, sopa de lima o lomitos.","El Mesón del Marqués Valladolid",0,"Chichén Itzá"],
+  ["⛪","15:00 · Paseo por Valladolid: la plaza, la calzada de los Frailes y el convento de San Bernardino.","Calzada de los Frailes Valladolid",0,"Chichén Itzá"],
+  ["🤫","Secreto: si sobra tiempo, el cenote Suytun (10 min de Valladolid) o las ruinas de Ek Balam, en plena selva y sin multitudes.","Cenote Suytun",5,"Chichén Itzá"],
+  ["🏨","16:30 (hora de Yucatán) · Vuelta al hotel (unas 2 h): se llega hacia las 19:30 de Cancún. Cena en el hotel.","Hotel Riu Cancun",0,"Chichén Itzá"],
+  ["ℹ️","Sin auto: el Tren Maya va de la estación Cancún Aeropuerto a Chichén Itzá en unas 2 horas (pasaje desde unos 350 pesos). Mirar horarios en trenmaya.gob.mx; la estación queda lejos de la Zona Hotelera.","",0,"Chichén Itzá"]]},
+ {d:22,c:"Cancún",cs:["Cancún"],img:"dias/isla",t:"Isla Mujeres sin prisa",w:"Ferry a media mañana, Playa Norte y vuelta a media tarde",cost:"Ferry Ultramar ida y vuelta: unos 230–250 pesos por persona desde Puerto Juárez (algo más desde la Zona Hotelera). Carrito de golf: se paga por horas en la isla.",rb:"Si llueve: quedarse en el hotel y pasar la isla al miércoles 25.",it:[
+  ["⛴️","10:00 · Ferry Ultramar. Desde Playa Tortugas (Zona Hotelera, a 5 min del hotel) tarda unos 30 min y sale más o menos cada hora. Desde Puerto Juárez tarda 18 min y sale cada 30 min, de 05:30 a 23:30. El auto se queda en el hotel.","Ultramar Playa Tortugas Cancún",0,"Cancún"],
+  ["🏖️","Playa Norte: agua turquesa, poco profunda y tranquila. Para bañarse y descansar.","Playa Norte Isla Mujeres",0,"Cancún"],
   ["🌮","Almuerzo en el pueblo de la isla: pescado tikin xic o ceviche.","Centro Isla Mujeres",0,"Cancún"],
-  ["🌅","Último ferry de vuelta con el atardecer. Mirar la hora del último barco.","Puerto Juárez Cancún",0,"Cancún"]]},
- {d:23,c:"Tulum",cs:["Tulum"],t:"Tulum: ruinas sobre el mar",w:"Zona arqueológica, playa y Gran Cenote",it:[
-  ["🚗","Salida temprano: unas 2 h en auto hasta Tulum. También hay tours y buses ADO.","Zona Arqueológica de Tulum",0,"Tulum"],
-  ["🏛️","Zona arqueológica de Tulum al abrir: el templo de El Castillo sobre el acantilado y el mar turquesa abajo. Hay que pagar la entrada a la zona y la del parque que la rodea.","Zona Arqueológica de Tulum",1,"Tulum"],
-  ["🏖️","Baño en la playa que hay bajo las ruinas, si está abierta ese día.","Playa Ruinas Tulum",0,"Tulum"],
-  ["💧","Gran Cenote, a 10 minutos: cuevas, tortugas y agua clarísima para nadar con antiparras.","Gran Cenote Tulum",1,"Tulum"],
-  ["🌮","Almuerzo en el pueblo de Tulum: cochinita en la Taquería Honorio (se acaba pronto, mejor antes de las 14).","Taquería Honorio Tulum",0,"Tulum"],
-  ["🏨","Vuelta a Cancún por la tarde.","RIU Cancún",0,"Tulum"]]},
- {d:24,c:"Cancún",cs:["Cancún"],t:"Día de parque: Xcaret",w:"Ríos, animales y el gran espectáculo de la noche",it:[
-  ["🎫","Xcaret (cerca de Playa del Carmen): reservar en su web. Muchos paquetes incluyen el transporte desde el hotel.","",2,"Cancún"],
-  ["🐠","Ríos subterráneos para flotar, playa, mariposario y acuario. Llevar bloqueador solar biodegradable: es el único que dejan usar.","Parque Xcaret",1,"Cancún"],
-  ["🎭","Por la noche, «Xcaret México Espectacular»: el juego de pelota maya y música de todo México.","Parque Xcaret",0,"Cancún"],
-  ["ℹ️","Alternativa más tranquila: Xel-Há, para hacer snorkel en una caleta todo el día.","Parque Xel-Há",0,"Cancún"]]},
- {d:25,c:"Cancún",cs:["Cancún"],t:"Cancún maya y noche de espectáculo",w:"Museo, playa, compras y Coco Bongo",it:[
-  ["🏛️","Museo Maya de Cancún y la zona arqueológica de San Miguelito, en la Zona Hotelera. Los lunes cierra.","Museo Maya de Cancún",1,"Cancún"],
-  ["🏖️","Playa Delfines y el mirador con las letras de Cancún: la playa pública más bonita de la ciudad.","Playa Delfines Cancún",0,"Cancún"],
-  ["🛍️","Tarde en el Mercado 28, en el centro: artesanía, hamacas y comida yucateca barata.","Mercado 28 Cancún",0,"Cancún"],
-  ["🌮","Antojitos en el Parque de las Palapas: marquesitas, esquites y tacos.","Parque de las Palapas Cancún",0,"Cancún"],
-  ["🎭","Noche en Coco Bongo: espectáculo, acróbatas y fiesta. Reservar antes y mirar qué incluye cada entrada.","Coco Bongo Cancún",2,"Cancún"]]},
- {d:26,c:"Cancún",cs:["Cancún"],t:"Última mañana y regreso",w:"Playa, maletas y aeropuerto",it:[
+  ["🚗","Tarde: carrito de golf hasta Punta Sur (acantilado y vistas al mar abierto). Unos 20 minutos de punta a punta.","Punta Sur Isla Mujeres",0,"Cancún"],
+  ["🤫","Secreto: de camino, la Tortugranja; y junto al ferry de Puerto Juárez, las ruinas de El Meco.","Tortugranja Isla Mujeres",5,"Cancún"],
+  ["⛴️","17:00 · Ferry de vuelta, con el atardecer en el mar. Cena en el hotel.","Ultramar Isla Mujeres",0,"Cancún"]]},
+ {d:23,c:"Tulum",cs:["Tulum"],img:"tulum",t:"Tulum: ruinas sobre el mar",w:"Salir 07:00 · zona arqueológica, playa y Gran Cenote",cost:"Zona arqueológica de Tulum: unos 265 pesos por persona para extranjeros (tarifa nueva desde julio de 2026). Gran Cenote: entrada en taquilla.",rb:"Si llueve: saltarse las ruinas y hacer cenotes (Gran Cenote, Calavera), que se disfrutan igual con lluvia.",it:[
+  ["🚗","07:00 · Salir en el auto: unas 2 h por la carretera 307. Misma hora que Cancún. También hay buses ADO (unas 2 h, desde unos 290 pesos) desde la terminal del centro.","Zona Arqueológica de Tulum",0,"Tulum"],
+  ["🏛️","09:00 · Zona arqueológica de Tulum (abre de 08:00 a 17:00; última entrada 15:30): El Castillo sobre el acantilado y el mar turquesa abajo. No hay estacionamiento dentro del parque: dejar el auto en los estacionamientos de la entrada.","Zona Arqueológica de Tulum",1,"Tulum"],
+  ["🏖️","Baño en la playa bajo las ruinas, si está abierta ese día.","Playa Ruinas Tulum",0,"Tulum"],
+  ["🌮","12:30 · Almuerzo en el pueblo: cochinita en la Taquería Honorio (se acaba pronto).","Taquería Honorio Tulum",0,"Tulum"],
+  ["💧","14:00 · Gran Cenote, a 10 minutos: cuevas, tortugas y agua clarísima.","Gran Cenote Tulum",1,"Tulum"],
+  ["🤫","Secreto: el cenote Calavera, a 5 minutos del pueblo, con tres agujeros para saltar al agua.","Cenote Calavera Tulum",5,"Tulum"],
+  ["🏨","16:00 · Vuelta al hotel (2 h). Cena en el hotel.","Hotel Riu Cancun",0,"Tulum"]]},
+ {d:24,c:"Río Secreto",cs:["Río Secreto"],img:"rio-secreto",t:"Río Secreto y tarde libre",w:"Un río bajo tierra por la mañana y descanso después",cost:"Río Secreto: desde unos 89 USD por persona (visita guiada de 3,5 h con buffet). Alternativa Xcaret: unos 2.756 pesos (160 USD) la entrada general.",rb:"Con lluvia no cambia nada: Río Secreto es bajo tierra.",it:[
+  ["🎫","Río Secreto se visita solo con guía y hora reservada: reservar en su web para las 09:00 o 10:00.","",2,"Río Secreto"],
+  ["🚗","08:15 · Salir hacia Playa del Carmen: unos 50 minutos en auto.","Río Secreto",0,"Río Secreto"],
+  ["💧","09:00–12:30 · Río Secreto: se camina y se nada por cuevas con estalactitas. Incluye equipo y buffet. No se pueden entrar cámaras propias.","Río Secreto",1,"Río Secreto"],
+  ["🤫","Secreto: Punta Esmeralda, donde un cenote desemboca en el mar (Playa del Carmen, gratis); o la Ruta de los Cenotes de Puerto Morelos.","Punta Esmeralda Playa del Carmen",5,"Río Secreto"],
+  ["🏖️","De vuelta, parada en Puerto Morelos: pueblo tranquilo y el faro inclinado.","Faro Inclinado Puerto Morelos",0,"Río Secreto"],
+  ["🚗","Devolver el auto arrendado al volver. Tarde de piscina en el hotel.","",0,"Río Secreto"],
+  ["ℹ️","Alternativa de día completo: el parque Xcaret, con su espectáculo nocturno «Xcaret México Espectacular». Reservar en su web; muchos paquetes incluyen el transporte desde el hotel.","Parque Xcaret",0,"Río Secreto"]]},
+ {d:25,c:"Cancún",cs:["Cancún"],img:"dias/noche",t:"Mercados de Cancún y Coco Bongo",w:"Mañana de playa, tarde en el centro y la gran noche",cost:"Bus urbano R-1 o R-2 por la Zona Hotelera: unos 12 pesos. Taxi corto: 15–25 USD. Coco Bongo: el precio depende de la zona; reservar antes.",rb:"Si llueve: la plaza La Isla, un centro comercial cerca del hotel, y los mercados, que están techados.",it:[
+  ["🏖️","Mañana de playa y piscina en el hotel.","",0,"Cancún"],
+  ["🛍️","15:00 · Mercado 28, en el centro: artesanía, hamacas y recuerdos. Regatear con amabilidad.","Mercado 28 Cancún",0,"Cancún"],
+  ["🤫","Secreto: el Mercado 23, el de los cancunenses, a pocas cuadras del 28 y sin turistas.","Mercado 23 Cancún",5,"Cancún"],
+  ["🌮","18:30 · Antojitos en el Parque de las Palapas: marquesitas y esquites, para probar algo de la calle.","Parque de las Palapas Cancún",0,"Cancún"],
+  ["🎭","22:00 · Coco Bongo (km 9,5, al lado del hotel): abren a las 22:00 y el show empieza hacia las 22:30. Dura hasta las 02:30 y luego sigue la disco.","Coco Bongo Cancún",2,"Cancún"]]},
+ {d:26,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Última mañana y regreso",w:"Playa, maletas y salir del hotel a las 15:15",cost:"Traslado al aeropuerto: desde unos 40 USD el auto.",it:[
   ["🏖️","Último baño en la playa del hotel por la mañana.","",0,"Cancún"],
-  ["🧳","Dejar la habitación y guardar las maletas en el hotel si el vuelo es por la tarde.","RIU Cancún",0,"Cancún"],
-  ["🌮","Almuerzo tranquilo cerca del hotel antes de salir.","",0,"Cancún"],
-  ["✈️","Salir del hotel hacia las 15:15: el vuelo LA2457 a Lima sale hacia las 18:45 y conviene estar 3 horas antes (vuelo internacional). Del hotel al aeropuerto, unos 20–25 minutos.","Aeropuerto Internacional de Cancún",0,"Cancún"],
+  ["🧳","Dejar la habitación antes de las 12:00 y guardar las maletas en recepción. Preguntar si se puede seguir usando el todo incluido hasta la salida.","Hotel Riu Cancun",0,"Cancún"],
+  ["🍽️","Almuerzo tranquilo en el hotel.","",0,"Cancún"],
+  ["✈️","15:15 · Salir hacia el aeropuerto (20–25 minutos). El vuelo LA2457 a Lima sale hacia las 18:45: estar 3 horas antes, por ser internacional.","Aeropuerto Internacional de Cancún",0,"Cancún"],
   ["✈️","En Lima, conexión con el LA607: sale a la 01:20 de la madrugada del viernes 27 y llega a Santiago a las 06:55. En el aeropuerto de Santiago, Cabify tiene mesones en la terminal internacional para volver a casa.","",0,"Cancún"]]}];
+
 /* cuenta atrás en horas: despegue en Santiago (07:50, UTC−3) y llegada a Cancún (16:50, UTC−5) */
 const DEP=Date.UTC(2026,10,19,10,50),ARR=Date.UTC(2026,10,19,21,50);
-const TAG=["","Con entrada","Reservar ya","Comprar pasaje","Por confirmar"];
+const TAG=["","Con entrada","Reservar ya","Comprar pasaje","Por confirmar","Secreto"];
 
 /* dónde comer: nombre, lugar, tipo, precio, nota, búsqueda, zona */
 const R=[
@@ -617,7 +761,7 @@ const RT={tipico:["Platos típicos","food"],mar:["Pescado y mariscos","wave"],no
 const P={plane:'<path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>',train:'<rect x="5" y="3" width="14" height="14" rx="4"/><path d="M5 10h14M9 21l1.5-4M15 21l-1.5-4"/><circle cx="9" cy="13.5" r=".8"/><circle cx="15" cy="13.5" r=".8"/>',walk:'<circle cx="13" cy="4" r="2"/><path d="M9 21l3-7 3 3v5M7 12l4-4h3l2 4 2 1M11 8l1 6"/>',bed:'<path d="M3 19V7M3 15h18v4M21 15v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="12" r="2"/>',art:'<path d="M12 3a9 9 0 1 0 0 18c1.1 0 2-.8 2-1.9 0-1.4-1.1-1.6-1.1-2.7 0-1 .8-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/>',cake:'<path d="M4 20h16v-7H4zM4 16c2 1.2 4 1.2 6 0s4-1.2 6 0 3 1.2 4 0M12 13V9M12 4c1 1 1 2.2 0 3-1-.8-1-2 0-3"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',castle:'<path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M3 10l9-6 9 6z"/>',bag:'<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/>',food:'<path d="M7 3v18M5 3v5a2 2 0 0 0 4 0V3M17 21V3c-2 1-3 4-3 7h3"/>',sun:'<path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 6v3M5 10l2 2M19 10l-2 2M3 14h2M19 14h2"/>',moon:'<path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10z"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',case:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2M4 12h16"/>',church:'<path d="M12 2v5M10 4h4M6 21V12l6-5 6 5v9zM10 21v-4a2 2 0 0 1 4 0v4"/>',tree:'<path d="M12 21v-6M7 15h10l-5-12z"/><path d="M8.5 11h7"/>',cup:'<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/>',pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',back:'<path d="M15 5l-7 7 7 7"/>',chev:'<path d="M9 6l6 6-6 6"/>',go:'<path d="M3 11l18-8-8 18-2-8z"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',drop:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',shirt:'<path d="M8 3l-5 3 2 5 3-1v11h8V10l3 1 2-5-5-3a4 4 0 0 1-8 0z"/>',umb:'<path d="M3 12a9 9 0 0 1 18 0zM12 12v7a2 2 0 0 1-4 0M12 3v0"/>',shoe:'<path d="M3 17v-6l5 1 3-4 3 3c2 1 5 1.5 7 2.5V17zM3 17h18v2H3z"/>'};
 Object.assign(P,{ticket:'<path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M13 6v12"/>',cloud:'<path d="M7 18h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 11a3.5 3.5 0 0 0 1 7z"/>',rain:'<path d="M7 14h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 7a3.5 3.5 0 0 0 1 7zM8 18l-1 3M12 18l-1 3M16 18l-1 3"/>',fog:'<path d="M7 13h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 6a3.5 3.5 0 0 0 1 7zM4 17h16M6 21h12"/>',sunny:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',psun:'<path d="M12 3v1.5M5.6 5.6l1 1M3 12h1.5M18.4 5.6l-1 1"/><path d="M8.5 11a4 4 0 0 1 7.3-2"/><path d="M8 20h9a3.5 3.5 0 0 0 .5-7 5 5 0 0 0-9.6 1A3 3 0 0 0 8 20z"/>',plus:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',chart:'<circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/>'});
 Object.assign(P,{car:'<path d="M5 16h14v-4l-2-5H7l-2 5zM3 16h18v3h-3M6 19H3M5 12h14"/><circle cx="7.5" cy="16" r="1.5"/><circle cx="16.5" cy="16" r="1.5"/>',boat:'<path d="M3 17l2 4h14l2-4zM6 17V9h12v8M12 9V3l5 4"/>',star:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>',wave:'<path d="M2 12c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6 0M2 18c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6 0M12 3c1 1.5 1 3 0 4.5"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',fx:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"/>'});
-const EM={"✈️":"plane","🚕":"car","🚗":"car","🌮":"food","💧":"drop","🏖️":"sun","⛴️":"boat","🐠":"wave","🎭":"star","🛍️":"bag","ℹ️":"info","🏨":"bed","🚶":"walk","🥪":"food","🌅":"sun","🖼️":"art","🍸":"moon","🌳":"tree","🥐":"cake","🍽️":"food","🍫":"cup","🎫":"ticket","🚄":"train","⛪":"church","🏛️":"castle","🧳":"case"};
+const EM={"🛏️":"bed","⏰":"cal","🤫":"star","✈️":"plane","🚕":"car","🚗":"car","🌮":"food","💧":"drop","🏖️":"sun","⛴️":"boat","🐠":"wave","🎭":"star","🛍️":"bag","ℹ️":"info","🏨":"bed","🚶":"walk","🥪":"food","🌅":"sun","🖼️":"art","🍸":"moon","🌳":"tree","🥐":"cake","🍽️":"food","🍫":"cup","🎫":"ticket","🚄":"train","⛪":"church","🏛️":"castle","🧳":"case"};
 const ico=(k,w)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w||1.9}" stroke-linecap="round" stroke-linejoin="round">${P[k]||P.info}</svg>`;
 
 /* ilustraciones de cada ciudad (se ven mientras carga la foto o si falta) */
@@ -628,7 +772,7 @@ const SKY={
 "Río Secreto":`<g fill="#071e26" fill-opacity=".7"><path d="M0 0h600v40q-20 30-40 0-30 50-60 0-25 40-50 0-40 60-80 0-20 30-40 0-30 46-60 0-25 36-50 0-40 56-80 0-30 40-60 0-20 30-40 0-20 30-40 0z"/></g><g fill="#ffe2a0" fill-opacity=".35"><circle cx="150" cy="70" r="40"/><circle cx="430" cy="80" r="50"/></g><path d="M0 150q150-16 300 0t300 0v50H0z" fill="#38c6c0" fill-opacity=".55"/><path d="M0 170q150-10 300 0t300 0" stroke="#bff3ee" stroke-opacity=".6" stroke-width="3" fill="none"/>`,
 "Tulum":`<circle cx="480" cy="56" r="22" fill="#fff4d8" fill-opacity=".6"/><path d="M0 120h260l40 30v50H0z" fill="#6b5a3a" fill-opacity=".5"/><g fill="#4a3a22" fill-opacity=".6"><path d="M90 120v-40h80v40z"/><path d="M80 80h100l-10-12H90z"/><path d="M118 120v-22h24v22z" fill="#2a1f12"/></g><path d="M300 150q150-14 300 0v50H300z" fill="#1fa3b3" fill-opacity=".6"/><path d="M260 186q170-8 340 0v14H260z" fill="#f3e2b8" fill-opacity=".8"/><g stroke="#1d4a3a" stroke-opacity=".7" stroke-width="4" fill="none" stroke-linecap="round"><path d="M240 122q4-36 16-58"/></g><path d="M256 64q-22-6-36 6 18-2 36-6zM256 64q18-10 34-2-16 0-34 2zM256 64q-4-18-20-24 10 10 20 24z" fill="#1d4a3a" fill-opacity=".7"/>`};
 
-const ph=(c,cls,extra)=>`<div class="ph ${cls||""}" style="--s1:${C[c].s1};--s2:${C[c].s2}"><svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${SKY[c]}</svg>${C[c].f?`<img src="fotos/${C[c].f}.jpg" alt="" loading="lazy">`:""}${extra||""}</div>`;
+const ph=(c,cls,extra,f)=>`<div class="ph ${cls||""}" style="--s1:${C[c].s1};--s2:${C[c].s2}"><svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${SKY[c]}</svg>${(f||C[c].f)?`<img src="fotos/${f||C[c].f}.jpg" alt="" loading="lazy">`:""}${extra||""}</div>`;
 function fixImgs(root){root.querySelectorAll(".ph img:not([data-k])").forEach(i=>{i.dataset.k=1;const ok=()=>i.naturalWidth?i.classList.add("ok"):i.remove();if(i.complete)ok();else{i.addEventListener("load",ok);i.addEventListener("error",()=>i.remove())}})}
 const WD=["dom","lun","mar","mié","jue","vie","sáb"],WDL=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
 const wd=d=>WD[new Date(Y,M,d).getDay()],wdl=d=>WDL[new Date(Y,M,d).getDay()];
@@ -636,7 +780,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const LS=k=>{try{return JSON.parse(localStorage.getItem("c26-"+k))}catch(e){return null}};
 const SS=(k,v)=>{try{localStorage.setItem("c26-"+k,JSON.stringify(v))}catch(e){}};
 const $=id=>document.getElementById(id);
-const fmt=n=>"$"+n.toLocaleString("es-MX",{minimumFractionDigits:0,maximumFractionDigits:2})+" MXN";
+const fmt=n=>"$"+n.toLocaleString("es-CL",{minimumFractionDigits:0,maximumFractionDigits:2})+" MXN";
 const dayOf=d=>DAYS.find(x=>x.d===d);
 const dayCities=x=>x.cs.join(" → ");
 const iso=d=>`${Y}-${String(M+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
@@ -667,16 +811,22 @@ async function loadWx(){if(WXD&&Date.now()-WXD.at<2*3600e3)return;
     if(!r.ok)return;const j=await r.json(),dd=j.daily;out[c]={};dd.time.forEach((t,i)=>out[c][t]=[dd.weather_code[i],dd.temperature_2m_max[i],dd.temperature_2m_min[i],dd.precipitation_probability_max[i]])}
     WXD=out;SS("wxd",WXD);refreshWx()}catch(e){}}
 function refreshWx(){if(!$("s-tiempo").hidden)renderWx();if(!$("s-viaje").hidden)renderHome()}
+/* iconos ilustrados del tiempo y de la ropa (fotos/tiempo/*.png); si faltan, se ve el dibujo de línea */
+const WIC=c=>c===0?"sol":c<=2?"solnube":c===3||c<=48?"nubes":c<=82?"lluvia":"tormenta";
+const wimg=(c,cls)=>`<span class="wim ${cls||""} w-${WIC(c)}"><img src="fotos/tiempo/${WIC(c)}.png" alt="" onerror="this.parentNode.classList.add('noimg');this.remove()">${ico(WMO(c)[0],1.6)}</span>`;
+const SKYG={sol:["#ffb347","#ff7e5f"],solnube:["#5ec8e8","#2b7fc4"],nubes:["#9fb3c8","#5d7189"],lluvia:["#5a7fa8","#2f4a6e"],tormenta:["#4a4f72","#24263f"]};
 function renderWx(){const t=T(),today=t.ph==="trip"?dayOf(t.d):DAYS[0];
-  const w=dayWx(today),[ic,txt]=WMO(w.code),n=NORM[w.c];
-  $("wxtoday").innerHTML=`<div class="wc" style="width:100%"><div class="cty">${ico("pin",2)}${w.c}</div><div class="when">${t.ph==="trip"?"Hoy, ":""}${wdl(today.d)} ${today.d} de ${MES}</div><div class="mid"><span class="tmp">${w.hi}°</span><svg class="wi" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${P[ic]}</svg></div><div class="cond">${w.real?txt:"Lo normal en noviembre"}</div><div class="hl">↑ ${w.hi}° / ↓ ${w.lo}°${w.pp!=null?` · lluvia ${w.pp}%`:""}</div><p class="wtip">${ico("shirt",1.8)}<span>${ropa(w)}</span></p><div class="grid3"><span><b>${n.sr}</b>amanece</span><span><b>${n.ss}</b>anochece</span><span><b>${w.real?"Previsión":"Normal"}</b>${w.real?"real":"de noviembre"}</span></div></div>`;
-  $("wl").innerHTML=DAYS.map(x=>{const v=dayWx(x),[i2,t2]=WMO(v.code);return `<div class="wr${t.ph==="trip"&&t.d===x.d?" today":""}"><span class="db"><b>${x.d}</b><small>${wd(x.d)}</small></span><span class="wt"><b>${v.c}${v.real?` · ${t2}`:""}</b><small>${ropaC(v)}</small></span><span class="wv2">${ico(i2,1.7)}<b>${v.hi}°</b><small>${v.lo}°${v.pp!=null?` · ${ico("drop",2)}${v.pp}%`:""}</small></span></div>`}).join("");
+  const w=dayWx(today),[,txt]=WMO(w.code),n=NORM[w.c],k=WIC(w.code),[g1,g2]=SKYG[k];
+  $("wxtoday").innerHTML=`<div class="wxh" style="--g1:${g1};--g2:${g2}"><div class="wxt"><div class="cty">${ico("pin",2)}${w.c}</div><div class="when">${t.ph==="trip"?"Hoy, ":""}${wdl(today.d)} ${today.d} de ${MES}</div><div class="tmp">${w.hi}°</div><div class="cond">${w.real?txt:"Lo normal en noviembre"}</div><div class="hl">↑ ${w.hi}° · ↓ ${w.lo}°${w.pp!=null?` · lluvia ${w.pp}%`:""}</div></div>${wimg(w.code,"big")}
+  <p class="wtip">${ico("shirt",1.8)}<span>${ropa(w)}</span></p><div class="grid3"><span><b>${n.sr}</b>amanece</span><span><b>${n.ss}</b>anochece</span><span><b>${w.real?"Previsión":"Normal"}</b>${w.real?"real":"de noviembre"}</span></div></div>`;
+  const all=DAYS.map(dayWx),mn=Math.min(...all.map(v=>v.lo))-2,mx=Math.max(...all.map(v=>v.hi))+2,pc=v=>(v-mn)/(mx-mn)*100;
+  $("wl").innerHTML=DAYS.map((x,i)=>{const v=all[i],[,t2]=WMO(v.code);return `<div class="wr2${t.ph==="trip"&&t.d===x.d?" today":""}" style="--c:${C[x.c].c};animation-delay:${i*50}ms"><span class="db2"><b>${x.d}</b><small>${wd(x.d)}</small></span>${wimg(v.code)}<span class="wt2"><b>${v.c}</b>${v.real?`<small>${t2}</small>`:""}<small class="rop">${ropaC(v)}</small><span class="tb"><i style="left:${pc(v.lo)}%;right:${100-pc(v.hi)}%"></i></span></span><span class="wv3"><b>${v.hi}°</b><small>${v.lo}°</small>${v.pp!=null?`<em>${ico("drop",2)}${v.pp}%</em>`:""}</span></div>`}).join("");
   const real=DAYS.some(x=>dayWx(x).real);
   $("wxsrc").textContent=real?`Previsión actualizada a las ${new Date(WXD.at).toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})}. Los días lejanos pueden cambiar.`:"Sin conexión: se muestran los valores normales de noviembre. Con internet aparece la previsión real.";
-  $("ropa").innerHTML=[["shirt","Ropa ligera y fresca, de algodón o lino: hace calor y hay mucha humedad."],["sun","Gorra o sombrero, lentes de sol y bloqueador solar biodegradable (en cenotes y parques solo dejan ese)."],["wave","Traje de baño todos los días, y escarpines o sandalias de agua para cenotes y Río Secreto."],["shoe","Zapatillas cómodas para Chichén Itzá y Tulum: se camina mucho y al sol."],["umb","Repelente de mosquitos y un impermeable fino: en noviembre puede caer algún chaparrón corto."],["case","Algo de manga larga para el avión, los buses y los sitios con aire acondicionado."]].map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("")}
+  $("ropa").innerHTML=[["ropa-ligera","Ropa ligera","De algodón o lino: hace calor y hay mucha humedad."],["bloqueador","Sol fuerte","Gorra, lentes de sol y bloqueador biodegradable (en cenotes y parques solo dejan ese)."],["bano","Traje de baño","Todos los días, y sandalias de agua para cenotes y Río Secreto."],["zapatillas","Zapatillas","Cómodas, para Chichén Itzá y Tulum: se camina mucho y al sol."],["repelente","Repelente","Para la selva, los cenotes y el atardecer."],["impermeable","Por si acaso","Impermeable fino y algo de manga larga para el avión y el aire acondicionado."]].map(([im,b,tx],i)=>`<li class="rc2" style="animation-delay:${i*60}ms"><span class="rci"><img src="fotos/tiempo/${im}.png" alt="" onerror="this.remove()"></span><b>${b}</b><small>${tx}</small></li>`).join("")}
 
 /* ---------- banner ---------- */
-$("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+STOPS.map(([c])=>`<span class="cn">${c.toUpperCase()}</span>`).join("");
+$("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+STOPS.map(([c])=>`<span class="cn"${c.length>9?` style="font-size:22px;top:9px"`:""}>${c.toUpperCase()}</span>`).join("")+`<div class="rt">${STOPS.map((_,i)=>`<span style="left:${i/(STOPS.length-1)*100}%"></span>`).join("")}<i class="pl">${ico("plane",2)}</i></div>`;
 
 /* ---------- inicio ---------- */
 /* cuenta atrás en horas hasta el despegue (y luego hasta llegar a Cancún) */
@@ -718,7 +868,9 @@ const CK=[
   ["ult","Última vuelta: llaves de casa, cartera, celular y pasaporte"]]]];
 let CKD=LS("tareas")||[];
 function ckBox(){if(SIM||Date.now()>=DEP)return "";const all=CK.flatMap(g=>g[1]),n=all.filter(x=>CKD.includes(x[0])).length;
-  return `<div class="box ckb"><h3 class="bh"><span class="bi">${ico("list",2)}</span>Antes de salir<span class="ckn">${n} de ${all.length}</span></h3><div class="ckbar"><i style="width:${n/all.length*100}%"></i></div>${n===all.length?`<p class="note" style="margin:8px 0 0">¡Todo listo! Buen viaje.</p>`:""}${CK.map(([t,its])=>{const k=its.filter(x=>CKD.includes(x[0])).length;return `<details class="ckg"${k<its.length?" open":""}><summary><b>${t}</b><small>${k}/${its.length}</small></summary><ul class="ckl">${its.map(([id,tx])=>`<li><label><input type="checkbox" data-ck="${id}"${CKD.includes(id)?" checked":""}><span>${esc(tx)}</span></label></li>`).join("")}</ul></details>`}).join("")}<p class="note" style="margin-top:8px;font-size:12.5px">Se guarda en este celular. Toca otra vez para desmarcar.</p></div>`}
+  return `<details class="box ckb"${CKOPEN?" open":""}><summary class="bh"><span class="bi">${ico("list",2)}</span>Antes de salir<span class="ckn">${n} de ${all.length}</span><span class="ckt">${CKOPEN?"Ocultar":"Ver lista"}</span></summary><div class="ckbar"><i style="width:${n/all.length*100}%"></i></div>${n===all.length?`<p class="note" style="margin:8px 0 0">¡Todo listo! Buen viaje.</p>`:""}${CK.map(([t,its])=>{const k=its.filter(x=>CKD.includes(x[0])).length;return `<details class="ckg"${k<its.length?" open":""}><summary><b>${t}</b><small>${k}/${its.length}</small></summary><ul class="ckl">${its.map(([id,tx])=>`<li><label><input type="checkbox" data-ck="${id}"${CKD.includes(id)?" checked":""}><span>${esc(tx)}</span></label></li>`).join("")}</ul></details>`}).join("")}<p class="note" style="margin-top:8px;font-size:12.5px">Se guarda en este celular. Toca otra vez para desmarcar.</p></details>`}
+let CKOPEN=false;
+document.addEventListener("toggle",e=>{if(e.target.classList&&e.target.classList.contains("ckb")){CKOPEN=e.target.open;const t=e.target.querySelector(".ckt");if(t)t.textContent=CKOPEN?"Ocultar":"Ver lista"}},true);
 $("nowbox").addEventListener("change",e=>{const c=e.target.closest("[data-ck]");if(!c)return;const id=c.dataset.ck;CKD=c.checked?[...new Set([...CKD,id])]:CKD.filter(x=>x!==id);SS("tareas",CKD);
   const all=CK.flatMap(g=>g[1]),n=all.filter(x=>CKD.includes(x[0])).length,b=c.closest(".ckb");b.querySelector(".ckn").textContent=`${n} de ${all.length}`;b.querySelector(".ckbar i").style.width=n/all.length*100+"%";const g=c.closest("details"),its=g.querySelectorAll("[data-ck]");g.querySelector("summary small").textContent=`${[...its].filter(x=>x.checked).length}/${its.length}`});
 
@@ -727,12 +879,18 @@ function flBox(t){const d=t.ph==="before"?FL[0][1]:t.ph==="trip"?t.d:0,fs=FL.fil
   return `<div class="box flb"><h3 class="bh"><span class="bi">${ico("plane",2)}</span>Vuelos · ${wd(d)} ${d} ${MC}</h3>${fs.map(([n,,a,b,ca,cb,h1,h2])=>`<div class="flr"><span class="fln">${n}</span><span class="flt"><b>${a} → ${b}</b><small>${ca} ${h1||"··"} → ${cb} ${h2||"··"}${h1?" · hora local":""}</small></span><a class="flv" href="https://www.google.com/search?q=${encodeURIComponent(n+" vuelo")}" target="_blank" rel="noopener">En vivo ↗</a></div>`).join("")}<p class="note" style="margin-top:8px;font-size:12.5px">Horas aproximadas: confirmar en la tarjeta de embarque. Cancún y Lima tienen la misma hora; Santiago, dos horas más.</p></div>`}
 
 /* teléfonos y ayuda (sin internet también) */
-$("sos").innerHTML=`<h3 class="bh"><span class="bi">${ico("phone",2)}</span>Teléfonos de emergencia</h3><ul class="sosl">${[
- ["911","Emergencias en México (policía, ambulancia, bomberos)","tel:911"],
- ["078","Ayuda al turista y asistencia en carretera (Ángeles Verdes)","tel:078"],
- ["RIU Cancún","El hotel: dirección y cómo volver","https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("RIU Cancún")],
- ["Consulado de Chile","Embajada y consulados de Chile en México","https://www.google.com/search?q="+encodeURIComponent("consulado de Chile en Cancún")]
-].map(([a,b,h])=>`<li><a href="${h}"${h.startsWith("tel")?"":` target="_blank" rel="noopener"`}><div class="sx"><b>${a}</b><small>${b}</small></div>${ico(h.startsWith("tel")?"phone":"chev",2)}</a></li>`).join("")}</ul><p class="note" style="margin-top:8px;font-size:12.5px">Lleva a mano el número del seguro de viaje. Bebe solo agua embotellada.</p>`;
+let SEG=LS("seguro")||{n:"",t:""};
+function renderSOS(){$("sos").innerHTML=`<h3 class="bh"><span class="bi">${ico("phone",2)}</span>Teléfonos de emergencia</h3><ul class="sosl">${[
+ ["911","Emergencias en México: policía, ambulancia y bomberos","tel:911","911"],
+ ["078","Ayuda al turista y asistencia en carretera (Ángeles Verdes)","tel:078","078"],
+ ["Hotel RIU Cancún","Blvd. Kukulcán km 9, Zona Hotelera","tel:+529988487151","+52 998 848 7151"],
+ ["Consulado de Chile","Consulado General en Ciudad de México (no hay oficina en Cancún)","tel:+525555310486","+52 55 5531 0486"],
+ ["Emergencia consular","WhatsApp del consulado chileno, fuera de horario","https://wa.me/525535788639","+52 55 3578 8639"]
+].map(([a,b,h,n])=>`<li><a href="${h}"${h.startsWith("tel")?"":` target="_blank" rel="noopener"`}><div class="sx"><b>${a}</b><small>${b}</small><em>${n}</em></div>${ico("phone",2)}</a></li>`).join("")}
+ <li class="segb"><div class="sx"><b>Mi seguro de viaje</b><small>Anótalo aquí: queda guardado en este celular.</small></div><div class="segf"><input id="segn" placeholder="Compañía y n.º de póliza" value="${esc(SEG.n)}" aria-label="Compañía y número de póliza"><input id="segt" type="tel" placeholder="Teléfono de asistencia" value="${esc(SEG.t)}" aria-label="Teléfono de asistencia">${SEG.t?`<a class="btn" href="tel:${esc(SEG.t.replace(/[^+\d]/g,""))}">${ico("phone",2)}Llamar</a>`:""}</div></li>
+ <li><a class="wab" href="https://wa.me/34652058047?text=${encodeURIComponent("Hola, tengo una duda sobre mi viaje a Cancún")}" target="_blank" rel="noopener"><div class="sx"><b>¿Dudas del viaje?</b><small>Escríbeme por WhatsApp: te respondo yo, en persona.</small></div>${ico("go",2)}</a></li></ul><p class="note" style="margin-top:8px;font-size:12.5px">Bebe solo agua embotellada.</p>`}
+renderSOS();
+$("sos").addEventListener("change",e=>{if(e.target.id==="segn"||e.target.id==="segt"){SEG={n:$("segn").value.trim(),t:$("segt").value.trim()};SS("seguro",SEG);renderSOS()}});
 
 /* ---------- mapa ilustrado ---------- */
 /* puntos: nombre, x, y, lugar (color), qué es, búsqueda en Maps, día */
@@ -740,53 +898,104 @@ const PL=[
  ["Cancún · RIU",515,147,"Cancún","El hotel, en la Zona Hotelera. Base de todo el viaje.","RIU Cancún",19],
  ["Aeropuerto",505,177,"Cancún","Llegada el jueves 19 y salida el jueves 26.","Aeropuerto Internacional de Cancún",19],
  ["Isla Mujeres",541,124,"Cancún","Ferry, Playa Norte y Punta Sur en carrito de golf.","Playa Norte Isla Mujeres",22],
- ["Puerto Morelos",502,225,"Río Secreto","Pueblo de pescadores y el faro inclinado.","Faro Inclinado Puerto Morelos",21],
- ["Río Secreto",440,295,"Río Secreto","Río subterráneo con guía, cerca de Playa del Carmen.","Río Secreto",21],
- ["Xcaret",452,306,"Cancún","Parque temático y espectáculo de noche.","Parque Xcaret",24],
+ ["Puerto Morelos",502,225,"Río Secreto","Pueblo de pescadores y el faro inclinado.","Faro Inclinado Puerto Morelos",24],
+ ["Río Secreto",440,295,"Río Secreto","Río subterráneo con guía, cerca de Playa del Carmen.","Río Secreto",24],
+ ["Xcaret",452,306,"Cancún","Alternativa a Río Secreto: parque y espectáculo de noche.","Parque Xcaret",24],
  ["Tulum",367,385,"Tulum","Ruinas mayas sobre el mar y el Gran Cenote.","Zona Arqueológica de Tulum",23],
- ["Valladolid",175,265,"Chichén Itzá","Pueblo colonial, cenote Zací y comida yucateca.","Valladolid Yucatán",20],
- ["Chichén Itzá",82,267,"Chichén Itzá","La pirámide de Kukulcán y el cenote Ik Kil.","Chichén Itzá",20]];
-let psel=0;
+ ["Valladolid",175,265,"Chichén Itzá","Pueblo colonial, cenote Zací y comida yucateca.","Valladolid Yucatán",21],
+ ["Chichén Itzá",82,267,"Chichén Itzá","La pirámide de Kukulcán y el cenote Ik Kil.","Chichén Itzá",21]];
+let psel=0,ssel=-1;
 const PIC={bed:'<path d="M-5 3V-3M-5 1h10v2M5 1v-1a2 2 0 0 0-2-2h-4v3"/>',plane:'<path d="M5 2V1L1-1.5v-3a1 1 0 0 0-2 0v3L-5 1v1l4-1.2V3l-1 .8V5l2-.6 2 .6V3.8L1 3V.8z"/>',boat:'<path d="M-5 2l1 3h8l1-3zM-3 2v-4h6v4M0-2v-3l3 2"/>',wave:'<path d="M-5 0c1.5-2 3-2 5 0s3.5 2 5 0M-5 3.5c1.5-2 3-2 5 0s3.5 2 5 0"/>',pyr:'<path d="M-6 4h12L3-2h-6zM-3-2l1.2-3h3.6L3-2"/>',cave:'<path d="M-5 4V0a5 5 0 0 1 10 0v4M-2-1v2M1-2v2.5"/>',park:'<path d="M0 5V-1M-4-3c2-2 6-2 8 0M0-1c-2-3-5-3-6-1M0-1c2-3 5-3 6-1"/>',church:'<path d="M0-6v3M-1.5-4.5h3M-4 5V-1l4-3 4 3v6z"/>'};
 const PIK=["bed","plane","boat","wave","cave","park","pyr","church","pyr"];
 function renderMap(){
   const coast="M0 75 L150 50 L275 42.5 L375 50 L450 37.5 L480 57.5 L505 87.5 L525 125 L535 157.5 L520 187.5 L507.5 225 L487.5 257.5 L462.5 282.5 L432.5 307.5 L405 337.5 L375 375 L357.5 407.5 L345 450 L0 450Z";
   const isl=`<ellipse cx="495" cy="333" rx="16" ry="34" transform="rotate(28 495 333)"/><ellipse cx="541" cy="124" rx="3.2" ry="11" transform="rotate(20 541 124)"/><ellipse cx="511" cy="72" rx="2.5" ry="9" transform="rotate(10 511 72)"/>`;
   const roads=[["M515 147 L505 177 L502 225 L455 280 L440 295 L405 337 L367 385","307",470,250],["M505 177 L420 215 L300 245 L175 265 L82 267","180D",300,232]];
-  $("mapw").innerHTML=`<svg viewBox="0 0 600 450" class="msvg" role="img" aria-label="Mapa del Caribe mexicano con los lugares del viaje">
+  $("mapw").innerHTML=`<svg viewBox="${VB.x} ${VB.y} ${VB.w} ${VB.w*.75}" class="msvg" role="img" aria-label="Mapa del Caribe mexicano con los lugares del viaje">
   <defs>
+   <clipPath id="cland"><path d="${coast}"/></clipPath><clipPath id="cisl">${isl}</clipPath>
    <pattern id="pmar" patternUnits="userSpaceOnUse" width="600" height="450"><rect width="600" height="450" fill="#3fb5c8"/><image href="fotos/mapa-mar.jpg" width="600" height="450" preserveAspectRatio="xMidYMid slice"/></pattern>
    <pattern id="psel" patternUnits="userSpaceOnUse" width="600" height="450"><rect width="600" height="450" fill="#5f9e43"/><image href="fotos/mapa-selva.jpg" width="600" height="450" preserveAspectRatio="xMidYMid slice"/></pattern>
    <filter id="sh" x="-5%" y="-5%" width="110%" height="110%"><feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#06323d" flood-opacity=".45"/></filter>
    <filter id="pin" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000" flood-opacity=".35"/></filter>
    <radialGradient id="vig" cx="50%" cy="45%" r="75%"><stop offset="60%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#03222b" stop-opacity=".18"/></radialGradient>
   </defs>
-  <rect width="600" height="450" fill="url(#pmar)"/><rect width="600" height="450" fill="#f2fbfb" fill-opacity=".3"/>
+  <rect width="600" height="450" fill="#3fb5c8"/><image href="fotos/mapa-mar.jpg" x="0" y="0" width="600" height="450" preserveAspectRatio="xMidYMid slice"/><rect width="600" height="450" fill="#f2fbfb" fill-opacity=".3"/>
   <path d="${coast}" fill="none" stroke="#aef0ee" stroke-opacity=".55" stroke-width="22" stroke-linejoin="round"/>
   <path d="${coast}" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.4" stroke-dasharray="3 6" transform="translate(12 4)"/>
   <g filter="url(#sh)"><path d="${coast}" fill="#efe0b4" stroke="#efe0b4" stroke-width="7" stroke-linejoin="round"/><g fill="#efe0b4">${isl}</g></g>
-  <path d="${coast}" fill="url(#psel)"/>
+  <path d="${coast}" fill="#5f9e43"/><image href="fotos/mapa-selva.jpg" x="0" y="0" width="600" height="450" preserveAspectRatio="xMidYMid slice" clip-path="url(#cland)"/>
   <path d="${coast}" fill="#fbfaf0" fill-opacity=".5"/>
-  <g fill="url(#psel)" stroke="#efe0b4" stroke-width="2">${isl}</g><g fill="#fbfaf0" fill-opacity=".5">${isl}</g>
+  <g fill="#5f9e43" stroke="#efe0b4" stroke-width="2">${isl}</g><image href="fotos/mapa-selva.jpg" x="0" y="0" width="600" height="450" preserveAspectRatio="xMidYMid slice" clip-path="url(#cisl)"/><g fill="#fbfaf0" fill-opacity=".5">${isl}</g>
   <path d="${coast}" fill="none" stroke="#f3e6c0" stroke-width="2.5" stroke-linejoin="round"/>
   ${roads.map(([d])=>`<path d="${d}" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".9"/><path d="${d}" fill="none" stroke="#e0763c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>`).join("")}
-  ${roads.map(([,n,x,y])=>`<g transform="translate(${x} ${y})"><rect x="-15" y="-8" width="30" height="16" rx="4" fill="#fff" stroke="#e0763c" stroke-width="1.5"/><text y="4" font-size="10" font-weight="800" fill="#b8521f" text-anchor="middle">${n}</text></g>`).join("")}
+  ${roads.map(([,n,x,y])=>`<g class="ps" data-x="${x}" data-y="${y}"><g transform="translate(${x} ${y})"><rect x="-15" y="-8" width="30" height="16" rx="4" fill="#fff" stroke="#e0763c" stroke-width="1.5"/><text y="4" font-size="10" font-weight="800" fill="#b8521f" text-anchor="middle">${n}</text></g></g>`).join("")}
   <rect width="600" height="450" fill="url(#vig)" pointer-events="none"/>
-  <g font-style="italic" fill="#fff" text-anchor="middle" paint-order="stroke" stroke="#0b5a6c" stroke-opacity=".55" stroke-width="3"><text x="562" y="245" font-size="18" font-weight="700">Mar</text><text x="562" y="266" font-size="18" font-weight="700">Caribe</text><text x="240" y="26" font-size="16" font-weight="700">Golfo de México</text><text x="470" y="378" font-size="11">Cozumel</text></g>
+  <g font-style="italic" fill="#fff" text-anchor="middle" paint-order="stroke" stroke="#0b5a6c" stroke-opacity=".55" stroke-width="3"><text x="566" y="200" font-size="18" font-weight="700">Mar</text><text x="566" y="221" font-size="18" font-weight="700">Caribe</text><text x="240" y="26" font-size="16" font-weight="700">Golfo de México</text><text x="470" y="378" font-size="11">Cozumel</text></g>
   <g fill="#fff" font-weight="800" letter-spacing="4" text-anchor="middle" paint-order="stroke" stroke="#1d4a1f" stroke-opacity=".7" stroke-width="3.5"><text x="120" y="345" font-size="15">YUCATÁN</text><text x="300" y="175" font-size="13">QUINTANA ROO</text></g>
   <g transform="translate(40 400)"><circle r="20" fill="#fff" fill-opacity=".85" stroke="#0b5a6c" stroke-width="1.2"/><path d="M0-16l4 14h-8z" fill="#c8322f"/><path d="M0 16l4-14h-8z" fill="#0b5a6c"/><text y="-22" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" paint-order="stroke" stroke="#0b5a6c" stroke-width="3">N</text></g>
   <g transform="translate(78 425)"><rect x="-4" y="-14" width="132" height="22" rx="6" fill="#fff" fill-opacity=".85"/><path d="M4 0h120" stroke="#17323b" stroke-width="3"/><path d="M4 -5v10M64 -4v8M124 -5v10" stroke="#17323b" stroke-width="2"/><text x="64" y="-3" font-size="9.5" font-weight="700" fill="#17323b" text-anchor="middle">50 km</text></g>
   ${PL.map(([n,x,y,c],i)=>{const LP={"Chichén Itzá":"b","Valladolid":"t","Xcaret":"b","Río Secreto":"l","Isla Mujeres":"t","Aeropuerto":"l","Puerto Morelos":"l","Cancún · RIU":"l","Tulum":"r"}[n]||"r";const on=i===psel,col=C[c].s2,w=n.length*6.6+14;
     const lx=LP==="r"?x+15:LP==="l"?x-15-w:x-w/2,ly=LP==="b"?y+14:LP==="t"?y-36:y-11;
-    return `<g class="mpt${on?" on":""}" data-pl="${i}" tabindex="0" role="button" aria-label="${n}"><circle cx="${x}" cy="${y}" r="18" fill="transparent"/>
+    return `<g class="mpt${on?" on":""}" data-pl="${i}" tabindex="0" role="button" aria-label="${n}"><g class="ps" data-x="${x}" data-y="${y}"><circle cx="${x}" cy="${y}" r="18" fill="transparent"/>
     <g transform="translate(${x} ${y}) scale(${on?1.25:1})" filter="url(#pin)"><circle r="11" fill="${col}" stroke="#fff" stroke-width="2.5"/><g fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${PIC[PIK[i]]}</g></g>
-    <g transform="translate(${lx} ${ly})"><rect width="${w}" height="22" rx="11" fill="${on?col:"#fff"}" fill-opacity="${on?1:.92}" filter="url(#pin)"/><text x="${w/2}" y="15" font-size="11.5" font-weight="700" fill="${on?"#fff":"#17323b"}" text-anchor="middle">${n}</text></g></g>`}).join("")}
-  </svg>`;
-  $("plist").innerHTML=`<div class="box blk"><ul class="res">${PL.map(([n,,,c,tx,q,d],i)=>`<li class="pli${i===psel?" on":""}" id="pl${i}" style="--c:${C[c].s2}"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="note" style="margin-top:10px;font-size:12.5px">El mapa es un dibujo y funciona sin internet. Para las calles, el botón de cada lugar abre Google Maps.</p></div>`}
-function pick(i,scroll){psel=i;renderMap();if(scroll){const el=$("pl"+i);el&&el.scrollIntoView({behavior:"smooth",block:"center"})}}
-$("mapw").addEventListener("click",e=>{const g=e.target.closest("[data-pl]");if(g)pick(+g.dataset.pl,true)});
+    <g transform="translate(${lx} ${ly})"><rect width="${w}" height="22" rx="11" fill="${on?col:"#fff"}" fill-opacity="${on?1:.92}" filter="url(#pin)"/><text x="${w/2}" y="15" font-size="11.5" font-weight="700" fill="${on?"#fff":"#17323b"}" text-anchor="middle">${n}</text></g></g></g>`}).join("")}
+  ${SEC.map(([id,n,,,,,x,y],i)=>{const on=ssel===i,w=n.length*6.4+14;return `<g class="mpt msec${on?" on":""}" data-sc="${i}" tabindex="0" role="button" aria-label="Secreto: ${n}"><g class="ps" data-x="${x}" data-y="${y}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/><g transform="translate(${x} ${y}) scale(${on?1.3:1})" filter="url(#pin)"><circle r="7.5" fill="#f2b632" stroke="#fff" stroke-width="2"/><path d="M0-4.2l1.2 2.6 2.8.3-2.1 1.9.6 2.8L0 2l-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" fill="#fff"/></g>${on?`<g transform="translate(${x-w/2} ${y-32})"><rect width="${w}" height="21" rx="10.5" fill="#f2b632" filter="url(#pin)"/><text x="${w/2}" y="14.5" font-size="11" font-weight="800" fill="#4a3000" text-anchor="middle">${n}</text></g>`:""}</g></g>`}).join("")}
+  </svg><div class="mzb"><button type="button" data-mz="in" aria-label="Acercar">+</button><button type="button" data-mz="out" aria-label="Alejar">−</button><button type="button" data-mz="reset" aria-label="Ver todo">⤢</button></div>`;mapTouch();
+  {const p=psel>=0?PL[psel]:null,s=ssel>=0?SEC[ssel]:null;$("pinfo").innerHTML=p?`<div class="pin1" style="--c:${C[p[3]].s2}"><span><b>${esc(p[0])}</b><small>${wd(p[6])} ${p[6]} ${MC} · ${esc(p[4])}</small></span><a class="go" href="${route(p[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}</a></div>`:s?`<div class="pin1 sec" style="--c:#f2b632"><span><b>${ico("star",2)}${esc(s[1])}</b><small>${wd(s[2])} ${s[2]} ${MC} · ${esc(s[4])}</small></span><a class="go" href="${route(s[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}</a></div>`:""}
+  $("plist").innerHTML=`<div class="box blk"><ul class="res">${PL.map(([n,,,c,tx,q,d],i)=>`<li class="pli${i===psel?" on":""}" id="pl${i}" style="--c:${C[c].s2}"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="plh">${ico("star",2)}Lugares secretos</p><ul class="res">${SEC.map(([id,n,d,c,tx,q],i)=>`<li class="pli psec${i===ssel?" on":""}" id="sc${i}" style="--c:#f2b632"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="note" style="margin-top:10px;font-size:12.5px">Las estrellas doradas son los lugares secretos. El mapa es un dibujo y funciona sin internet. Para las calles, el botón de cada lugar abre Google Maps.</p></div>`}
+/* zoom del mapa: con dos dedos o con los botones; solo el mapa, no la app */
+const VB={x:0,y:0,w:600};
+function setVB(){VB.w=Math.max(200,Math.min(600,VB.w));const hh=VB.w*.75;VB.x=Math.max(0,Math.min(600-VB.w,VB.x));VB.y=Math.max(0,Math.min(450-hh,VB.y));const s=$("mapw").querySelector("svg");if(s){s.setAttribute("viewBox",`${VB.x} ${VB.y} ${VB.w} ${hh}`);const k=Math.max(.55,VB.w/600);s.querySelectorAll(".ps").forEach(g=>{const x=g.dataset.x,y=g.dataset.y;g.setAttribute("transform",k>.99?"":`translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})`)})}$("mapw").style.touchAction=VB.w<599?"none":"pan-y";$("mapw").classList.toggle("zoomed",VB.w<599)}
+function zoomAt(f,cx,cy){/* cx,cy en coordenadas del mapa */const nw=Math.max(200,Math.min(600,VB.w*f)),k=nw/VB.w;VB.x=cx-(cx-VB.x)*k;VB.y=cy-(cy-VB.y)*k;VB.w=nw;setVB()}
+const toMap=(px,py)=>{const r=$("mapw").querySelector("svg").getBoundingClientRect();return [VB.x+(px-r.left)/r.width*VB.w,VB.y+(py-r.top)/r.height*VB.w*.75]};
+let PT=new Map(),pinch=null,drag=null,moved=false;
+function mapTouch(){setVB()}
+$("mapw").addEventListener("pointerdown",e=>{if(e.target.closest(".mzb"))return;PT.set(e.pointerId,[e.clientX,e.clientY]);moved=false;
+  if(PT.size===2){const [a,b]=[...PT.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),w:VB.w,c:toMap((a[0]+b[0])/2,(a[1]+b[1])/2)};drag=null}
+  else if(PT.size===1&&VB.w<599){drag={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y}}});
+$("mapw").addEventListener("pointermove",e=>{if(!PT.has(e.pointerId))return;PT.set(e.pointerId,[e.clientX,e.clientY]);const r=$("mapw").querySelector("svg").getBoundingClientRect();
+  if(pinch&&PT.size===2){const [a,b]=[...PT.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(d>0){const nw=pinch.w*pinch.d/d;VB.w=Math.max(200,Math.min(600,nw));const m=[(a[0]+b[0])/2,(a[1]+b[1])/2];VB.x=pinch.c[0]-(m[0]-r.left)/r.width*VB.w;VB.y=pinch.c[1]-(m[1]-r.top)/r.height*VB.w*.75;setVB();moved=true}}
+  else if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;VB.x=drag.vx-dx/r.width*VB.w;VB.y=drag.vy-dy/r.height*VB.w*.75;setVB()}});
+const ptEnd=e=>{PT.delete(e.pointerId);if(PT.size<2)pinch=null;if(!PT.size)drag=null};
+["pointerup","pointercancel","pointerleave"].forEach(t=>$("mapw").addEventListener(t,ptEnd));
+$("mapw").addEventListener("click",e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false;return}const b=e.target.closest("[data-mz]");if(!b)return;e.stopPropagation();
+  if(b.dataset.mz==="reset"){VB.x=0;VB.y=0;VB.w=600;setVB()}else zoomAt(b.dataset.mz==="in"?.6:1/.6,VB.x+VB.w/2,VB.y+VB.w*.375)},true);
+$("mapw").addEventListener("wheel",e=>{if(!e.ctrlKey)return;e.preventDefault();const [cx,cy]=toMap(e.clientX,e.clientY);zoomAt(e.deltaY>0?1.15:1/1.15,cx,cy)},{passive:false});
+
+function pick(i){psel=i;renderMap()}
+$("mapw").addEventListener("click",e=>{const s=e.target.closest("[data-sc]");if(s){ssel=+s.dataset.sc;psel=-1;renderMap();return}const g=e.target.closest("[data-pl]");if(g){ssel=-1;pick(+g.dataset.pl,true)}});
 $("mapw").addEventListener("keydown",e=>{const g=e.target.closest("[data-pl]");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pick(+g.dataset.pl,true)}});
-$("plist").addEventListener("click",e=>{if(e.target.closest("a"))return;const li=e.target.closest(".pli");if(li){psel=+li.id.slice(2);renderMap();$("mapw").scrollIntoView({behavior:"smooth",block:"start"})}});
+$("plist").addEventListener("click",e=>{if(e.target.closest("a"))return;const li=e.target.closest(".pli");if(li){if(li.id.startsWith("sc")){ssel=+li.id.slice(2);psel=-1}else{psel=+li.id.slice(2);ssel=-1}renderMap();$("mapw").scrollIntoView({behavior:"smooth",block:"start"})}});
+
+/* ---------- lugares secretos ---------- */
+/* id, nombre, día, lugar (color), texto, búsqueda en Maps, x, y en el mapa */
+const SEC=[
+ ["suytun","Cenote Suytun",21,"Chichén Itzá","A 10 minutos de Valladolid: una cueva con una pasarela de piedra en medio del agua. Hacia el mediodía entra un rayo de luz por el techo y la foto queda increíble.","Cenote Suytun",190,276],
+ ["ekbalam","Ek Balam",21,"Chichén Itzá","Ruinas mayas en plena selva, a 30 minutos de Valladolid, con muchos menos turistas que Chichén Itzá. Su Acrópolis guarda esculturas de estuco muy bien conservadas.","Zona Arqueológica Ek Balam",190,215],
+ ["cenotes","Ruta de los Cenotes",24,"Río Secreto","Desde Puerto Morelos sale una carretera hacia la selva con cenotes escondidos (Siete Bocas, Boca del Puma…). Ideal con el auto arrendado.","Ruta de los Cenotes Puerto Morelos",478,228],
+ ["esmeralda","Punta Esmeralda",24,"Río Secreto","La playa de la gente de Playa del Carmen: un cenote de agua dulce que desemboca en el mar. Gratis y tranquila, al norte del centro.","Punta Esmeralda Playa del Carmen",462,276],
+ ["meco","El Meco",22,"Cancún","Pequeña zona arqueológica maya junto a Puerto Juárez, de donde sale el ferry. Casi nadie la visita y está llena de iguanas.","Zona Arqueológica El Meco Cancún",526,134],
+ ["tortugas","Tortugranja",22,"Cancún","En Isla Mujeres, un centro que cuida tortugas marinas y suelta las crías al mar. Queda de camino a Punta Sur en el carrito de golf.","Tortugranja Isla Mujeres",548,137],
+ ["calavera","Cenote Calavera",23,"Tulum","A 5 minutos del pueblo de Tulum: tres agujeros en la roca que parecen una calavera. Los valientes saltan al agua por el agujero grande.","Cenote Calavera Tulum",356,372],
+ ["mercado23","Mercado 23",25,"Cancún","El mercado de los cancunenses, a pocas cuadras del Mercado 28 pero sin turistas: fruta, piñatas y fondas con comida casera barata.","Mercado 23 Cancún",508,152]];
+$("secs").innerHTML=`<h2><span>Lugares secretos</span><button type="button" data-go="mapa">Ver en el mapa</button></h2><p class="note" style="margin:-4px 0 10px">Lo que casi nadie conoce, cerca de cada plan del viaje.</p><div class="scar">${SEC.map(([id,n,d,c,tx,q])=>`<article class="scd" style="--c:${C[c].s2}"><div class="scp"><img src="fotos/secretos/${id}.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="sct">${ico("star",2)}${wd(d)} ${d}</span></div><div class="scb"><b>${esc(n)}</b><p>${esc(tx)}</p><a href="${route(q)}" target="_blank" rel="noopener">${ico("pin",2)}Cómo llegar</a></div></article>`).join("")}</div>`;
+/* firma: para que los amigos pidan su app */
+$("sig").innerHTML=`<div class="sgi"><span class="sgl">${ico("star",1.8)}</span><b>Tu viaje, diseñado a mano</b><p>Esta app se hizo solo para este viaje. ¿Quieres una así para el tuyo?</p><a class="btn" href="https://javierov.github.io/viajes-disenados-a-mano/" target="_blank" rel="noopener">Quiero mi app de viaje</a></div>`;
+
+/* reservas: qué está pagado y qué falta */
+const RES=[["ok","Vuelos LATAM ida y vuelta","LA650 + LA2456 el 19 · LA2457 + LA607 el 26. Hacer el check-in en la app de LATAM."],
+ ["ok","Hotel RIU Cancún, 7 noches","Todo incluido 24 h, solo adultos. Reserva en el correo de Despegar."],
+ ["pen","Auto arrendado, vie 20 a mar 24","Recoger el viernes por la tarde; devolver el martes al volver de Río Secreto."],
+ ["pen","Río Secreto, mar 24","Hora fija con guía: reservar en su web (desde unos 89 USD)."],
+ ["pen","Coco Bongo, mié 25","Reservar antes: el precio depende de la zona."],
+ ["pen","Restaurantes temáticos del hotel","Pedir reserva en recepción al llegar."],
+ ["tq","En taquilla, el mismo día","Chichén Itzá (697 pesos), Tulum (unos 265 pesos), cenotes y ferry a Isla Mujeres."]];
+let RNOTE=LS("codigos")||"";
+function renderRes(){const done=LS("resok")||[];$("resv").innerHTML=`<h3 class="bh"><span class="bi">${ico("ticket",2)}</span>Reservas</h3><ul class="rsl">${RES.map(([k,a,b],i)=>{const ok=k==="ok"||done.includes(i);return `<li class="${ok?"ok":k}">${k==="pen"?`<label class="rck"><input type="checkbox" data-rs="${i}"${ok?" checked":""}><span></span></label>`:`<span class="rdt">${k==="ok"?"✓":"€"}</span>`}<span><b>${a}</b><small>${b}</small></span><em>${ok?"Listo":k==="pen"?"Falta":"Pagar allí"}</em></li>`}).join("")}</ul><label class="rnl">Mis códigos de reserva<textarea id="rcod" rows="2" placeholder="Ej.: auto ABC123 · Río Secreto 4567">${esc(RNOTE)}</textarea></label>`.replace('<span class="rdt">€</span>',`<span class="rdt">$</span>`)}
+renderRes();
+$("resv").addEventListener("change",e=>{const c=e.target.closest("[data-rs]");if(c){let d=LS("resok")||[];const i=+c.dataset.rs;d=c.checked?[...new Set([...d,i])]:d.filter(x=>x!==i);SS("resok",d);renderRes()}});
+$("resv").addEventListener("input",e=>{if(e.target.id==="rcod"){RNOTE=e.target.value;SS("codigos",RNOTE)}});
 
 /* «Hoy» entero en la primera pantalla: si no cabe, muestra menos planes (mínimo uno) */
 function fitHoy(){const sv=$("s-viaje"),car=$("car");if(sv.hidden||!car.children.length)return;const cs=[...car.children];
@@ -808,7 +1017,7 @@ function renderHome(){
   $("nowbox").innerHTML=cdBox()+ckBox()+flBox(t)+h;requestAnimationFrame(fitHoy);
   $("nxt-h").textContent=t.ph==="trip"?"Lo que viene":"Día a día";
   const list=t.ph==="trip"?DAYS.filter(x=>x.d>t.d):DAYS;
-  $("next").innerHTML=list.map(x=>`<button type="button" class="row" data-open="${x.cs[x.cs.length-1]}" data-day="${x.d}">${ph(x.c)}<span><span class="dt">${wd(x.d)} ${x.d} ${MC} · ${dayCities(x)}</span><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2)}</button>`).join("")||`<p class="note">Último día del viaje.</p>`;
+  $("next").innerHTML=list.map(x=>`<button type="button" class="row" data-open="${x.cs[x.cs.length-1]}" data-day="${x.d}">${ph(x.c,"","",x.img)}<span><span class="dt">${wd(x.d)} ${x.d} ${MC} · ${dayCities(x)}</span><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2)}</button>`).join("")||`<p class="note">Último día del viaje.</p>`;
   if(t.ph==="trip"&&!carMoved){const x=dayOf(t.d),k2=x?STOPS.findIndex(n=>n[0]===wxCity(x)):0,car=$("car");if(k2>0)requestAnimationFrame(()=>{car.scrollLeft=car.children[k2].offsetLeft-car.firstElementChild.offsetLeft;carState()})}
 }
 $("car").innerHTML=STOPS.map(([c,n,a,b,s])=>`<button type="button" class="cc" data-open="${c}" aria-label="${c}, ${b}">${ph(c,"scrim")}<span class="n">${a} ${MC}</span><span class="tx"><b>${c}</b><span>${s}</span></span></button>`).join("");
@@ -822,7 +1031,7 @@ new ResizeObserver(carState).observe($("car"));
 let carMoved=false;
 
 /* ---------- ciudad ---------- */
-const plan=([ic,tx,q,tg])=>`<li><span class="ic">${ico(EM[ic])}</span><span class="tx">${esc(tx)}${tg?`<span class="tag${tg===4?" pc":""}">${TAG[tg]}</span>`:""}${q?`<span class="adr">${ico("pin",2)}<a href="${route(q)}" target="_blank" rel="noopener">Cómo llegar</a></span>`:""}</span></li>`;
+const plan=([ic,tx,q,tg])=>`<li><span class="ic">${ico(EM[ic])}</span><span class="tx">${esc(tx)}${tg?`<span class="tag${tg===4?" pc":tg===5?" sec":""}">${TAG[tg]}</span>`:""}${q?`<span class="adr">${ico("pin",2)}<a href="${route(q)}" target="_blank" rel="noopener">Cómo llegar</a></span>`:""}</span></li>`;
 function openCity(c,d){
   const [,n,,b]=STOPS.find(x=>x[0]===c),days=DAYS.filter(x=>x.cs.includes(c)),t=T();
   if(!d||!days.some(x=>x.d===d))d=t.ph==="trip"&&days.some(x=>x.d===t.d)?t.d:days[0].d;
@@ -832,7 +1041,7 @@ function openCity(c,d){
   $("stats").innerHTML=`<div><small>${n?"Noches":"Días"}</small><b>${n||days.length}</b></div><div><small>Planes</small><b>${its.length}</b></div><div><small>Comer</small><b>${R.filter(r=>r[1]===c).length}</b></div>`;
   $("cdays").innerHTML=days.map(x=>{const i=DAYS.indexOf(x),pv=DAYS[i-1],nx=DAYS[i+1];return `<article class="day${x.d===d?" open":""}${t.ph==="trip"&&t.d===x.d?" today":""}" id="d${x.d}"><button type="button" class="dh" aria-expanded="${x.d===d}"><span class="db"><b>${x.d}</b><small>${wd(x.d)}</small></span><span class="t"><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det"><ul class="steps">${x.it.map((it,j)=>{const nc=it[4]!==(x.it[j-1]||[])[4]&&x.cs.length>1;return (nc?`<li class="cty" style="--c:${C[it[4]].c}"><i></i>${it[4]}</li>`:"")+plan(it)}).join("")}</ul>
-  <div class="dnav"><button type="button" data-gd="${pv?pv.d:""}"${pv?"":" disabled"}>← ${pv?wd(pv.d)+" "+pv.d:""}</button><button type="button" data-gd="${nx?nx.d:""}"${nx?"":" disabled"}>${nx?wd(nx.d)+" "+nx.d:""} →</button></div></div></article>`}).join("");
+  ${x.cost?`<p class="dx">${ico("ticket",2)}<span><b>Costos aproximados</b>${esc(x.cost)}</span></p>`:""}${x.rb?`<p class="dx rbx">${ico("umb",2)}<span><b>Plan B si llueve</b>${esc(x.rb)}</span></p>`:""}<div class="dnav"><button type="button" data-gd="${pv?pv.d:""}"${pv?"":" disabled"}>← ${pv?wd(pv.d)+" "+pv.d:""}</button><button type="button" data-gd="${nx?nx.d:""}"${nx?"":" disabled"}>${nx?wd(nx.d)+" "+nx.d:""} →</button></div></div></article>`}).join("");
   if(d!==days[0].d)setTimeout(()=>{const el=$("d"+d);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})},150);
 }
 $("s-city").addEventListener("click",e=>{
@@ -842,10 +1051,23 @@ $("s-city").addEventListener("click",e=>{
 
 /* ---------- dónde comer ---------- */
 let rcity=null;
+/* platos para pedir en cada sitio */
+const DISH={"La Habichuela":["Cocobichuela","Pescado tikin xic"],"Mercado 28":["Sopa de lima","Panuchos"],"Parque de las Palapas":["Marquesitas","Esquites"],"Tacos Rigo":["Tacos al pastor","Bistec"],"Los de Pescado":["Taco de pescado","Camarón"],"El Fish Fritanga":["Ceviche","Pescado frito"],"El Mesón del Marqués":["Lomitos de Valladolid","Cochinita"],"Taberna de los Frailes":["Longaniza","Sopa de lima"],"Taquería Honorio":["Cochinita pibil","Relleno negro"],"Antojitos La Chiapaneca":["Tacos al pastor"]};
+const RTX={tipico:["comer-tipico","#e0763c","Lo de aquí: tacos, cochinita y antojitos"],mar:["comer-mar","#1f9fb0","Del Caribe al plato"],noche:["comer-noche","#8a4fc4","Para salir cuando cae el sol"]};
+let rtype="";
 function renderR(){if(rcity===null){const t=T(),x=t.ph==="trip"&&dayOf(t.d);rcity=x?wxCity(x):""}
   $("rchips").innerHTML=[["","Todo"],["Cancún","Cancún"],["Chichén Itzá","Valladolid"],["Tulum","Tulum"]].map(([k,l])=>`<button type="button" data-rc="${k}" class="${rcity===k?"on":""}">${l}</button>`).join("");
+  const inCity=r=>!rcity||r[1]===rcity;
+  $("rtiles").innerHTML=Object.entries(RT).map(([k,[l]])=>{const n=R.filter(r=>inCity(r)&&r[2]===k).length,[img,col]=RTX[k];return `<button type="button" class="rtile${rtype===k?" on":""}" data-rt="${k}" style="--rc:${col}"${n?"":" disabled"}><img src="fotos/${img}.png" alt=""><b>${l}</b><small>${n} sitio${n===1?"":"s"}</small></button>`}).join("");
   const cities=rcity?[rcity]:Object.keys(C).filter(c=>R.some(r=>r[1]===c));
-  $("rlist").innerHTML=cities.map(c=>`${rcity?"":`<p class="rcity" style="--c:${C[c].c}"><i></i>${c==="Chichén Itzá"?"Valladolid (día de Chichén Itzá)":c}</p>`}`+Object.entries(RT).map(([k,[l,ic]])=>{const its=R.filter(r=>r[1]===c&&r[2]===k);return its.length?`<div class="box blk"><h3 class="bh"><span class="bi">${ico(ic,2)}</span>${l}</h3><ul class="res">${its.map(([n,,,pr,nt,q,ba])=>`<li><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${esc(ba)} · <span class="pr">${pr}</span></span><small>${esc(nt)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul></div>`:""}).join("")).join("")}
+  $("rlist").innerHTML=cities.map(c=>{const body=Object.entries(RT).filter(([k])=>!rtype||rtype===k).map(([k,[l]])=>{const its=R.filter(r=>r[1]===c&&r[2]===k);if(!its.length)return "";const [img,col,sub]=RTX[k];
+      return `<section class="rsec rv" style="--rc:${col}"><div class="rsh"><img src="fotos/${img}.png" alt=""><span><b>${l}</b><small>${sub}</small></span></div>${its.map(([n,,,pr,nt,q,ba])=>`<article class="rcard rv"><div class="rct"><b>${esc(n)}</b><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div><div class="rcm"><span class="rz">${ico("pin",2)}${esc(ba)}</span><span class="rp" title="Precio">${pr}</span></div><p>${esc(nt)}</p>${DISH[n]?`<div class="rdish"><small>Pedir</small>${DISH[n].map(d=>`<span>${esc(d)}</span>`).join("")}</div>`:""}</article>`).join("")}</section>`}).join("");
+    return body?`${rcity?"":`<p class="rcity" style="--c:${C[c].c}"><i></i>${c==="Chichén Itzá"?"Valladolid (día de Chichén Itzá)":c}</p>`}${body}`:""}).join("")||`<p class="note">No hay sitios de este tipo aquí.</p>`}
+$("rtiles").onclick=e=>{const b=e.target.closest("[data-rt]");if(!b)return;rtype=rtype===b.dataset.rt?"":b.dataset.rt;renderR()};
+/* entrada suave de tarjetas al aparecer en pantalla */
+const RIO="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");const im=x.target.querySelector(".rsh img");im&&im.classList.add("in");RIO.unobserve(x.target)}}),{rootMargin:"0px 0px -30px 0px"}):null;
+new MutationObserver(()=>{document.querySelectorAll("#rlist .rv:not(.obs)").forEach((el,i)=>{el.classList.add("obs");el.style.animationDelay=Math.min(i,4)*60+"ms";RIO?RIO.observe(el):el.classList.add("in")})}).observe($("rlist"),{childList:true});
+
 $("rchips").onclick=e=>{const b=e.target.closest("[data-rc]");if(!b)return;rcity=b.dataset.rc;renderR()};
 
 /* ---------- conversor de monedas ---------- */
@@ -854,11 +1076,11 @@ const FX0={MXN:1,CLP:50,USD:0.054};
 let FX=LS("fx")||null;
 const RATE=()=>FX&&FX.r?FX.r:FX0;
 const CUR={MXN:["$","MXN"],CLP:["$","CLP"],USD:["US$","USD"]};
-const fmtC=(v,k)=>{const d=k==="CLP"?0:k==="MXN"?0:2,n=v.toLocaleString("es-MX",{minimumFractionDigits:d,maximumFractionDigits:d});return `${CUR[k][0]}${n} ${CUR[k][1]}`};
+const fmtC=(v,k)=>{const d=k==="CLP"?0:k==="MXN"?0:2,n=v.toLocaleString("es-CL",{minimumFractionDigits:d,maximumFractionDigits:d});return `${CUR[k][0]}${n} ${CUR[k][1]}`};
 const toAll=(v,k)=>{const r=RATE(),mx=v/r[k];return Object.keys(FX0).map(c=>[c,mx*r[c]])};
 function renderFx(){const a=parseFloat(String($("fxa").value).replace(",","."))||0,k=$("fxc").value;
   $("fxr").innerHTML=toAll(a,k).filter(([c])=>c!==k).map(([c,v])=>`<p><span>${{MXN:"Pesos mexicanos",CLP:"Pesos chilenos",USD:"Dólares"}[c]}</span><b>${fmtC(v,c)}</b></p>`).join("");
-  $("fxq").innerHTML=(k==="MXN"?[50,100,200,500,1000]:k==="CLP"?[10000,20000,50000,100000]:[10,20,50,100]).map(n=>`<button type="button" data-fx="${n}">${n.toLocaleString("es-MX")}</button>`).join("");
+  $("fxq").innerHTML=(k==="MXN"?[50,100,200,500,1000]:k==="CLP"?[10000,20000,50000,100000]:[10,20,50,100]).map(n=>`<button type="button" data-fx="${n}">${n.toLocaleString("es-CL")}</button>`).join("");
   $("fxs").textContent=FX&&FX.r?`Cambio de referencia del ${new Date(FX.at).toLocaleDateString("es-ES",{day:"numeric",month:"long"})}. En casas de cambio y cajeros suele ser algo peor.`:"Sin conexión: cambio aproximado. Con internet se actualiza solo."}
 async function loadFx(){if(FX&&Date.now()-FX.at<12*3600e3)return;
   try{const r=await fetch("https://open.er-api.com/v6/latest/MXN");if(!r.ok)return;const j=await r.json();if(!j.rates)return;
@@ -908,7 +1130,7 @@ function ftCity(){const t=T();if(t.ph==="trip"){const x=dayOf(t.d);if(x)return w
 function drawFt(c,w){const n=NORM[c];let ic,txt,now,hi,lo,sub;
   if(w){[ic,txt]=WMO(w.code);now=Math.round(w.t);hi=Math.round(w.hi);lo=Math.round(w.lo);const d=new Date(w.at);sub=`a las ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`}
   else{[ic,txt]=WMO(n.code);now=null;hi=n.hi;lo=n.lo;sub="normal en noviembre"}
-  $("ft").innerHTML=`<svg class="wi2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${P[ic]}</svg><span><b>${now!==null?`<span class="now">${now}°</span>`:""}${c}</b><span class="t2">${txt} · ${sub}</span></span><span class="hl2">↑${hi}° ↓${lo}°</span>`}
+  $("ft").innerHTML=`${wimg(w?w.code:n.code,"ftw")}<span><b>${now!==null?`<span class="now">${now}°</span>`:""}${c}</b><span class="t2">${txt} · ${sub}</span></span><span class="hl2">↑${hi}° ↓${lo}°</span>`}
 async function renderFt(){const c=ftCity(),key="wx-"+C[c].slug,old=LS(key);drawFt(c,old&&Date.now()-old.at<6*3600e3?old:null);
   if(old&&Date.now()-old.at<30*60e3)return;
   try{const [la,lo]=GEO[c],r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=auto`);
