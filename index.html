@@ -565,6 +565,12 @@ details.ckb:not([open]){padding-bottom:10px}
 .mapw:not(.zoomed) .mpt.minor:not(.on) .lbl{display:none}
 #s-mapa .pad{padding-left:10px;padding-right:10px}.mapw{border-radius:14px}
 .mapw:not(.zoomed) .msec.minor:not(.on){display:none}
+/* lista bajo el mapa: sin texto pegado al borde */
+.pli{margin:0 0 4px;padding:10px 12px 10px 14px;border-left:0;border-radius:12px;box-shadow:inset 4px 0 0 transparent}
+.pli.on{background:var(--fill2);box-shadow:inset 4px 0 0 var(--c);border-radius:12px}
+#plist .res li+li{border-top:0}
+#plist li.pli{margin:0 0 4px!important;padding:10px 12px 10px 16px!important;border-left:0!important;border-radius:12px}
+#plist li.pli.on{background:var(--fill2);box-shadow:inset 4px 0 0 var(--c)}
 
 </style>
 </head>
