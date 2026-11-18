@@ -573,6 +573,8 @@ details.ckb:not([open]){padding-bottom:10px}
 #plist li.pli.on{background:var(--fill2);box-shadow:inset 4px 0 0 var(--c)}
 .pl svg{transform:rotate(90deg)}
 
+.flv.ok{background:#1f7a46;color:#fff;box-shadow:none}.flv.warn{background:#b7791f;color:#fff;box-shadow:none}.flv.bad{background:#b42318;color:#fff;box-shadow:none}
+
 </style>
 </head>
 <body>
@@ -888,8 +890,24 @@ $("nowbox").addEventListener("change",e=>{const c=e.target.closest("[data-ck]");
   const all=CK.flatMap(g=>g[1]),n=all.filter(x=>CKD.includes(x[0])).length,b=c.closest(".ckb");b.querySelector(".ckn").textContent=`${n} de ${all.length}`;b.querySelector(".ckbar i").style.width=n/all.length*100+"%";const g=c.closest("details"),its=g.querySelectorAll("[data-ck]");g.querySelector("summary small").textContent=`${[...its].filter(x=>x.checked).length}/${its.length}`});
 
 /* vuelos del día (antes del viaje y el día del vuelo) */
+const FLIGHT_API="https://script.google.com/macros/s/AKfycbzPt457cM2dqgFFR-G2q6p-ozQXOvo0ZsQ-aPd-zTQs0mHWwtrQZakzOJCvnpoyWDhy/exec";
+/* salida y llegada en UTC, y fecha local de salida para la consulta */
+const FLU={LA650:["2026-11-19",Date.UTC(2026,10,19,11,40),Date.UTC(2026,10,19,15,30)],LA2456:["2026-11-19",Date.UTC(2026,10,19,16,50),Date.UTC(2026,10,19,21,50)],LA2457:["2026-11-26",Date.UTC(2026,10,26,23,45),Date.UTC(2026,10,27,4,55)],LA607:["2026-11-27",Date.UTC(2026,10,27,6,20),Date.UTC(2026,10,27,9,55)]};
+const FST={Expected:["A tiempo",""],CheckIn:["Check-in abierto","ok"],Boarding:["Embarcando","ok"],GateClosed:["Puerta cerrada","warn"],Departed:["Despegó","ok"],EnRoute:["En vuelo","ok"],Approaching:["Aterrizando","ok"],Arrived:["Aterrizó","ok"],Delayed:["Atrasado","warn"],Canceled:["Cancelado","bad"],CanceledUncertain:["Posible cancelación","bad"],Diverted:["Desviado","bad"],Unknown:["Sin datos",""]};
+const fhm=t=>t?String(t).slice(11,16):"";
 function flBox(t){const d=t.ph==="before"?FL[0][1]:t.ph==="trip"?t.d:0,fs=FL.filter(f=>f[1]===d);if(!fs.length)return "";
-  return `<div class="box flb"><h3 class="bh"><span class="bi">${ico("plane",2)}</span>Vuelos · ${wd(d)} ${d} ${MC}</h3>${fs.map(([n,,a,b,ca,cb,h1,h2])=>`<div class="flr"><span class="fln">${n}</span><span class="flt"><b>${a} → ${b}</b><small>${ca} ${h1||"··"} → ${cb} ${h2||"··"}${h1?" · hora local":""}</small></span><a class="flv" href="https://www.google.com/search?q=${encodeURIComponent(n+" vuelo")}" target="_blank" rel="noopener">En vivo ↗</a></div>`).join("")}<p class="note" style="margin-top:8px;font-size:12.5px">Horas aproximadas: confirmar en la tarjeta de embarque. Cancún y Lima tienen la misma hora; Santiago, dos horas más.</p></div>`}
+  return `<div class="box flb" id="flb"><h3 class="bh"><span class="bi">${ico("plane",2)}</span>Vuelos · ${wd(d)} ${d} ${MC}</h3>${fs.map(([n,,a,b,ca,cb,h1,h2])=>{const s=LS("flt-"+n),live="https://www.google.com/search?q="+encodeURIComponent(n+" vuelo");
+    let chip=`<a class="flv" href="${live}" target="_blank" rel="noopener">En vivo ↗</a>`,line=`${ca} ${h1||"··"} → ${cb} ${h2||"··"}${h1?" · hora local":""}`;
+    if(s&&!s.error&&s.status){const [l,c]=FST[s.status]||[s.status,""],dp=s.dep||{},ar=s.arr||{},late=dp.rev&&dp.sched&&fhm(dp.rev)!==fhm(dp.sched);
+      chip=`<a class="flv ${late&&!c?"warn":c}" href="${live}" target="_blank" rel="noopener">${l}${late?" · "+fhm(dp.rev):""}</a>`;
+      line=`${ca} ${fhm(dp.sched)||h1} → ${cb} ${fhm(ar.rev||ar.sched)||h2}${dp.term?" · T"+esc(String(dp.term)):""}${dp.gate?" · puerta "+esc(String(dp.gate)):""}`}
+    return `<div class="flr"><span class="fln">${n}</span><span class="flt"><b>${a} → ${b}</b><small>${line}</small></span>${chip}</div>`}).join("")}<p class="note" style="margin-top:8px;font-size:12.5px">El estado se actualiza solo desde 8 horas antes de cada vuelo. Cancún y Lima tienen la misma hora; Santiago, dos horas más.</p></div>`}
+async function loadFlt(){const now=Date.now();let ch=0;
+  for(const n in FLU){const [d,dep,arr]=FLU[n];if(now<dep-8*3600e3||now>arr+3*3600e3)continue;const o=LS("flt-"+n);if(o&&now-o.at<15*60e3)continue;
+    try{const r=await fetch(`${FLIGHT_API}?n=${n}&d=${d}`);if(!r.ok)continue;const j=await r.json();if(j&&!j.error){j.at=now;SS("flt-"+n,j);ch=1}}catch(e){}}
+  const b=document.getElementById("flb");if(ch&&b){const x=document.createElement("div");x.innerHTML=flBox(T());x.firstElementChild&&b.replaceWith(x.firstElementChild)}}
+setTimeout(loadFlt,1500);setInterval(()=>{if(!document.hidden)loadFlt()},5*60e3);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)loadFlt()});
 
 /* teléfonos y ayuda (sin internet también) */
 let SEG=LS("seguro")||{n:"",t:""};
