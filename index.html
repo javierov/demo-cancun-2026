@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("c26-theme")||"mar"}catch(e){document.documentElement.dataset.theme="mar"}</script>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#f4f8fb">
 <title>Cancun 2026</title>
@@ -434,9 +434,6 @@ button.ft{font:inherit}
 .ckl input{width:22px;height:22px;margin:0;accent-color:var(--title)}
 .ckl input:checked+span{color:var(--soft);text-decoration:line-through}
 .mapw{position:relative;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.mzb{position:absolute;right:8px;bottom:8px;display:flex;flex-direction:column;gap:5px}
-.mzb button{width:34px;height:34px;border-radius:10px;border:0;background:rgb(255 255 255/.92);color:#17323b;font:700 18px/1 inherit;box-shadow:0 2px 6px rgb(0 0 0/.25);cursor:pointer}
-.mzb button[data-mz=reset]{font-size:15px}
 .rtiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:4px 16px 12px;max-width:560px;margin:0 auto}
 .rtile{display:flex;flex-direction:column;align-items:center;gap:2px;border:0;border-radius:18px;padding:10px 6px 10px;background:color-mix(in srgb,var(--rc) 13%,var(--fill));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--rc) 30%,transparent);color:var(--ink);font:inherit;cursor:pointer;transition:transform .15s}
 .rtile img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 3px 4px rgb(0 0 0/.15))}
@@ -574,6 +571,22 @@ details.ckb:not([open]){padding-bottom:10px}
 .pl svg{transform:rotate(90deg)}
 
 .flv.ok{background:#1f7a46;color:#fff;box-shadow:none}.flv.warn{background:#b7791f;color:#fff;box-shadow:none}.flv.bad{background:#b42318;color:#fff;box-shadow:none}
+
+/* controles del mapa */
+.mzb{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.mzg{display:flex;flex-direction:column;background:rgb(255 255 255/.96);border-radius:12px;box-shadow:0 2px 10px rgb(10 40 50/.22);overflow:hidden}
+.mzb button{width:38px;height:38px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;color:#14424f;padding:0}
+.mzg button+button{border-top:1px solid rgb(20 66 79/.14)}
+.mzr{background:rgb(255 255 255/.96)!important;border-radius:12px;box-shadow:0 2px 10px rgb(10 40 50/.22)}
+.mzb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mzb button:active{background:rgb(20 66 79/.08)}
+/* botón Ir: claro y con color */
+.rw2 .go,.pin1 .go,.rct .go{width:auto!important;height:36px!important;padding:0 13px 0 11px;display:inline-flex!important;align-items:center;gap:5px;border-radius:999px!important;border:0!important;box-shadow:none!important;background:var(--c,#0e6e83);color:#fff!important;font-weight:700;font-size:14px;text-decoration:none;flex:none}
+.rw2 .go svg,.pin1 .go svg,.rct .go svg{width:15px!important;height:15px!important}
+/* la app no se agranda con dos dedos; el mapa usa su propio zoom */
+html,body{touch-action:pan-x pan-y}
+#mapw{touch-action:none}
+#plist .rw2 .go svg,#pinfo .go svg{width:15px!important;height:15px!important;min-width:15px}
 
 </style>
 </head>
@@ -960,9 +973,9 @@ function renderMap(){
     <g transform="translate(${x} ${y}) scale(${on?1.25:1})" filter="url(#pin)"><circle r="11" fill="${col}" stroke="#fff" stroke-width="2.6"/><g fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${PIC[PIK[i]]}</g></g>
     <g class="lbl" transform="translate(${lx} ${ly})"><rect width="${w}" height="24" rx="12" fill="${on?col:"#fff"}" fill-opacity="${on?1:.96}" filter="url(#pin)"/><text x="${w/2}" y="16.5" font-size="12.5" font-weight="700" fill="${on?"#fff":"#17323b"}" text-anchor="middle">${n}</text></g></g></g>`}).join("")}
   ${SEC.map(([id,n,,,,,x,y],i)=>{const on=ssel===i,w=n.length*6.4+14;return `<g class="mpt msec${on?" on":""}${["meco","mercado23"].includes(id)?" minor":""}" data-sc="${i}" tabindex="0" role="button" aria-label="Secreto: ${n}"><g class="ps" data-x="${x}" data-y="${y}"><circle cx="${x}" cy="${y}" r="14" fill="transparent"/><g transform="translate(${x} ${y}) scale(${on?1.3:1})" filter="url(#pin)"><circle r="7.5" fill="#f2b632" stroke="#fff" stroke-width="2"/><path d="M0-4.2l1.2 2.6 2.8.3-2.1 1.9.6 2.8L0 2l-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" fill="#fff"/></g>${on?`<g transform="translate(${x-w/2} ${y-32})"><rect width="${w}" height="21" rx="10.5" fill="#f2b632" filter="url(#pin)"/><text x="${w/2}" y="14.5" font-size="11" font-weight="800" fill="#4a3000" text-anchor="middle">${n}</text></g>`:""}</g></g>`}).join("")}
-  </svg><div class="mzb"><button type="button" data-mz="in" aria-label="Acercar">+</button><button type="button" data-mz="out" aria-label="Alejar">−</button><button type="button" data-mz="reset" aria-label="Ver todo">⤢</button></div>`;mapTouch();
-  {const p=psel>=0?PL[psel]:null,s=ssel>=0?SEC[ssel]:null;$("pinfo").innerHTML=p?`<div class="pin1" style="--c:${C[p[3]].s2}"><span><b>${esc(p[0])}</b><small>${wd(p[6])} ${p[6]} ${MC} · ${esc(p[4])}</small></span><a class="go" href="${route(p[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}</a></div>`:s?`<div class="pin1 sec" style="--c:#f2b632"><span><b>${ico("star",2)}${esc(s[1])}</b><small>${wd(s[2])} ${s[2]} ${MC} · ${esc(s[4])}</small></span><a class="go" href="${route(s[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}</a></div>`:""}
-  $("plist").innerHTML=`<div class="box blk"><ul class="res">${PL.map(([n,,,c,tx,q,d],i)=>`<li class="pli${i===psel?" on":""}" id="pl${i}" style="--c:${C[c].s2}"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="plh">${ico("star",2)}Lugares secretos</p><ul class="res">${SEC.map(([id,n,d,c,tx,q],i)=>`<li class="pli psec${i===ssel?" on":""}" id="sc${i}" style="--c:#f2b632"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}</a></div></li>`).join("")}</ul><p class="note" style="margin-top:10px;font-size:12.5px">Las estrellas doradas son los lugares secretos. El mapa es un dibujo y funciona sin internet. Para las calles, el botón de cada lugar abre Google Maps.</p></div>`}
+  </svg><div class="mzb"><div class="mzg"><button type="button" data-mz="in" aria-label="Acercar"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><button type="button" data-mz="out" aria-label="Alejar"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button></div><button type="button" class="mzr" data-mz="reset" aria-label="Ver todo el mapa"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>`;mapTouch();
+  {const p=psel>=0?PL[psel]:null,s=ssel>=0?SEC[ssel]:null;$("pinfo").innerHTML=p?`<div class="pin1" style="--c:${C[p[3]].s2}"><span><b>${esc(p[0])}</b><small>${wd(p[6])} ${p[6]} ${MC} · ${esc(p[4])}</small></span><a class="go" href="${route(p[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}<span>Ir</span></a></div>`:s?`<div class="pin1 sec" style="--c:#f2b632"><span><b>${ico("star",2)}${esc(s[1])}</b><small>${wd(s[2])} ${s[2]} ${MC} · ${esc(s[4])}</small></span><a class="go" href="${route(s[5])}" target="_blank" rel="noopener" aria-label="Cómo llegar">${ico("go",2)}<span>Ir</span></a></div>`:""}
+  $("plist").innerHTML=`<div class="box blk"><ul class="res">${PL.map(([n,,,c,tx,q,d],i)=>`<li class="pli${i===psel?" on":""}" id="pl${i}" style="--c:${C[c].s2}"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}<span>Ir</span></a></div></li>`).join("")}</ul><p class="plh">${ico("star",2)}Lugares secretos</p><ul class="res">${SEC.map(([id,n,d,c,tx,q],i)=>`<li class="pli psec${i===ssel?" on":""}" id="sc${i}" style="--c:#f2b632"><div class="rw2"><span><b>${esc(n)}</b><span class="ln">${wd(d)} ${d} ${MC}</span><small>${esc(tx)}</small></span><a class="go" href="${route(q)}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(n)}">${ico("go",2)}<span>Ir</span></a></div></li>`).join("")}</ul><p class="note" style="margin-top:10px;font-size:12.5px">Las estrellas doradas son los lugares secretos. El mapa es un dibujo y funciona sin internet. Para las calles, el botón de cada lugar abre Google Maps.</p></div>`}
 /* zoom del mapa: con dos dedos o con los botones; solo el mapa, no la app */
 const VB={x:0,y:0,w:600};
 function setVB(){VB.w=Math.max(200,Math.min(600,VB.w));const hh=VB.w*.75;VB.x=Math.max(0,Math.min(600-VB.w,VB.x));VB.y=Math.max(0,Math.min(450-hh,VB.y));const s=$("mapw").querySelector("svg");const bg=$("mapw").querySelector(".mbg");if(bg)bg.style.transform=`scale(${600/VB.w}) translate(${-VB.x/6}%,${-VB.y/4.5}%)`;if(s){s.setAttribute("viewBox",`${VB.x} ${VB.y} ${VB.w} ${hh}`);const rw=s.getBoundingClientRect().width||350,k=Math.max(.3,.72*600/rw*Math.pow(VB.w/600,.45));s.querySelectorAll(".ps").forEach(g=>{const x=g.dataset.x,y=g.dataset.y;g.setAttribute("transform",`translate(${x} ${y}) scale(${k}) translate(${-x} ${-y})`)})}$("mapw").style.touchAction=VB.w<599?"none":"pan-y";$("mapw").classList.toggle("zoomed",VB.w<599)}
@@ -999,6 +1012,9 @@ $("mapw").addEventListener("click",e=>{const s=e.target.closest("[data-sc]");if(
 $("mapw").addEventListener("keydown",e=>{const g=e.target.closest("[data-pl]");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pick(+g.dataset.pl,true)}});
 $("plist").addEventListener("click",e=>{if(e.target.closest("a"))return;const li=e.target.closest(".pli");if(li){if(li.id.startsWith("sc")){ssel=+li.id.slice(2);psel=-1}else{psel=+li.id.slice(2);ssel=-1}renderMap();$("mapw").scrollIntoView({behavior:"smooth",block:"start"})}});
 addEventListener("resize",()=>{if(!$("s-mapa").hidden)setVB()});
+
+/* bloquea el zoom de toda la app con dos dedos (el mapa tiene el suyo) */
+document.addEventListener("touchmove",e=>{if(e.touches.length>1&&!e.target.closest("#mapw"))e.preventDefault()},{passive:false});["gesturestart","gesturechange"].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
 
 /* ---------- lugares secretos ---------- */
 /* id, nombre, día, lugar (color), texto, búsqueda en Maps, x, y en el mapa */
@@ -1181,7 +1197,7 @@ function route_(){
   if(city){openCity(city,pend);pend=0;show("city");window.scrollTo({top:0});$("ft").hidden=false;renderFt();return}
   const id=["mapa","comer","tiempo","gastos"].includes(h)?h:"viaje";
   show(id);window.scrollTo({top:0});
-  if(id==="viaje"){renderHome();requestAnimationFrame(()=>window.c26FitTitle&&window.c26FitTitle())}if(id==="gastos")renderG();if(id==="comer")renderR();if(id==="tiempo")renderWx();if(id==="mapa")renderMap();{const vp=document.querySelector('meta[name=viewport]');if(vp)vp.content=id==="mapa"?"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover":"width=device-width, initial-scale=1, viewport-fit=cover"}
+  if(id==="viaje"){renderHome();requestAnimationFrame(()=>window.c26FitTitle&&window.c26FitTitle())}if(id==="gastos")renderG();if(id==="comer")renderR();if(id==="tiempo")renderWx();if(id==="mapa")renderMap();if(0){const vp=document.querySelector('meta[name=viewport]');if(vp)vp.content=id==="mapa"?"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover":"width=device-width, initial-scale=1, viewport-fit=cover"}
   requestAnimationFrame(carState);
   $("ft").hidden=id!=="viaje";renderFt();
 }
