@@ -707,7 +707,7 @@ const C={
 /* lugares: nombre, noches (0 = excursión), etiqueta corta, fechas largas, texto de la tarjeta */
 const STOPS=[["Cancún",7,"19 – 26","19 – 26 de noviembre","7 noches · todo incluido"],["Chichén Itzá",0,"sáb 21","sábado 21 de noviembre","Excursión con Valladolid"],["Tulum",0,"lun 23","lunes 23 de noviembre","Excursión · ruinas y cenote"],["Río Secreto",0,"mar 24","martes 24 de noviembre","Excursión · río bajo tierra"]];
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
-const route=q=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
+const route=map; /* abre el lugar en Google Maps; ahí está el botón «Cómo llegar» */
 /* vuelos: número, día, origen, destino, salida, llegada (horas locales) */
 const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","08:40","~10:30"],["LA2456",19,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",26,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (vie 27)","06:55"]];
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar]; img = foto de la fila; rb = plan B con lluvia; cost = gasto aproximado */
