@@ -1333,7 +1333,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <div class="app">
 <section id="s-viaje">
   <div class="bnr" aria-hidden="true" id="bnr"></div>
-  <div class="hh"><h1 class="brand">Cancun 2026</h1><div class="ctr" id="count" hidden></div><div class="hs"><div><p class="sub">Cancún · Riviera Maya · Yucatán</p><p class="sub2">19 – 26 de noviembre de 2026</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
+  <div class="hh"><h1 class="brand">Cancun 2026</h1><div class="ctr" id="count" hidden></div><div class="hs"><div><p class="sub">Cancún · Riviera Maya · Yucatán</p><p class="sub2">20 – 27 de noviembre de 2026</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
   <div class="carw"><div class="car" id="car"></div>
     <button type="button" class="arr l" id="arrL" aria-label="Lugar anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button type="button" class="arr r" id="arrR" aria-label="Lugar siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -1442,26 +1442,27 @@ const C={
  "Río Secreto":{c:"var(--rio)",s1:"#a9e6e0",s2:"#123c4a",slug:"rio-secreto",f:"rio-secreto"},
  "Tulum":{c:"var(--tul)",s1:"#ffd9c2",s2:"#1f6f8b",slug:"tulum",f:"tulum"}};
 /* lugares: nombre, noches (0 = excursión), etiqueta corta, fechas largas, texto de la tarjeta */
-const STOPS=[["Cancún",7,"19 – 26","19 – 26 de noviembre","7 noches · todo incluido"],["Chichén Itzá",0,"sáb 21","sábado 21 de noviembre","Excursión con Valladolid"],["Tulum",0,"lun 23","lunes 23 de noviembre","Excursión · ruinas y cenote"],["Río Secreto",0,"mar 24","martes 24 de noviembre","Excursión · río bajo tierra"]];
+const STOPS=[["Cancún",7,"20 – 27","20 – 27 de noviembre","7 noches · todo incluido"],["Chichén Itzá",0,"sáb 21","sábado 21 de noviembre","Excursión con Valladolid"],["Tulum",0,"mar 24","martes 24 de noviembre","Excursión · ruinas y cenote"],["Río Secreto",0,"mié 25","miércoles 25 de noviembre","Excursión · río bajo tierra"]];
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const route=map; /* abre el lugar en Google Maps; ahí está el botón «Cómo llegar» */
 /* vuelos: número, día, origen, destino, salida, llegada (horas locales) */
-const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","08:40","~10:30"],["LA2456",19,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",26,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (vie 27)","06:55"]];
+const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","08:40","~10:30"],["LA2456",20,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",27,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (sáb 28)","06:55"]];
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar]; img = foto de la fila; rb = plan B con lluvia; cost = gasto aproximado */
 const DAYS=[
- {d:19,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Llegada al Caribe",w:"Vuelos, hotel y cena tranquila en el RIU",cost:"Traslado del aeropuerto al hotel: desde unos 40 USD el auto, o taxi oficial del aeropuerto.",it:[
-  ["✈️","Vuelos LA650 (Santiago → Lima) y LA2456 (Lima → Cancún). Llegada a Cancún hacia las 16:50, hora de allí.","",4,"Cancún"],
+ {d:20,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Llegada al Caribe",w:"Vuelo desde Lima, auto, hotel y cena tranquila en el RIU",cost:"Traslado del aeropuerto al hotel: desde unos 40 USD el auto, o taxi oficial del aeropuerto.",it:[
+  ["✈️","Vuelo de Lima a Cancún. El LA650 del jueves 19 salió atrasado de Santiago, se perdió la conexión y LATAM dio hotel en Lima; el nuevo vuelo es hoy. Si es otra vez el LA2456, llega hacia las 16:50, hora de allí.","",4,"Cancún"],
+  ["🏨","Llamar hoy al RIU (+52 998 848 7151) para avisar que llegan el 20 y no el 19, y confirmar que la reserva sigue en pie y hasta qué día es (ahora vuelven el viernes 27).","Hotel Riu Cancun",4,"Cancún"],
+  ["🚗","Recoger el auto arrendado en el aeropuerto al llegar (para los días 21 a 25): mañana se sale temprano a Chichén Itzá.","Aeropuerto Internacional de Cancún",2,"Cancún"],
   ["🚕","Del aeropuerto al RIU Cancún (Zona Hotelera, km 9; unos 17 km): 20–25 minutos en traslado o taxi oficial. Para salir del aeropuerto, mejor el taxi autorizado o el traslado: Cabify no funciona en México.","Hotel Riu Cancun",0,"Cancún"],
   ["🏨","Entrada al hotel desde las 15:00. El RIU Cancún es todo incluido 24 horas y solo para adultos: comidas, snacks y bebidas están pagados.","Hotel Riu Cancun",0,"Cancún"],
   ["🌅","Atardecer hacia las 17:15: en Cancún el sol se pone por el lado de la laguna.","",0,"Cancún"],
   ["🍽️","Cena en el hotel. Los restaurantes temáticos (italiano, steakhouse, asiático…) suelen pedir reserva en recepción: pedirla al llegar para los próximos días.","",0,"Cancún"],
-  ["🛏️","A dormir temprano: han sido unas 14 horas de viaje.","",0,"Cancún"]]},
- {d:20,c:"Cancún",cs:["Cancún"],img:"dias/delfines",t:"Día de hotel y playa",w:"Descanso, Museo Maya y atardecer en Playa Delfines",cost:"Casi todo incluido en el hotel. Museo Maya: entrada en taquilla. Auto arrendado: precio según la agencia.",rb:"Si llueve: mañana de spa o piscina del hotel y el Museo Maya, que es cubierto.",it:[
-  ["🏖️","Mañana libre en la playa y las piscinas del hotel (tiene piscina infinity y bar en la piscina). Sin alarma.","Hotel Riu Cancun",0,"Cancún"],
+  ["🛏️","A dormir temprano: mañana se sale a las 06:30 hacia Chichén Itzá.","",0,"Cancún"]]},
+ {d:22,c:"Cancún",cs:["Cancún"],img:"dias/delfines",t:"Día de hotel y playa",w:"Descanso, Museo Maya y atardecer en Playa Delfines",cost:"Casi todo incluido en el hotel. Museo Maya: entrada en taquilla. Auto arrendado: precio según la agencia.",rb:"Si llueve: mañana de spa o piscina del hotel y el Museo Maya, que es cubierto.",it:[
+  ["🏖️","Mañana libre en la playa y las piscinas del hotel (tiene piscina infinity y bar en la piscina). Sin alarma, para descansar del madrugón de Chichén Itzá.","Hotel Riu Cancun",0,"Cancún"],
   ["🍽️","Almuerzo en el hotel.","",0,"Cancún"],
   ["🏛️","15:00 · Museo Maya de Cancún y la zona arqueológica de San Miguelito, a unos 10 minutos en taxi (km 16,5). Cierra los lunes.","Museo Maya de Cancún",1,"Cancún"],
   ["🌅","17:00 · Playa Delfines y el mirador con las letras de Cancún, justo al lado. Atardecer hacia las 17:15.","Playa Delfines Cancún",0,"Cancún"],
-  ["🚗","Recoger el auto arrendado (para los días 21 a 24). Hay agencias en la Zona Hotelera y en el aeropuerto; pedir que lo dejen en el hotel si se puede.","",2,"Cancún"],
   ["🎭","Noche: espectáculo del hotel. Con la pulsera del RIU también se puede ir a las fiestas «RIU Party» del Riu Caribe, a unos 3 km.","",0,"Cancún"]]},
  {d:21,c:"Chichén Itzá",cs:["Chichén Itzá"],img:"chichen",t:"Chichén Itzá, cenote y Valladolid",w:"Salir 06:30 · la pirámide al abrir, un cenote y un pueblo colonial",cost:"Chichén Itzá: 697 pesos por persona (extranjeros, pago único en taquilla). Más cenote, almuerzo, gasolina y peaje de la autopista.",rb:"Si llueve: los chaparrones en noviembre son cortos; llevar impermeable. Si es fuerte, cambiar el orden: primero los cenotes (Ik Kil, Suytun, son de cueva) y la pirámide después.",it:[
   ["⏰","OJO CON LA HORA: Yucatán (Chichén Itzá y Valladolid) va una hora por detrás de Cancún. El celular puede cambiar solo.","",0,"Chichén Itzá"],
@@ -1473,14 +1474,14 @@ const DAYS=[
   ["🤫","Secreto: si sobra tiempo, el cenote Suytun (10 min de Valladolid) o las ruinas de Ek Balam, en plena selva y sin multitudes.","Cenote Suytun",5,"Chichén Itzá"],
   ["🏨","16:30 (hora de Yucatán) · Vuelta al hotel (unas 2 h): se llega hacia las 19:30 de Cancún. Cena en el hotel.","Hotel Riu Cancun",0,"Chichén Itzá"],
   ["ℹ️","Sin auto: el Tren Maya va de la estación Cancún Aeropuerto a Chichén Itzá en unas 2 horas (pasaje desde unos 350 pesos). Mirar horarios en trenmaya.gob.mx; la estación queda lejos de la Zona Hotelera.","",0,"Chichén Itzá"]]},
- {d:22,c:"Cancún",cs:["Cancún"],img:"dias/isla",t:"Isla Mujeres sin prisa",w:"Ferry a media mañana, Playa Norte y vuelta a media tarde",cost:"Ferry Ultramar ida y vuelta: unos 230–250 pesos por persona desde Puerto Juárez (algo más desde la Zona Hotelera). Carrito de golf: se paga por horas en la isla.",rb:"Si llueve: quedarse en el hotel y pasar la isla al miércoles 25.",it:[
+ {d:23,c:"Cancún",cs:["Cancún"],img:"dias/isla",t:"Isla Mujeres sin prisa",w:"Ferry a media mañana, Playa Norte y vuelta a media tarde",cost:"Ferry Ultramar ida y vuelta: unos 230–250 pesos por persona desde Puerto Juárez (algo más desde la Zona Hotelera). Carrito de golf: se paga por horas en la isla.",rb:"Si llueve: quedarse en el hotel y pasar la isla al jueves 26 por la mañana.",it:[
   ["⛴️","10:00 · Ferry Ultramar. Desde Playa Tortugas (Zona Hotelera, a 5 min del hotel) tarda unos 30 min y sale más o menos cada hora. Desde Puerto Juárez tarda 18 min y sale cada 30 min, de 05:30 a 23:30. El auto se queda en el hotel.","Ultramar Playa Tortugas Cancún",0,"Cancún"],
   ["🏖️","Playa Norte: agua turquesa, poco profunda y tranquila. Para bañarse y descansar.","Playa Norte Isla Mujeres",0,"Cancún"],
   ["🌮","Almuerzo en el pueblo de la isla: pescado tikin xic o ceviche.","Centro Isla Mujeres",0,"Cancún"],
   ["🚗","Tarde: carrito de golf hasta Punta Sur (acantilado y vistas al mar abierto). Unos 20 minutos de punta a punta.","Punta Sur Isla Mujeres",0,"Cancún"],
   ["🤫","Secreto: de camino, la Tortugranja; y junto al ferry de Puerto Juárez, las ruinas de El Meco.","Tortugranja Isla Mujeres",5,"Cancún"],
   ["⛴️","17:00 · Ferry de vuelta, con el atardecer en el mar. Cena en el hotel.","Ultramar Isla Mujeres",0,"Cancún"]]},
- {d:23,c:"Tulum",cs:["Tulum"],img:"tulum",t:"Tulum: ruinas sobre el mar",w:"Salir 07:00 · zona arqueológica, playa y Gran Cenote",cost:"Zona arqueológica de Tulum: unos 265 pesos por persona para extranjeros (tarifa nueva desde julio de 2026). Gran Cenote: entrada en taquilla.",rb:"Si llueve: saltarse las ruinas y hacer cenotes (Gran Cenote, Calavera), que se disfrutan igual con lluvia.",it:[
+ {d:24,c:"Tulum",cs:["Tulum"],img:"tulum",t:"Tulum: ruinas sobre el mar",w:"Salir 07:00 · zona arqueológica, playa y Gran Cenote",cost:"Zona arqueológica de Tulum: unos 265 pesos por persona para extranjeros (tarifa nueva desde julio de 2026). Gran Cenote: entrada en taquilla.",rb:"Si llueve: saltarse las ruinas y hacer cenotes (Gran Cenote, Calavera), que se disfrutan igual con lluvia.",it:[
   ["🚗","07:00 · Salir en el auto: unas 2 h por la carretera 307. Misma hora que Cancún. También hay buses ADO (unas 2 h, desde unos 290 pesos) desde la terminal del centro.","Zona Arqueológica de Tulum",0,"Tulum"],
   ["🏛️","09:00 · Zona arqueológica de Tulum (abre de 08:00 a 17:00; última entrada 15:30): El Castillo sobre el acantilado y el mar turquesa abajo. No hay estacionamiento dentro del parque: dejar el auto en los estacionamientos de la entrada.","Zona Arqueológica de Tulum",1,"Tulum"],
   ["🏖️","Baño en la playa bajo las ruinas, si está abierta ese día.","Playa Ruinas Tulum",0,"Tulum"],
@@ -1488,7 +1489,7 @@ const DAYS=[
   ["💧","14:00 · Gran Cenote, a 10 minutos: cuevas, tortugas y agua clarísima.","Gran Cenote Tulum",1,"Tulum"],
   ["🤫","Secreto: el cenote Calavera, a 5 minutos del pueblo, con tres agujeros para saltar al agua.","Cenote Calavera Tulum",5,"Tulum"],
   ["🏨","16:00 · Vuelta al hotel (2 h). Cena en el hotel.","Hotel Riu Cancun",0,"Tulum"]]},
- {d:24,c:"Río Secreto",cs:["Río Secreto"],img:"rio-secreto",t:"Río Secreto y tarde libre",w:"Un río bajo tierra por la mañana y descanso después",cost:"Río Secreto: desde unos 89 USD por persona (visita guiada de 3,5 h con buffet). Alternativa Xcaret: unos 2.756 pesos (160 USD) la entrada general.",rb:"Con lluvia no cambia nada: Río Secreto es bajo tierra.",it:[
+ {d:25,c:"Río Secreto",cs:["Río Secreto"],img:"rio-secreto",t:"Río Secreto y tarde libre",w:"Un río bajo tierra por la mañana y descanso después",cost:"Río Secreto: desde unos 89 USD por persona (visita guiada de 3,5 h con buffet). Alternativa Xcaret: unos 2.756 pesos (160 USD) la entrada general.",rb:"Con lluvia no cambia nada: Río Secreto es bajo tierra.",it:[
   ["🎫","Río Secreto se visita solo con guía y hora reservada: reservar en su web para las 09:00 o 10:00.","",2,"Río Secreto"],
   ["🚗","08:15 · Salir hacia Playa del Carmen: unos 50 minutos en auto.","Río Secreto",0,"Río Secreto"],
   ["💧","09:00–12:30 · Río Secreto: se camina y se nada por cuevas con estalactitas. Incluye equipo y buffet. No se pueden entrar cámaras propias.","Río Secreto",1,"Río Secreto"],
@@ -1496,21 +1497,22 @@ const DAYS=[
   ["🏖️","De vuelta, parada en Puerto Morelos: pueblo tranquilo y el faro inclinado.","Faro Inclinado Puerto Morelos",0,"Río Secreto"],
   ["🚗","Devolver el auto arrendado al volver. Tarde de piscina en el hotel.","",0,"Río Secreto"],
   ["ℹ️","Alternativa de día completo: el parque Xcaret, con su espectáculo nocturno «Xcaret México Espectacular». Reservar en su web; muchos paquetes incluyen el transporte desde el hotel.","Parque Xcaret",0,"Río Secreto"]]},
- {d:25,c:"Cancún",cs:["Cancún"],img:"dias/noche",t:"Mercados de Cancún y Coco Bongo",w:"Mañana de playa, tarde en el centro y la gran noche",cost:"Bus urbano R-1 o R-2 por la Zona Hotelera: unos 12 pesos. Taxi corto: 15–25 USD. Coco Bongo: el precio depende de la zona; reservar antes.",rb:"Si llueve: la plaza La Isla, un centro comercial cerca del hotel, y los mercados, que están techados.",it:[
+ {d:26,c:"Cancún",cs:["Cancún"],img:"dias/noche",t:"Mercados de Cancún y Coco Bongo",w:"Mañana de playa, tarde en el centro y la gran noche",cost:"Bus urbano R-1 o R-2 por la Zona Hotelera: unos 12 pesos. Taxi corto: 15–25 USD. Coco Bongo: el precio depende de la zona; reservar antes.",rb:"Si llueve: la plaza La Isla, un centro comercial cerca del hotel, y los mercados, que están techados.",it:[
   ["🏖️","Mañana de playa y piscina en el hotel.","",0,"Cancún"],
   ["🛍️","15:00 · Mercado 28, en el centro: artesanía, hamacas y recuerdos. Regatear con amabilidad.","Mercado 28 Cancún",0,"Cancún"],
   ["🤫","Secreto: el Mercado 23, el de los cancunenses, a pocas cuadras del 28 y sin turistas.","Mercado 23 Cancún",5,"Cancún"],
   ["🌮","18:30 · Antojitos en el Parque de las Palapas: marquesitas y esquites, para probar algo de la calle.","Parque de las Palapas Cancún",0,"Cancún"],
   ["🎭","22:00 · Coco Bongo (km 9,5, al lado del hotel): abren a las 22:00 y el show empieza hacia las 22:30. Dura hasta las 02:30 y luego sigue la disco.","Coco Bongo Cancún",2,"Cancún"]]},
- {d:26,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Última mañana y regreso",w:"Playa, maletas y salir del hotel a las 15:15",cost:"Traslado al aeropuerto: desde unos 40 USD el auto.",it:[
+ {d:27,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Última mañana y regreso",w:"Playa, maletas y salir del hotel a las 15:15",cost:"Traslado al aeropuerto: desde unos 40 USD el auto.",it:[
   ["🏖️","Último baño en la playa del hotel por la mañana.","",0,"Cancún"],
   ["🧳","Dejar la habitación antes de las 12:00 y guardar las maletas en recepción. Preguntar si se puede seguir usando el todo incluido hasta la salida.","Hotel Riu Cancun",0,"Cancún"],
   ["🍽️","Almuerzo tranquilo en el hotel.","",0,"Cancún"],
-  ["✈️","15:15 · Salir hacia el aeropuerto (20–25 minutos). El vuelo LA2457 a Lima sale hacia las 18:45: estar 3 horas antes, por ser internacional.","Aeropuerto Internacional de Cancún",0,"Cancún"],
-  ["✈️","En Lima, conexión con el LA607: sale a la 01:20 de la madrugada del viernes 27 y llega a Santiago a las 06:55. En el aeropuerto de Santiago, Cabify tiene mesones en la terminal internacional para volver a casa.","",0,"Cancún"]]}];
+  ["✈️","15:15 · Salir hacia el aeropuerto (20–25 minutos). El vuelo a Lima (LA2457, hacia las 18:45: confirmar con el pasaje nuevo) es internacional: estar 3 horas antes.","Aeropuerto Internacional de Cancún",0,"Cancún"],
+  ["✈️","En Lima, conexión con el LA607: sale a la 01:20 de la madrugada del sábado 28 y llega a Santiago a las 06:55. En el aeropuerto de Santiago, Cabify tiene mesones en la terminal internacional para volver a casa.","",0,"Cancún"]]}];
+DAYS.sort((a,b)=>a.d-b.d);
 
 /* cuenta atrás en horas: despegue en Santiago (08:40, UTC−3, confirmado por Cristián) y llegada a Cancún (16:50, UTC−5) */
-const DEP=Date.UTC(2026,10,19,11,40),ARR=Date.UTC(2026,10,19,21,50);
+const DEP=Date.UTC(2026,10,19,11,40),ARR=Date.UTC(2026,10,20,21,50);
 const TAG=["","Con entrada","Reservar ya","Comprar pasaje","Por confirmar","Secreto"];
 
 /* dónde comer: nombre, lugar, tipo, precio, nota, búsqueda, zona */
@@ -1648,7 +1650,7 @@ $("nowbox").addEventListener("change",e=>{const c=e.target.closest("[data-ck]");
 /* vuelos del día (antes del viaje y el día del vuelo) */
 const FLIGHT_API="https://script.google.com/macros/s/AKfycbzPt457cM2dqgFFR-G2q6p-ozQXOvo0ZsQ-aPd-zTQs0mHWwtrQZakzOJCvnpoyWDhy/exec";
 /* salida y llegada en UTC, y fecha local de salida para la consulta */
-const FLU={LA650:["2026-11-19",Date.UTC(2026,10,19,11,40),Date.UTC(2026,10,19,15,30)],LA2456:["2026-11-19",Date.UTC(2026,10,19,16,50),Date.UTC(2026,10,19,21,50)],LA2457:["2026-11-26",Date.UTC(2026,10,26,23,45),Date.UTC(2026,10,27,4,55)],LA607:["2026-11-27",Date.UTC(2026,10,27,6,20),Date.UTC(2026,10,27,9,55)]};
+const FLU={LA650:["2026-11-19",Date.UTC(2026,10,19,11,40),Date.UTC(2026,10,19,15,30)],LA2456:["2026-11-20",Date.UTC(2026,10,20,16,50),Date.UTC(2026,10,20,21,50)],LA2457:["2026-11-27",Date.UTC(2026,10,27,23,45),Date.UTC(2026,10,28,4,55)],LA607:["2026-11-28",Date.UTC(2026,10,28,6,20),Date.UTC(2026,10,28,9,55)]};
 const FST={Expected:["A tiempo",""],CheckIn:["Check-in abierto","ok"],Boarding:["Embarcando","ok"],GateClosed:["Puerta cerrada","warn"],Departed:["Despegó","ok"],EnRoute:["En vuelo","ok"],Approaching:["Aterrizando","ok"],Arrived:["Aterrizó","ok"],Delayed:["Atrasado","warn"],Canceled:["Cancelado","bad"],CanceledUncertain:["Posible cancelación","bad"],Diverted:["Desviado","bad"],Unknown:["Sin datos",""]};
 const fhm=t=>t?String(t).slice(11,16):"";
 function flBox(t){let d=t.ph==="before"?FL[0][1]:t.ph==="trip"?t.d:0,pre=false;/* el día antes de volar, recordatorio con los vuelos de mañana */if(t.ph==="trip"&&!FL.some(f=>f[1]===d)&&FL.some(f=>f[1]===d+1)){d++;pre=true}const fs=FL.filter(f=>f[1]===d);if(!fs.length)return "";
@@ -1682,13 +1684,13 @@ $("sos").addEventListener("change",e=>{if(e.target.id==="segn"||e.target.id==="s
 /* ---------- mapa ilustrado ---------- */
 /* puntos: nombre, x, y, lugar (color), qué es, búsqueda en Maps, día */
 const PL=[
- ["Cancún · RIU",515,147,"Cancún","El hotel, en la Zona Hotelera. Base de todo el viaje.","RIU Cancún",19],
- ["Aeropuerto",505,177,"Cancún","Llegada el jueves 19 y salida el jueves 26.","Aeropuerto Internacional de Cancún",19],
- ["Isla Mujeres",541,124,"Cancún","Ferry, Playa Norte y Punta Sur en carrito de golf.","Playa Norte Isla Mujeres",22],
- ["Puerto Morelos",502,225,"Río Secreto","Pueblo de pescadores y el faro inclinado.","Faro Inclinado Puerto Morelos",24],
- ["Río Secreto",440,295,"Río Secreto","Río subterráneo con guía, cerca de Playa del Carmen.","Río Secreto",24],
- ["Xcaret",452,306,"Cancún","Alternativa a Río Secreto: parque y espectáculo de noche.","Parque Xcaret",24],
- ["Tulum",367,385,"Tulum","Ruinas mayas sobre el mar y el Gran Cenote.","Zona Arqueológica de Tulum",23],
+ ["Cancún · RIU",515,147,"Cancún","El hotel, en la Zona Hotelera. Base de todo el viaje.","RIU Cancún",20],
+ ["Aeropuerto",505,177,"Cancún","Llegada el viernes 20 y salida el viernes 27.","Aeropuerto Internacional de Cancún",20],
+ ["Isla Mujeres",541,124,"Cancún","Ferry, Playa Norte y Punta Sur en carrito de golf.","Playa Norte Isla Mujeres",23],
+ ["Puerto Morelos",502,225,"Río Secreto","Pueblo de pescadores y el faro inclinado.","Faro Inclinado Puerto Morelos",25],
+ ["Río Secreto",440,295,"Río Secreto","Río subterráneo con guía, cerca de Playa del Carmen.","Río Secreto",25],
+ ["Xcaret",452,306,"Cancún","Alternativa a Río Secreto: parque y espectáculo de noche.","Parque Xcaret",25],
+ ["Tulum",367,385,"Tulum","Ruinas mayas sobre el mar y el Gran Cenote.","Zona Arqueológica de Tulum",24],
  ["Valladolid",175,265,"Chichén Itzá","Pueblo colonial, cenote Zací y comida yucateca.","Valladolid Yucatán",21],
  ["Chichén Itzá",82,267,"Chichén Itzá","La pirámide de Kukulcán y el cenote Ik Kil.","Chichén Itzá",21]];
 let psel=0,ssel=-1;
@@ -1764,22 +1766,22 @@ document.addEventListener("touchmove",e=>{if(e.touches.length>1&&!e.target.close
 const SEC=[
  ["suytun","Cenote Suytun",21,"Chichén Itzá","A 10 minutos de Valladolid: una cueva con una pasarela de piedra en medio del agua. Hacia el mediodía entra un rayo de luz por el techo y la foto queda increíble.","Cenote Suytun",190,276],
  ["ekbalam","Ek Balam",21,"Chichén Itzá","Ruinas mayas en plena selva, a 30 minutos de Valladolid, con muchos menos turistas que Chichén Itzá. Su Acrópolis guarda esculturas de estuco muy bien conservadas.","Zona Arqueológica Ek Balam",190,215],
- ["cenotes","Ruta de los Cenotes",24,"Río Secreto","Desde Puerto Morelos sale una carretera hacia la selva con cenotes escondidos (Siete Bocas, Boca del Puma…). Ideal con el auto arrendado.","Ruta de los Cenotes Puerto Morelos",478,228],
- ["esmeralda","Punta Esmeralda",24,"Río Secreto","La playa de la gente de Playa del Carmen: un cenote de agua dulce que desemboca en el mar. Gratis y tranquila, al norte del centro.","Punta Esmeralda Playa del Carmen",462,276],
- ["meco","El Meco",22,"Cancún","Pequeña zona arqueológica maya junto a Puerto Juárez, de donde sale el ferry. Casi nadie la visita y está llena de iguanas.","Zona Arqueológica El Meco Cancún",526,134],
- ["tortugas","Tortugranja",22,"Cancún","En Isla Mujeres, un centro que cuida tortugas marinas y suelta las crías al mar. Queda de camino a Punta Sur en el carrito de golf.","Tortugranja Isla Mujeres",548,137],
- ["calavera","Cenote Calavera",23,"Tulum","A 5 minutos del pueblo de Tulum: tres agujeros en la roca que parecen una calavera. Los valientes saltan al agua por el agujero grande.","Cenote Calavera Tulum",356,372],
- ["mercado23","Mercado 23",25,"Cancún","El mercado de los cancunenses, a pocas cuadras del Mercado 28 pero sin turistas: fruta, piñatas y fondas con comida casera barata.","Mercado 23 Cancún",508,152]];
+ ["cenotes","Ruta de los Cenotes",25,"Río Secreto","Desde Puerto Morelos sale una carretera hacia la selva con cenotes escondidos (Siete Bocas, Boca del Puma…). Ideal con el auto arrendado.","Ruta de los Cenotes Puerto Morelos",478,228],
+ ["esmeralda","Punta Esmeralda",25,"Río Secreto","La playa de la gente de Playa del Carmen: un cenote de agua dulce que desemboca en el mar. Gratis y tranquila, al norte del centro.","Punta Esmeralda Playa del Carmen",462,276],
+ ["meco","El Meco",23,"Cancún","Pequeña zona arqueológica maya junto a Puerto Juárez, de donde sale el ferry. Casi nadie la visita y está llena de iguanas.","Zona Arqueológica El Meco Cancún",526,134],
+ ["tortugas","Tortugranja",23,"Cancún","En Isla Mujeres, un centro que cuida tortugas marinas y suelta las crías al mar. Queda de camino a Punta Sur en el carrito de golf.","Tortugranja Isla Mujeres",548,137],
+ ["calavera","Cenote Calavera",24,"Tulum","A 5 minutos del pueblo de Tulum: tres agujeros en la roca que parecen una calavera. Los valientes saltan al agua por el agujero grande.","Cenote Calavera Tulum",356,372],
+ ["mercado23","Mercado 23",26,"Cancún","El mercado de los cancunenses, a pocas cuadras del Mercado 28 pero sin turistas: fruta, piñatas y fondas con comida casera barata.","Mercado 23 Cancún",508,152]];
 $("secs").innerHTML=`<h2><span>Lugares secretos</span><button type="button" data-go="mapa">Ver en el mapa</button></h2><p class="note" style="margin:-4px 0 10px">Lo que casi nadie conoce, cerca de cada plan del viaje.</p><div class="scar">${SEC.map(([id,n,d,c,tx,q])=>`<article class="scd" style="--c:${C[c].s2}"><div class="scp"><img src="fotos/secretos/${id}.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="sct">${ico("star",2)}${wd(d)} ${d}</span></div><div class="scb"><b>${esc(n)}</b><p>${esc(tx)}</p><a href="${route(q)}" target="_blank" rel="noopener">${ico("pin",2)}Cómo llegar</a></div></article>`).join("")}</div>`;
 /* firma: para que los amigos pidan su app */
 $("sig").innerHTML=`<div class="sgi"><span class="sgl">${ico("star",1.8)}</span><b>Tu viaje, diseñado a mano</b><p>Esta app se hizo solo para este viaje. ¿Quieres una así para el tuyo?</p><a class="btn" href="https://javierov.github.io/viajes-disenados-a-mano/" target="_blank" rel="noopener">Quiero mi app de viaje</a></div>`;
 
 /* reservas: qué está pagado y qué falta */
-const RES=[["ok","Vuelos LATAM ida y vuelta","LA650 + LA2456 el 19 · LA2457 + LA607 el 26. Hacer el check-in en la app de LATAM."],
- ["ok","Hotel RIU Cancún, 7 noches","Todo incluido 24 h, solo adultos. Reserva en el correo de Despegar."],
- ["pen","Auto arrendado, vie 20 a mar 24","Recoger el viernes por la tarde; devolver el martes al volver de Río Secreto."],
- ["pen","Río Secreto, mar 24","Hora fija con guía: reservar en su web (desde unos 89 USD)."],
- ["pen","Coco Bongo, mié 25","Reservar antes: el precio depende de la zona."],
+const RES=[["ok","Vuelos LATAM ida y vuelta","LA650 el 19 (se perdió la conexión en Lima) · nuevo vuelo Lima–Cancún el 20 · vuelta el vie 27 (por confirmar los números). Hacer el check-in en la app de LATAM."],
+ ["ok","Hotel RIU Cancún, del 20 al 27","Todo incluido 24 h, solo adultos. Reserva en el correo de Despegar. Avisar al hotel del cambio de fechas (llegan un día tarde y se van un día después)."],
+ ["pen","Auto arrendado, vie 20 a mié 25","Recogerlo en el aeropuerto al llegar; devolverlo el miércoles al volver de Río Secreto."],
+ ["pen","Río Secreto, mié 25","Hora fija con guía: reservar en su web (desde unos 89 USD)."],
+ ["pen","Coco Bongo, jue 26","Reservar antes: el precio depende de la zona."],
  ["pen","Restaurantes temáticos del hotel","Pedir reserva en recepción al llegar."],
  ["tq","En taquilla, el mismo día","Chichén Itzá (697 pesos), Tulum (unos 265 pesos), cenotes y ferry a Isla Mujeres."]];
 let RNOTE=LS("codigos")||"";
@@ -1797,30 +1799,30 @@ const ZONES=[["zh","Zona Hotelera"],["centro","Centro"],["isla","Isla Mujeres"],
 /* puntos: [zona, tipo (p plan, c comer, s secreto), nombre, día, texto, lat, lon, búsqueda en Google Maps]
    coordenadas sacadas de OpenStreetMap (Nominatim) el 20 nov 2026; la Tortugranja no está en OSM: va sobre su carretera (aprox.) */
 const ZP=[
- ["zh","p","Hotel RIU Cancún",19,"El hotel, en el km 9. Base de todo el viaje.",21.13803,-86.74878,"Hotel Riu Cancun"],
- ["zh","p","Museo Maya de Cancún",20,"15:00 · Museo y zona arqueológica de San Miguelito. Cierra los lunes.",21.07379,-86.77716,"Museo Maya de Cancún"],
- ["zh","p","Playa Delfines",20,"17:00 · Atardecer y el mirador con las letras de Cancún.",21.06196,-86.77858,"Playa Delfines Cancún"],
- ["zh","p","Ferry de Playa Tortugas",22,"10:00 · Ferry Ultramar a Isla Mujeres, unos 30 minutos.",21.13973,-86.76931,"Ultramar Playa Tortugas Cancún"],
- ["zh","p","Coco Bongo",25,"22:00 · Abre a las 22:00 y el show empieza hacia las 22:30.",21.1329,-86.74721,"Coco Bongo Cancún"],
- ["zh","c","El Fish Fritanga",20,"Pescado y mariscos frente a la laguna. Bonito al atardecer.",21.10541,-86.76457,"El Fish Fritanga Cancún"],
- ["zh","c","Mandala Beach",25,"Bares y discotecas del km 9, al lado del hotel.",21.13272,-86.74657,"Mandala Beach Cancún"],
- ["centro","p","Mercado 28",25,"15:00 · Artesanía, hamacas y recuerdos. Regatear con amabilidad.",21.16184,-86.8341,"Mercado 28 Cancún"],
- ["centro","p","Parque de las Palapas",25,"18:30 · Antojitos de la calle: marquesitas y esquites.",21.1612,-86.8276,"Parque de las Palapas Cancún"],
- ["centro","s","Mercado 23",25,"El mercado de los cancunenses, sin turistas y con fondas baratas.",21.16801,-86.82791,"Mercado 23 Cancún"],
- ["centro","p","Ferry de Puerto Juárez",22,"Ferry Ultramar a Isla Mujeres: 18 minutos, sale cada 30.",21.18374,-86.80695,"Terminal Marítima Ultramar Puerto Juárez"],
- ["centro","s","El Meco",22,"Pequeña zona arqueológica maya, casi sin visitantes y llena de iguanas.",21.21112,-86.80404,"Zona Arqueológica El Meco Cancún"],
- ["centro","c","La Habichuela",25,"Cocina caribeña y maya en un jardín con luces. Para una cena especial.",21.16212,-86.82806,"La Habichuela Cancún"],
- ["centro","c","Tacos Rigo",25,"Taquería de toda la vida: tacos al pastor y de bistec.",21.15921,-86.8393,"Tacos Rigo Cancún"],
- ["centro","c","Los de Pescado",25,"Tacos de pescado y camarón rebozado.",21.15234,-86.82517,"Los de Pescado Cancún"],
- ["isla","p","Muelle del ferry",22,"Llegada y vuelta del ferry Ultramar, en el pueblo de la isla.",21.25526,-86.74653,"Ultramar Isla Mujeres"],
- ["isla","p","Playa Norte",22,"Agua turquesa, poco profunda y tranquila.",21.26065,-86.75099,"Playa Norte Isla Mujeres"],
- ["isla","s","Tortugranja",22,"Centro de tortugas marinas en la carretera Sac Bajo (punto aproximado).",21.22802,-86.73594,"Tortugranja Isla Mujeres"],
- ["isla","p","Punta Sur",22,"Acantilado y vistas al mar abierto. Se llega en carrito de golf.",21.20398,-86.71326,"Punta Sur Isla Mujeres"],
- ["tulum","p","Zona arqueológica de Tulum",23,"09:00 · El Castillo sobre el acantilado. Abre de 08:00 a 17:00.",20.21457,-87.42946,"Zona Arqueológica de Tulum"],
- ["tulum","p","Gran Cenote",23,"14:00 · Cuevas, tortugas y agua clarísima.",20.24656,-87.4641,"Gran Cenote Tulum"],
- ["tulum","s","Cenote Calavera",23,"Tres agujeros en la roca; los valientes saltan por el grande.",20.22918,-87.45727,"Cenote Calavera Tulum"],
- ["tulum","c","Taquería Honorio",23,"12:30 · Cochinita pibil hecha en horno de tierra. Se acaba pronto.",20.21155,-87.45789,"Taquería Honorio Tulum"],
- ["tulum","c","Antojitos La Chiapaneca",23,"Tacos al pastor muy baratos, en la avenida principal.",20.21024,-87.46631,"Antojitos La Chiapaneca Tulum"],
+ ["zh","p","Hotel RIU Cancún",20,"El hotel, en el km 9. Base de todo el viaje.",21.13803,-86.74878,"Hotel Riu Cancun"],
+ ["zh","p","Museo Maya de Cancún",22,"15:00 · Museo y zona arqueológica de San Miguelito. Cierra los lunes.",21.07379,-86.77716,"Museo Maya de Cancún"],
+ ["zh","p","Playa Delfines",22,"17:00 · Atardecer y el mirador con las letras de Cancún.",21.06196,-86.77858,"Playa Delfines Cancún"],
+ ["zh","p","Ferry de Playa Tortugas",23,"10:00 · Ferry Ultramar a Isla Mujeres, unos 30 minutos.",21.13973,-86.76931,"Ultramar Playa Tortugas Cancún"],
+ ["zh","p","Coco Bongo",26,"22:00 · Abre a las 22:00 y el show empieza hacia las 22:30.",21.1329,-86.74721,"Coco Bongo Cancún"],
+ ["zh","c","El Fish Fritanga",22,"Pescado y mariscos frente a la laguna. Bonito al atardecer.",21.10541,-86.76457,"El Fish Fritanga Cancún"],
+ ["zh","c","Mandala Beach",26,"Bares y discotecas del km 9, al lado del hotel.",21.13272,-86.74657,"Mandala Beach Cancún"],
+ ["centro","p","Mercado 28",26,"15:00 · Artesanía, hamacas y recuerdos. Regatear con amabilidad.",21.16184,-86.8341,"Mercado 28 Cancún"],
+ ["centro","p","Parque de las Palapas",26,"18:30 · Antojitos de la calle: marquesitas y esquites.",21.1612,-86.8276,"Parque de las Palapas Cancún"],
+ ["centro","s","Mercado 23",26,"El mercado de los cancunenses, sin turistas y con fondas baratas.",21.16801,-86.82791,"Mercado 23 Cancún"],
+ ["centro","p","Ferry de Puerto Juárez",23,"Ferry Ultramar a Isla Mujeres: 18 minutos, sale cada 30.",21.18374,-86.80695,"Terminal Marítima Ultramar Puerto Juárez"],
+ ["centro","s","El Meco",23,"Pequeña zona arqueológica maya, casi sin visitantes y llena de iguanas.",21.21112,-86.80404,"Zona Arqueológica El Meco Cancún"],
+ ["centro","c","La Habichuela",26,"Cocina caribeña y maya en un jardín con luces. Para una cena especial.",21.16212,-86.82806,"La Habichuela Cancún"],
+ ["centro","c","Tacos Rigo",26,"Taquería de toda la vida: tacos al pastor y de bistec.",21.15921,-86.8393,"Tacos Rigo Cancún"],
+ ["centro","c","Los de Pescado",26,"Tacos de pescado y camarón rebozado.",21.15234,-86.82517,"Los de Pescado Cancún"],
+ ["isla","p","Muelle del ferry",23,"Llegada y vuelta del ferry Ultramar, en el pueblo de la isla.",21.25526,-86.74653,"Ultramar Isla Mujeres"],
+ ["isla","p","Playa Norte",23,"Agua turquesa, poco profunda y tranquila.",21.26065,-86.75099,"Playa Norte Isla Mujeres"],
+ ["isla","s","Tortugranja",23,"Centro de tortugas marinas en la carretera Sac Bajo (punto aproximado).",21.22802,-86.73594,"Tortugranja Isla Mujeres"],
+ ["isla","p","Punta Sur",23,"Acantilado y vistas al mar abierto. Se llega en carrito de golf.",21.20398,-86.71326,"Punta Sur Isla Mujeres"],
+ ["tulum","p","Zona arqueológica de Tulum",24,"09:00 · El Castillo sobre el acantilado. Abre de 08:00 a 17:00.",20.21457,-87.42946,"Zona Arqueológica de Tulum"],
+ ["tulum","p","Gran Cenote",24,"14:00 · Cuevas, tortugas y agua clarísima.",20.24656,-87.4641,"Gran Cenote Tulum"],
+ ["tulum","s","Cenote Calavera",24,"Tres agujeros en la roca; los valientes saltan por el grande.",20.22918,-87.45727,"Cenote Calavera Tulum"],
+ ["tulum","c","Taquería Honorio",24,"12:30 · Cochinita pibil hecha en horno de tierra. Se acaba pronto.",20.21155,-87.45789,"Taquería Honorio Tulum"],
+ ["tulum","c","Antojitos La Chiapaneca",24,"Tacos al pastor muy baratos, en la avenida principal.",20.21024,-87.46631,"Antojitos La Chiapaneca Tulum"],
  ["chichen","p","Pirámide de Kukulcán",21,"08:00 · El Castillo, el Juego de Pelota y el Cenote Sagrado.",20.68299,-88.56864,"Chichén Itzá"],
  ["chichen","p","Cenote Ik Kil",21,"11:30 · Baño en el cenote. Llevar traje de baño y toalla.",20.66113,-88.5505,"Cenote Ik Kil"],
  ["valla","p","Plaza de Valladolid",21,"15:00 · Parque Francisco Cantón y la catedral.",20.6902,-88.20166,"Parque Francisco Cantón Rosado Valladolid"],
