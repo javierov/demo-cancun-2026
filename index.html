@@ -1450,7 +1450,7 @@ const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","08:40","~10:30"],["LA2456",
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar]; img = foto de la fila; rb = plan B con lluvia; cost = gasto aproximado */
 const DAYS=[
  {d:20,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Llegada al Caribe",w:"Vuelo desde Lima, auto, hotel y cena tranquila en el RIU",cost:"Traslado del aeropuerto al hotel: desde unos 40 USD el auto, o taxi oficial del aeropuerto.",it:[
-  ["✈️","Vuelo de Lima a Cancún. El LA650 del jueves 19 salió atrasado de Santiago, se perdió la conexión y LATAM dio hotel en Lima; el nuevo vuelo es hoy. Si es otra vez el LA2456, llega hacia las 16:50, hora de allí.","",4,"Cancún"],
+  ["✈️","Vuelo de Lima a Cancún. El LA650 del jueves 19 salió atrasado de Santiago, se perdió la conexión y LATAM dio hotel en Lima; el nuevo vuelo es hoy, el mismo LA2456 (Lima 11:50 → Cancún 16:50, hora de allí).","",4,"Cancún"],
   ["🏨","Llamar hoy al RIU (+52 998 848 7151) para avisar que llegan el 20 y no el 19, y confirmar que la reserva sigue en pie y hasta qué día es (ahora vuelven el viernes 27).","Hotel Riu Cancun",4,"Cancún"],
   ["🚗","Recoger el auto arrendado en el aeropuerto al llegar (para los días 21 a 25): mañana se sale temprano a Chichén Itzá.","Aeropuerto Internacional de Cancún",2,"Cancún"],
   ["🚕","Del aeropuerto al RIU Cancún (Zona Hotelera, km 9; unos 17 km): 20–25 minutos en traslado o taxi oficial. Para salir del aeropuerto, mejor el taxi autorizado o el traslado: Cabify no funciona en México.","Hotel Riu Cancun",0,"Cancún"],
@@ -1777,7 +1777,7 @@ $("secs").innerHTML=`<h2><span>Lugares secretos</span><button type="button" data
 $("sig").innerHTML=`<div class="sgi"><span class="sgl">${ico("star",1.8)}</span><b>Tu viaje, diseñado a mano</b><p>Esta app se hizo solo para este viaje. ¿Quieres una así para el tuyo?</p><a class="btn" href="https://javierov.github.io/viajes-disenados-a-mano/" target="_blank" rel="noopener">Quiero mi app de viaje</a></div>`;
 
 /* reservas: qué está pagado y qué falta */
-const RES=[["ok","Vuelos LATAM ida y vuelta","LA650 el 19 (se perdió la conexión en Lima) · nuevo vuelo Lima–Cancún el 20 · vuelta el vie 27 (por confirmar los números). Hacer el check-in en la app de LATAM."],
+const RES=[["ok","Vuelos LATAM ida y vuelta","LA650 el 19 (se perdió la conexión en Lima) · LA2456 Lima–Cancún el 20 · vuelta el vie 27 (por confirmar los números). Hacer el check-in en la app de LATAM."],
  ["ok","Hotel RIU Cancún, del 20 al 27","Todo incluido 24 h, solo adultos. Reserva en el correo de Despegar. Avisar al hotel del cambio de fechas (llegan un día tarde y se van un día después)."],
  ["pen","Auto arrendado, vie 20 a mié 25","Recogerlo en el aeropuerto al llegar; devolverlo el miércoles al volver de Río Secreto."],
  ["pen","Río Secreto, mié 25","Hora fija con guía: reservar en su web (desde unos 89 USD)."],
