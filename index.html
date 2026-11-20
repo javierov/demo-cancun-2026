@@ -1528,7 +1528,16 @@ const R=[
  ["El Mesón del Marqués","Chichén Itzá","tipico","$$","En la plaza de Valladolid, en una casona colonial con patio: cochinita y lomitos.","El Mesón del Marqués Valladolid","Valladolid"],
  ["Taberna de los Frailes","Chichén Itzá","tipico","$$","Cocina yucateca en un jardín junto al convento de San Bernardino.","Taberna de los Frailes Valladolid","Valladolid"],
  ["Taquería Honorio","Tulum","tipico","$","Cochinita pibil y relleno negro hecho en horno de tierra. Abre temprano y cierra cuando se acaba.","Taquería Honorio Tulum","Tulum pueblo"],
- ["Antojitos La Chiapaneca","Tulum","tipico","$","Tacos al pastor muy baratos, en la avenida principal del pueblo.","Antojitos La Chiapaneca Tulum","Tulum pueblo"]];
+ ["Antojitos La Chiapaneca","Tulum","tipico","$","Tacos al pastor muy baratos, en la avenida principal del pueblo.","Antojitos La Chiapaneca Tulum","Tulum pueblo"],
+ ["Café Nader","Cancún","tipico","$","Cafetería de toda la vida en el centro: buen café, pan dulce recién horneado, chilaquiles y enchiladas. Para desayunar el día de los mercados.","Café Nader Cancún","Centro"],
+ ["Playa Lancheros, «la casa del tikin xic»","Cancún","mar","$$","Restaurante familiar en la playa, de camino a Punta Sur en el carrito de golf. Su plato es el pescado tikin xic: adobado con achiote y naranja agria, envuelto en hoja de plátano y asado a la leña.","Playa Lancheros Isla Mujeres","Isla Mujeres"],
+ ["Marquesitas y churros de la plaza","Cancún","tipico","$","En la plaza del pueblo de Isla Mujeres hay puestos de marquesitas y churros cada tarde: el postre antes del ferry de vuelta.","Plaza Isla Mujeres","Isla Mujeres"],
+ ["La Gran Chaya","Chichén Itzá","tipico","$","En Pisté, el pueblo junto a Chichén Itzá: comida yucateca casera y muy barata. Buena parada al salir de las ruinas o de Ik Kil.","La Gran Chaya Pisté","Pisté"],
+ ["La Poblanita","Chichén Itzá","tipico","$","Taquería de Pisté con tacos al pastor y de carne árabe; también tiene tacos vegetarianos.","La Poblanita Pisté","Pisté"],
+ ["Marquesitas El Tío Batman","Chichén Itzá","tipico","$","Puesto de marquesitas en la plaza principal de Valladolid: la crepa crujiente de Yucatán, con queso de bola y Nutella.","Marquesitas El Tío Batman Valladolid","Valladolid"],
+ ["Merkadito del Mar","Río Secreto","mar","$$$","Frente al mar en Puerto Morelos: ceviches, tacos de pescado y burritos de camarón con vista al Caribe. Abre de 11:00 a 23:00.","Merkadito del Mar Puerto Morelos","Puerto Morelos"],
+ ["Pelícanos","Río Secreto","mar","$$","Marisquería tradicional de Puerto Morelos, junto al muelle, con vista al mar y sabor casero.","Restaurante Pelícanos Puerto Morelos","Puerto Morelos"],
+ ["Las Koras","Río Secreto","mar","$","En la colonia de Puerto Morelos, al otro lado de la carretera: tostadas de ceviche, camarón y pulpo. Sencillo, auténtico y barato.","Las Koras Puerto Morelos","Puerto Morelos"]];
 const RT={tipico:["Platos típicos","food"],mar:["Pescado y mariscos","wave"],noche:["Noche y espectáculos","moon"]};
 
 const P={plane:'<path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>',train:'<rect x="5" y="3" width="14" height="14" rx="4"/><path d="M5 10h14M9 21l1.5-4M15 21l-1.5-4"/><circle cx="9" cy="13.5" r=".8"/><circle cx="15" cy="13.5" r=".8"/>',walk:'<circle cx="13" cy="4" r="2"/><path d="M9 21l3-7 3 3v5M7 12l4-4h3l2 4 2 1M11 8l1 6"/>',bed:'<path d="M3 19V7M3 15h18v4M21 15v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="12" r="2"/>',art:'<path d="M12 3a9 9 0 1 0 0 18c1.1 0 2-.8 2-1.9 0-1.4-1.1-1.6-1.1-2.7 0-1 .8-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/>',cake:'<path d="M4 20h16v-7H4zM4 16c2 1.2 4 1.2 6 0s4-1.2 6 0 3 1.2 4 0M12 13V9M12 4c1 1 1 2.2 0 3-1-.8-1-2 0-3"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',castle:'<path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M3 10l9-6 9 6z"/>',bag:'<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/>',food:'<path d="M7 3v18M5 3v5a2 2 0 0 0 4 0V3M17 21V3c-2 1-3 4-3 7h3"/>',sun:'<path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 6v3M5 10l2 2M19 10l-2 2M3 14h2M19 14h2"/>',moon:'<path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10z"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',case:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2M4 12h16"/>',church:'<path d="M12 2v5M10 4h4M6 21V12l6-5 6 5v9zM10 21v-4a2 2 0 0 1 4 0v4"/>',tree:'<path d="M12 21v-6M7 15h10l-5-12z"/><path d="M8.5 11h7"/>',cup:'<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/>',pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',back:'<path d="M15 5l-7 7 7 7"/>',chev:'<path d="M9 6l6 6-6 6"/>',go:'<path d="M3 11l18-8-8 18-2-8z"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',drop:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',shirt:'<path d="M8 3l-5 3 2 5 3-1v11h8V10l3 1 2-5-5-3a4 4 0 0 1-8 0z"/>',umb:'<path d="M3 12a9 9 0 0 1 18 0zM12 12v7a2 2 0 0 1-4 0M12 3v0"/>',shoe:'<path d="M3 17v-6l5 1 3-4 3 3c2 1 5 1.5 7 2.5V17zM3 17h18v2H3z"/>'};
@@ -1814,6 +1823,7 @@ const ZP=[
  ["centro","c","La Habichuela",26,"Cocina caribeña y maya en un jardín con luces. Para una cena especial.",21.16212,-86.82806,"La Habichuela Cancún"],
  ["centro","c","Tacos Rigo",26,"Taquería de toda la vida: tacos al pastor y de bistec.",21.15921,-86.8393,"Tacos Rigo Cancún"],
  ["centro","c","Los de Pescado",26,"Tacos de pescado y camarón rebozado.",21.15234,-86.82517,"Los de Pescado Cancún"],
+ ["centro","c","Café Nader",26,"Café, pan dulce recién horneado y chilaquiles: desayuno del día de mercados.",21.16217,-86.82037,"Café Nader Cancún"],
  ["isla","p","Muelle del ferry",23,"Llegada y vuelta del ferry Ultramar, en el pueblo de la isla.",21.25526,-86.74653,"Ultramar Isla Mujeres"],
  ["isla","p","Playa Norte",23,"Agua turquesa, poco profunda y tranquila.",21.26065,-86.75099,"Playa Norte Isla Mujeres"],
  ["isla","s","Tortugranja",23,"Centro de tortugas marinas en la carretera Sac Bajo (punto aproximado).",21.22802,-86.73594,"Tortugranja Isla Mujeres"],
@@ -1825,6 +1835,8 @@ const ZP=[
  ["tulum","c","Antojitos La Chiapaneca",24,"Tacos al pastor muy baratos, en la avenida principal.",20.21024,-87.46631,"Antojitos La Chiapaneca Tulum"],
  ["chichen","p","Pirámide de Kukulcán",21,"08:00 · El Castillo, el Juego de Pelota y el Cenote Sagrado.",20.68299,-88.56864,"Chichén Itzá"],
  ["chichen","p","Cenote Ik Kil",21,"11:30 · Baño en el cenote. Llevar traje de baño y toalla.",20.66113,-88.5505,"Cenote Ik Kil"],
+ ["chichen","c","La Gran Chaya",21,"En Pisté: comida yucateca casera y muy barata, al salir de las ruinas.",20.69858,-88.58896,"La Gran Chaya Pisté"],
+ ["chichen","c","La Poblanita",21,"Taquería de Pisté: al pastor, carne árabe y vegetarianos.",20.69696,-88.5865,"La Poblanita Pisté"],
  ["valla","p","Plaza de Valladolid",21,"15:00 · Parque Francisco Cantón y la catedral.",20.6902,-88.20166,"Parque Francisco Cantón Rosado Valladolid"],
  ["valla","p","Calzada de los Frailes",21,"La calle colonial que lleva al convento.",20.68813,-88.20717,"Calzada de los Frailes Valladolid"],
  ["valla","p","Convento de San Bernardino",21,"Exconvento franciscano al final de la calzada.",20.68588,-88.21,"Convento de San Bernardino de Siena Valladolid"],
@@ -1949,7 +1961,7 @@ const TILEBOX=[/* [norte, sur, oeste, este, zooms] */
  [21.172,21.148,-86.845,-86.820,[14,15,16,17]],[21.215,21.178,-86.812,-86.798,[14,15,16]],/* Centro, Puerto Juárez y El Meco */
  [21.265,21.200,-86.757,-86.708,[14,15,16]],/* Isla Mujeres */
  [20.250,20.205,-87.470,-87.424,[14,15,16]],/* Tulum */
- [20.690,20.655,-88.575,-88.545,[14,15,16]],/* Chichén Itzá */
+ [20.702,20.655,-88.595,-88.545,[14,15,16]],/* Chichén Itzá y Pisté */
  [20.695,20.682,-88.214,-88.194,[14,15,16]],[20.702,20.696,-88.128,-88.121,[14,15,16]]];/* Valladolid y Suytun */
 function tileList(){const t=(la,lo,z)=>{const n=2**z,r=la*Math.PI/180;return[Math.floor((lo+180)/360*n),Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n)]};
   const S=new Set();TILEBOX.forEach(([n,s,w,e,zs])=>zs.forEach(z=>{const[a,b]=t(n,w,z),[c,d]=t(s,e,z);for(let x=a;x<=c;x++)for(let y=b;y<=d;y++)S.add(`https://tile.openstreetmap.org/${z}/${x}/${y}.png`)}));return [...S]}
@@ -2012,11 +2024,11 @@ $("s-city").addEventListener("click",e=>{
 /* ---------- dónde comer ---------- */
 let rcity=null;
 /* platos para pedir en cada sitio */
-const DISH={"La Habichuela":["Cocobichuela","Pescado tikin xic"],"Mercado 28":["Sopa de lima","Panuchos"],"Parque de las Palapas":["Marquesitas","Esquites"],"Tacos Rigo":["Tacos al pastor","Bistec"],"Los de Pescado":["Taco de pescado","Camarón"],"El Fish Fritanga":["Ceviche","Pescado frito"],"El Mesón del Marqués":["Lomitos de Valladolid","Cochinita"],"Taberna de los Frailes":["Longaniza","Sopa de lima"],"Taquería Honorio":["Cochinita pibil","Relleno negro"],"Antojitos La Chiapaneca":["Tacos al pastor"]};
+const DISH={"La Habichuela":["Cocobichuela","Pescado tikin xic"],"Mercado 28":["Sopa de lima","Panuchos"],"Parque de las Palapas":["Marquesitas","Esquites"],"Tacos Rigo":["Tacos al pastor","Bistec"],"Los de Pescado":["Taco de pescado","Camarón"],"El Fish Fritanga":["Ceviche","Pescado frito"],"El Mesón del Marqués":["Lomitos de Valladolid","Cochinita"],"Taberna de los Frailes":["Longaniza","Sopa de lima"],"Taquería Honorio":["Cochinita pibil","Relleno negro"],"Antojitos La Chiapaneca":["Tacos al pastor"],"Café Nader":["Café de olla","Chilaquiles"],"Playa Lancheros, «la casa del tikin xic»":["Pescado tikin xic"],"Marquesitas y churros de la plaza":["Marquesita","Churros"],"La Gran Chaya":["Cochinita","Pollo pibil"],"La Poblanita":["Tacos al pastor","Carne árabe"],"Marquesitas El Tío Batman":["Queso de bola y Nutella"],"Merkadito del Mar":["Ceviche","Burrito de camarón"],"Pelícanos":["Pescado frito","Coctel de camarón"],"Las Koras":["Tostada de ceviche","Pulpo"]};
 const RTX={tipico:["comer-tipico","#e0763c","Lo de aquí: tacos, cochinita y antojitos"],mar:["comer-mar","#1f9fb0","Del Caribe al plato"],noche:["comer-noche","#8a4fc4","Para salir cuando cae el sol"]};
 let rtype="";
 function renderR(){if(rcity===null){const t=T(),x=t.ph==="trip"&&dayOf(t.d);rcity=x?wxCity(x):""}
-  $("rchips").innerHTML=[["","Todo"],["Cancún","Cancún"],["Chichén Itzá","Valladolid"],["Tulum","Tulum"]].map(([k,l])=>`<button type="button" data-rc="${k}" class="${rcity===k?"on":""}">${l}</button>`).join("");
+  $("rchips").innerHTML=[["","Todo"],["Cancún","Cancún"],["Chichén Itzá","Valladolid"],["Tulum","Tulum"],["Río Secreto","Puerto Morelos"]].map(([k,l])=>`<button type="button" data-rc="${k}" class="${rcity===k?"on":""}">${l}</button>`).join("");
   const inCity=r=>!rcity||r[1]===rcity;
   $("rtiles").innerHTML=Object.entries(RT).map(([k,[l]])=>{const n=R.filter(r=>inCity(r)&&r[2]===k).length,[img,col]=RTX[k];return `<button type="button" class="rtile${rtype===k?" on":""}" data-rt="${k}" style="--rc:${col}"${n?"":" disabled"}><img src="${SRC("fotos/"+img+".png")}" alt="" onerror="this.remove()"><b>${l}</b><small>${n} sitio${n===1?"":"s"}</small></button>`}).join("");
   const cities=rcity?[rcity]:Object.keys(C).filter(c=>R.some(r=>r[1]===c));
