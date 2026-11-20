@@ -1446,11 +1446,11 @@ const STOPS=[["Cancún",7,"20 – 27","20 – 27 de noviembre","7 noches · todo
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const route=map; /* abre el lugar en Google Maps; ahí está el botón «Cómo llegar» */
 /* vuelos: número, día, origen, destino, salida, llegada (horas locales) */
-const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","08:40","~10:30"],["LA2456",20,"Lima","Cancún","LIM","CUN","11:50","16:50"],["LA2457",27,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (sáb 28)","06:55"]];
+const FL=[["LA650",19,"Santiago","Lima","SCL","LIM","08:40","~10:30"],["LA2456",20,"Lima","Cancún","LIM","CUN","11:50","17:35"],["LA2457",27,"Cancún","Lima","CUN","LIM","18:45","23:55"],["LA607",26,"Lima","Santiago","LIM","SCL","01:20 (sáb 28)","06:55"]];
 /* días: cada plan = [icono, texto, búsqueda en Maps, etiqueta, lugar]; img = foto de la fila; rb = plan B con lluvia; cost = gasto aproximado */
 const DAYS=[
  {d:20,c:"Cancún",cs:["Cancún"],img:"dias/hotel",t:"Llegada al Caribe",w:"Vuelo desde Lima, auto, hotel y cena tranquila en el RIU",cost:"Traslado del aeropuerto al hotel: desde unos 40 USD el auto, o taxi oficial del aeropuerto.",it:[
-  ["✈️","Vuelo de Lima a Cancún. El LA650 del jueves 19 salió atrasado de Santiago, se perdió la conexión y LATAM dio hotel en Lima; el nuevo vuelo es hoy, el mismo LA2456 (Lima 11:50 → Cancún 16:50, hora de allí).","",4,"Cancún"],
+  ["✈️","Vuelo de Lima a Cancún. El LA650 del jueves 19 salió atrasado de Santiago, se perdió la conexión y LATAM dio hotel en Lima; el nuevo vuelo es hoy, el mismo LA2456 (Lima 11:50 → Cancún 17:35, hora de allí, según el estado en vivo).","",4,"Cancún"],
   ["🏨","Llamar hoy al RIU (+52 998 848 7151) para avisar que llegan el 20 y no el 19, y confirmar que la reserva sigue en pie y hasta qué día es (ahora vuelven el viernes 27).","Hotel Riu Cancun",4,"Cancún"],
   ["🚗","Recoger el auto arrendado en el aeropuerto al llegar (para los días 21 a 25): mañana se sale temprano a Chichén Itzá.","Aeropuerto Internacional de Cancún",2,"Cancún"],
   ["🚕","Del aeropuerto al RIU Cancún (Zona Hotelera, km 9; unos 17 km): 20–25 minutos en traslado o taxi oficial. Para salir del aeropuerto, mejor el taxi autorizado o el traslado: Cabify no funciona en México.","Hotel Riu Cancun",0,"Cancún"],
@@ -1512,7 +1512,7 @@ const DAYS=[
 DAYS.sort((a,b)=>a.d-b.d);
 
 /* cuenta atrás en horas: despegue en Santiago (08:40, UTC−3, confirmado por Cristián) y llegada a Cancún (16:50, UTC−5) */
-const DEP=Date.UTC(2026,10,19,11,40),ARR=Date.UTC(2026,10,20,21,50);
+const DEP=Date.UTC(2026,10,19,11,40),ARR=Date.UTC(2026,10,20,22,35);
 const TAG=["","Con entrada","Reservar ya","Comprar pasaje","Por confirmar","Secreto"];
 
 /* dónde comer: nombre, lugar, tipo, precio, nota, búsqueda, zona */
@@ -1604,7 +1604,7 @@ $("bnr").innerHTML=STOPS.map(([c])=>`<div class="bs">${ph(c)}</div>`).join("")+S
 /* ---------- inicio ---------- */
 /* cuenta atrás en horas hasta el despegue (y luego hasta llegar a Cancún) */
 function cdBox(){if(SIM)return "";const n=Date.now();if(n>=ARR)return "";const to=n<DEP?DEP:ARR,ms=to-n,hh=Math.floor(ms/36e5),mm=Math.floor(ms%36e5/6e4),p=v=>String(v).padStart(2,"0");
-  const fly=n>=DEP;return `<div class="box cd"><p class="cdt">${fly?"En camino · llegas a Cancún en":"Despegas en"}</p><div class="cdn"><span><b>${hh}</b><small>hora${hh===1?"":"s"}</small></span><i>:</i><span><b>${p(mm)}</b><small>minutos</small></span></div><p class="cds">${fly?"Llegada prevista a Cancún hacia las 16:50, hora de allí":"Vuelo LA650 · Santiago, jueves 19 a las 08:40"}</p></div>`}
+  const fly=n>=DEP;return `<div class="box cd"><p class="cdt">${fly?"En camino · llegas a Cancún en":"Despegas en"}</p><div class="cdn"><span><b>${hh}</b><small>hora${hh===1?"":"s"}</small></span><i>:</i><span><b>${p(mm)}</b><small>minutos</small></span></div><p class="cds">${fly?"Llegada prevista a Cancún hacia las 17:35, hora de allí":"Vuelo LA650 · Santiago, jueves 19 a las 08:40"}</p></div>`}
 setInterval(()=>{const c=document.querySelector("#nowbox .cd");if(c&&!$("s-viaje").hidden){const t=document.createElement("div");t.innerHTML=cdBox();t.firstElementChild?c.replaceWith(t.firstElementChild):c.remove()}},30e3);
 
 /* lista «Antes de salir»: se marca tocando y se guarda en el celular; se ve hasta el despegue */
@@ -1650,7 +1650,7 @@ $("nowbox").addEventListener("change",e=>{const c=e.target.closest("[data-ck]");
 /* vuelos del día (antes del viaje y el día del vuelo) */
 const FLIGHT_API="https://script.google.com/macros/s/AKfycbzPt457cM2dqgFFR-G2q6p-ozQXOvo0ZsQ-aPd-zTQs0mHWwtrQZakzOJCvnpoyWDhy/exec";
 /* salida y llegada en UTC, y fecha local de salida para la consulta */
-const FLU={LA650:["2026-11-19",Date.UTC(2026,10,19,11,40),Date.UTC(2026,10,19,15,30)],LA2456:["2026-11-20",Date.UTC(2026,10,20,16,50),Date.UTC(2026,10,20,21,50)],LA2457:["2026-11-27",Date.UTC(2026,10,27,23,45),Date.UTC(2026,10,28,4,55)],LA607:["2026-11-28",Date.UTC(2026,10,28,6,20),Date.UTC(2026,10,28,9,55)]};
+const FLU={LA650:["2026-11-19",Date.UTC(2026,10,19,11,40),Date.UTC(2026,10,19,15,30)],LA2456:["2026-11-20",Date.UTC(2026,10,20,16,50),Date.UTC(2026,10,20,22,35)],LA2457:["2026-11-27",Date.UTC(2026,10,27,23,45),Date.UTC(2026,10,28,4,55)],LA607:["2026-11-28",Date.UTC(2026,10,28,6,20),Date.UTC(2026,10,28,9,55)]};
 const FST={Expected:["A tiempo",""],CheckIn:["Check-in abierto","ok"],Boarding:["Embarcando","ok"],GateClosed:["Puerta cerrada","warn"],Departed:["Despegó","ok"],EnRoute:["En vuelo","ok"],Approaching:["Aterrizando","ok"],Arrived:["Aterrizó","ok"],Delayed:["Atrasado","warn"],Canceled:["Cancelado","bad"],CanceledUncertain:["Posible cancelación","bad"],Diverted:["Desviado","bad"],Unknown:["Sin datos",""]};
 const fhm=t=>t?String(t).slice(11,16):"";
 function flBox(t){let d=t.ph==="before"?FL[0][1]:t.ph==="trip"?t.d:0,pre=false;/* el día antes de volar, recordatorio con los vuelos de mañana */if(t.ph==="trip"&&!FL.some(f=>f[1]===d)&&FL.some(f=>f[1]===d+1)){d++;pre=true}const fs=FL.filter(f=>f[1]===d);if(!fs.length)return "";
