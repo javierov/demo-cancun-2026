@@ -656,6 +656,11 @@ html,body{touch-action:pan-x pan-y}
 #lmap.zfar .lpin.minor,#lmap.zfar .rtip2.minor{display:none}
 .rtip2{font-size:12.5px}
 
+/* relojes bajo el título */
+.clk{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;margin:6px 0 2px;font-size:13px;line-height:1.3;color:var(--soft)}
+.clk span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.clk b{font-weight:700;color:var(--ink,inherit);font-variant-numeric:tabular-nums}.clk svg{opacity:.8}.clk .sep{opacity:.5}
+.hh .clk{grid-column:1/-1;margin:-4px 0 -6px}
+
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1333,7 +1338,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <div class="app">
 <section id="s-viaje">
   <div class="bnr" aria-hidden="true" id="bnr"></div>
-  <div class="hh"><h1 class="brand">Cancun 2026</h1><div class="ctr" id="count" hidden></div><div class="hs"><div><p class="sub">Cancún · Riviera Maya · Yucatán</p><p class="sub2">20 – 27 de noviembre de 2026</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
+  <div class="hh"><h1 class="brand">Cancun 2026</h1><p class="clk" id="clk" aria-label="Hora en Cancún y en Santiago"><span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Cancún <b data-tz="America/Cancun">--:--</b></span><span class="sep">·</span><span>Santiago <b data-tz="America/Santiago">--:--</b></span></p><div class="ctr" id="count" hidden></div><div class="hs"><div><p class="sub">Cancún · Riviera Maya · Yucatán</p><p class="sub2">20 – 27 de noviembre de 2026</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
   <div class="carw"><div class="car" id="car"></div>
     <button type="button" class="arr l" id="arrL" aria-label="Lugar anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button type="button" class="arr r" id="arrR" aria-label="Lugar siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -1769,6 +1774,10 @@ addEventListener("resize",()=>{if(!$("s-mapa").hidden)setVB()});
 
 /* bloquea el zoom de toda la app con dos dedos (el mapa tiene el suyo) */
 document.addEventListener("touchmove",e=>{if(e.touches.length>1&&!e.target.closest("#mapw"))e.preventDefault()},{passive:false});["gesturestart","gesturechange"].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+
+/* relojes bajo el título: hora de Cancún y de Santiago */
+function tickClk(){document.querySelectorAll("#clk [data-tz]").forEach(b=>{try{b.textContent=new Date().toLocaleTimeString("es-CL",{timeZone:b.dataset.tz,hour:"2-digit",minute:"2-digit",hour12:false})}catch(e){}})}
+tickClk();setInterval(tickClk,15000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)tickClk()});
 
 /* ---------- lugares secretos ---------- */
 /* id, nombre, día, lugar (color), texto, búsqueda en Maps, x, y en el mapa */
