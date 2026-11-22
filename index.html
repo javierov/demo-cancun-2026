@@ -661,6 +661,21 @@ html,body{touch-action:pan-x pan-y}
 .clk span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.clk b{font-weight:700;color:var(--ink,inherit);font-variant-numeric:tabular-nums}.clk svg{opacity:.8}.clk .sep{opacity:.5}
 .hh .clk{grid-column:1/-1;margin:-4px 0 -6px}
 
+/* lo que ya hicieron */
+.donebox{margin-bottom:16px}
+.dlist{display:grid;gap:4px}
+.drow{display:grid;grid-template-columns:26px minmax(0,1fr) 18px;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:9px 2px;cursor:pointer;color:inherit;font:inherit}
+.dlist>.drow:first-child{border-top:0}
+.drow.pre{grid-template-columns:26px minmax(0,1fr);cursor:default}
+.drow .dck{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#2e9e6a;color:#fff}
+.drow .dt{display:block;font-size:12.5px;color:var(--soft)}
+.drow b{display:block;font-size:15px;line-height:1.3}
+.drow small{display:block;font-size:13px;color:var(--soft);line-height:1.35}
+.drow>svg{color:var(--soft)}
+.cc.past img{filter:saturate(.55) brightness(.85)}
+.day.past .db{position:relative}
+.day.past .db::after{content:"✓";position:absolute;right:-5px;top:-5px;width:17px;height:17px;border-radius:50%;background:#2e9e6a;color:#fff;font-size:11px;font-weight:800;line-height:17px;text-align:center;border:2px solid var(--bg,#fff)}
+
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1345,6 +1360,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </div>
   <div class="dots" id="dots" aria-hidden="true"></div>
   <div class="pad" id="nowbox"></div>
+  <div class="pad"><div class="box donebox" id="done" hidden></div></div>
   <div class="pad">
     <h2><span id="nxt-h">Día a día</span><button type="button" data-go="comer">Dónde comer</button></h2>
     <div class="rows" id="next"></div>
@@ -1778,6 +1794,26 @@ document.addEventListener("touchmove",e=>{if(e.touches.length>1&&!e.target.close
 /* relojes bajo el título: hora de Cancún y de Santiago */
 function tickClk(){document.querySelectorAll("#clk [data-tz]").forEach(b=>{try{b.textContent=new Date().toLocaleTimeString("es-CL",{timeZone:b.dataset.tz,hour:"2-digit",minute:"2-digit",hour12:false})}catch(e){}})}
 tickClk();setInterval(tickClk,15000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)tickClk()});
+
+/* ---------- lo que ya hicieron: días pasados, marcados como hechos ---------- */
+/* el jueves 19 no está en el plan: el vuelo salió atrasado de Santiago y pasaron la noche en Lima */
+const PRE=[[19,"Noche en Lima","El vuelo salió atrasado de Santiago, se perdió la conexión y LATAM dio hotel en Lima."]];
+function renderDone(){const t=T(),b=$("done");if(!b)return;
+  if(t.ph==="before"){b.hidden=true;return}
+  const past=t.ph==="after"?DAYS:DAYS.filter(x=>x.d<t.d);
+  const pre=PRE.filter(([d])=>t.ph==="after"||d<t.d);
+  if(!past.length&&!pre.length){b.hidden=true;return}
+  const ck=`<span class="dck" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>`;
+  b.innerHTML=`<h3 class="bh"><span class="bi">${ico("heart",2)}</span>Lo que ya hicieron</h3><div class="dlist">${
+    pre.map(([d,ti,tx])=>`<div class="drow pre">${ck}<span><span class="dt">${wd(d)} ${d} ${MC} · Lima</span><b>${esc(ti)}</b><small>${esc(tx)}</small></span></div>`).join("")+
+    past.map(x=>`<button type="button" class="drow" data-open="${x.cs[x.cs.length-1]}" data-day="${x.d}">${ck}<span><span class="dt">${wd(x.d)} ${x.d} ${MC} · ${dayCities(x)}</span><b>${esc(x.t)}</b><small>${esc(x.w)}</small></span>${ico("chev",2)}</button>`).join("")}</div>`;
+  b.hidden=false;
+  /* tarjetas de arriba: las paradas que ya pasaron llevan «Hecho» */
+  [...$("car").children].forEach((c,i)=>{const city=STOPS[i]&&STOPS[i][0],ds=DAYS.filter(x=>x.cs.includes(city)),done=ds.length&&(t.ph==="after"||ds.every(x=>x.d<t.d));c.classList.toggle("past",!!done);
+    const n=c.querySelector(".n");if(n){if(!n.dataset.o)n.dataset.o=n.innerHTML;n.innerHTML=done?`✓ Hecho · ${n.dataset.o}`:n.dataset.o}})}
+const renderHome0=renderHome;renderHome=function(){renderHome0();renderDone()};
+/* en la página de cada lugar, los días pasados llevan un check */
+const openCity0=openCity;openCity=function(c,d){openCity0(c,d);const t=T();document.querySelectorAll("#cdays .day").forEach(a=>{const n=+a.id.slice(1);a.classList.toggle("past",t.ph==="after"||(t.ph==="trip"&&n<t.d))})};
 
 /* ---------- lugares secretos ---------- */
 /* id, nombre, día, lugar (color), texto, búsqueda en Maps, x, y en el mapa */
