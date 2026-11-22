@@ -676,6 +676,14 @@ html,body{touch-action:pan-x pan-y}
 .day.past .db{position:relative}
 .day.past .db::after{content:"✓";position:absolute;right:-5px;top:-5px;width:17px;height:17px;border-radius:50%;background:#2e9e6a;color:#fff;font-size:11px;font-weight:800;line-height:17px;text-align:center;border:2px solid var(--bg,#fff)}
 
+/* «Hoy»: botón calugas para ver el día anterior */
+.hoy .bh{flex-wrap:nowrap;gap:8px}
+.hoy .bh .htx{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hpills{margin-left:auto;display:flex;gap:5px;flex:none}
+.hpill{display:inline-flex;align-items:center;gap:3px;height:28px;padding:0 9px;border-radius:999px;border:1px solid var(--line2);background:var(--fill,#fff);color:var(--title);font:700 12.5px/1 inherit;cursor:pointer;white-space:nowrap}
+.hoy.past{border-style:dashed}
+.hdone{display:inline-block;vertical-align:2px;margin-left:4px;padding:2px 8px;border-radius:999px;background:#2e9e6a;color:#fff;font-size:11.5px;font-weight:800}
+
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1814,6 +1822,23 @@ function renderDone(){const t=T(),b=$("done");if(!b)return;
 const renderHome0=renderHome;renderHome=function(){renderHome0();renderDone()};
 /* en la página de cada lugar, los días pasados llevan un check */
 const openCity0=openCity;openCity=function(c,d){openCity0(c,d);const t=T();document.querySelectorAll("#cdays .day").forEach(a=>{const n=+a.id.slice(1);a.classList.toggle("past",t.ph==="after"||(t.ph==="trip"&&n<t.d))})};
+
+/* ---------- «Hoy» con botón para ver el día anterior (y volver) ---------- */
+let HV=null;/* día que se está viendo en el recuadro «Hoy»; null = hoy */
+const prevD=d=>{const p=[...DAYS.map(x=>x.d),...PRE.map(x=>x[0])].filter(x=>x<d).sort((a,b)=>b-a);return p.length?p[0]:null};
+const pill=(d,lab,back)=>`<button type="button" class="hpill" data-hv="${d}" aria-label="${back?"Ver el día anterior: ":"Volver a "}${lab}">${back?`<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>`:""}${lab}${back?"":`<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>`}</button>`;
+function hoyPills(){const t=T();if(t.ph!=="trip")return;const box=$("nowbox").querySelector(".hoy");if(!box)return;
+  const v=HV||t.d,pv=prevD(v),h=box.querySelector(".bh");
+  if(h){const sp=document.createElement("span");sp.className="htx";[...h.childNodes].filter(n=>!(n.classList&&n.classList.contains("bi"))).forEach(n=>sp.appendChild(n));/* sin el lugar, para que quepa la caluga en una línea (el lugar va en el título del día) */sp.textContent=sp.textContent.trim().replace(/ · [^·]+$/,"");h.appendChild(sp);
+    h.insertAdjacentHTML("beforeend",`<span class="hpills">${pv?pill(pv,`${wd(pv)} ${pv}`,1):""}${HV?pill(t.d,"Hoy",0):""}</span>`)}}
+function hoyPast(d){const t=T(),x=dayOf(d),pre=PRE.find(p=>p[0]===d),ck=`<span class="hdone">✓ Hecho</span>`;
+  if(pre){$("nowbox").innerHTML=`<div class="box hoy past"><h3 class="bh"><span class="bi">${ico("heart",2)}</span>${wd(d)} ${d} · Lima</h3><p class="ht">${esc(pre[1])} ${ck}</p><p class="note" style="margin:0">${esc(pre[2])}</p></div>`;hoyPills();return}
+  if(!x)return;
+  $("nowbox").innerHTML=`<div class="box hoy past"><h3 class="bh"><span class="bi">${ico("heart",2)}</span>${wd(x.d)} ${x.d} · ${dayCities(x)}</h3>
+    <p class="ht">${esc(x.t)} ${ck}</p><ul class="list">${x.it.slice(0,3).map(([i,tx])=>`<li><span class="ic">${ico(EM[i])}</span><span>${esc(tx)}</span></li>`).join("")}</ul>
+    <div class="acts"><button class="btn" type="button" data-open="${x.cs[x.cs.length-1]}" data-day="${x.d}">Ver el día completo</button></div></div>`;hoyPills()}
+const renderHome1=renderHome;renderHome=function(){renderHome1();const t=T();if(t.ph!=="trip"){HV=null;return}if(HV&&HV<t.d)hoyPast(HV);else{HV=null;hoyPills()}};
+$("nowbox").addEventListener("click",e=>{const b=e.target.closest("[data-hv]");if(!b)return;e.stopPropagation();const d=+b.dataset.hv,t=T();HV=d<t.d?d:null;renderHome()});
 
 /* ---------- lugares secretos ---------- */
 /* id, nombre, día, lugar (color), texto, búsqueda en Maps, x, y en el mapa */
